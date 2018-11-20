@@ -6,64 +6,17 @@
 package Entite;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author gabrielleite
  */
 @Entity
-public class Stade implements Serializable {
-
-    @OneToMany(mappedBy = "Stade")
-    private List<Equipe> equipes;
-
-
-
-    private int Capacite;
-
-    /**
-     * Get the value of Capacite
-     *
-     * @return the value of Capacite
-     */
-    public int getCapacite() {
-        return Capacite;
-    }
-
-    /**
-     * Set the value of Capacite
-     *
-     * @param Capacite new value of Capacite
-     */
-    public void setCapacite(int Capacite) {
-        this.Capacite = Capacite;
-    }
-
-    private String Nom_Stade;
-
-    /**
-     * Get the value of Nom_Stade
-     *
-     * @return the value of Nom_Stade
-     */
-    public String getNom_Stade() {
-        return Nom_Stade;
-    }
-
-    /**
-     * Set the value of Nom_Stade
-     *
-     * @param Nom_Stade new value of Nom_Stade
-     */
-    public void setNom_Stade(String Nom_Stade) {
-        this.Nom_Stade = Nom_Stade;
-    }
+public class Contrat_Jouer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -88,10 +41,10 @@ public class Stade implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Stade)) {
+        if (!(object instanceof Contrat_Jouer)) {
             return false;
         }
-        Stade other = (Stade) object;
+        Contrat_Jouer other = (Contrat_Jouer) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +53,7 @@ public class Stade implements Serializable {
 
     @Override
     public String toString() {
-        return "Entite.Stade[ id=" + id + " ]";
+        return "Entite.Contrat_Jouer[ id=" + id + " ]";
     }
     
 }

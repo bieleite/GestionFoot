@@ -18,6 +18,126 @@ import javax.persistence.Id;
 @Entity
 public class Match implements Serializable {
 
+    private Composition Composition_Away;
+
+    /**
+     * Get the value of Composition_Away
+     *
+     * @return the value of Composition_Away
+     */
+    public Composition getComposition_Away() {
+        return Composition_Away;
+    }
+
+    /**
+     * Set the value of Composition_Away
+     *
+     * @param Composition_Away new value of Composition_Away
+     */
+    public void setComposition_Away(Composition Composition_Away) {
+        this.Composition_Away = Composition_Away;
+    }
+
+    private Composition Composition_Home;
+
+    /**
+     * Get the value of Composition_Home
+     *
+     * @return the value of Composition_Home
+     */
+    public Composition getComposition_Home() {
+        return Composition_Home;
+    }
+
+    /**
+     * Set the value of Composition_Home
+     *
+     * @param Composition_Home new value of Composition_Home
+     */
+    public void setComposition_Home(Composition Composition_Home) {
+        this.Composition_Home = Composition_Home;
+    }
+
+    private Arbitre Arbitre;
+
+    /**
+     * Get the value of Arbitre
+     *
+     * @return the value of Arbitre
+     */
+    public Arbitre getArbitre() {
+        return Arbitre;
+    }
+
+    /**
+     * Set the value of Arbitre
+     *
+     * @param Arbitre new value of Arbitre
+     */
+    public void setArbitre(Arbitre Arbitre) {
+        this.Arbitre = Arbitre;
+    }
+
+    private Equipe Equipe_Home;
+
+    /**
+     * Get the value of Equipe_Home
+     *
+     * @return the value of Equipe_Home
+     */
+    public Equipe getEquipe_Home() {
+        return Equipe_Home;
+    }
+
+    /**
+     * Set the value of Equipe_Home
+     *
+     * @param Equipe_Home new value of Equipe_Home
+     */
+    public void setEquipe_Home(Equipe Equipe_Home) {
+        this.Equipe_Home = Equipe_Home;
+    }
+
+    private Equipe Equipe_Away;
+
+    /**
+     * Get the value of Equipe_Away
+     *
+     * @return the value of Equipe_Away
+     */
+    public Equipe getEquipe_Away() {
+        return Equipe_Away;
+    }
+
+    /**
+     * Set the value of Equipe_Away
+     *
+     * @param Equipe_Away new value of Equipe_Away
+     */
+    public void setEquipe_Away(Equipe Equipe_Away) {
+        this.Equipe_Away = Equipe_Away;
+    }
+
+    private Stade Stade;
+
+    /**
+     * Get the value of Stade
+     *
+     * @return the value of Stade
+     */
+    public Stade getStade() {
+        return Stade;
+    }
+
+    /**
+     * Set the value of Stade
+     *
+     * @param Stade new value of Stade
+     */
+    public void setStade(Stade Stade) {
+        this.Stade = Stade;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

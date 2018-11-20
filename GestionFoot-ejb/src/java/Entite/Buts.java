@@ -6,63 +6,76 @@
 package Entite;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author gabrielleite
  */
 @Entity
-public class Stade implements Serializable {
+public class Buts implements Serializable {
 
-    @OneToMany(mappedBy = "Stade")
-    private List<Equipe> equipes;
-
-
-
-    private int Capacite;
+    private Equipe Equipe;
 
     /**
-     * Get the value of Capacite
+     * Get the value of Equipe
      *
-     * @return the value of Capacite
+     * @return the value of Equipe
      */
-    public int getCapacite() {
-        return Capacite;
+    public Equipe getEquipe() {
+        return Equipe;
     }
 
     /**
-     * Set the value of Capacite
+     * Set the value of Equipe
      *
-     * @param Capacite new value of Capacite
+     * @param Equipe new value of Equipe
      */
-    public void setCapacite(int Capacite) {
-        this.Capacite = Capacite;
+    public void setEquipe(Equipe Equipe) {
+        this.Equipe = Equipe;
     }
 
-    private String Nom_Stade;
+    private Jouer Jouer;
 
     /**
-     * Get the value of Nom_Stade
+     * Get the value of Jouer
      *
-     * @return the value of Nom_Stade
+     * @return the value of Jouer
      */
-    public String getNom_Stade() {
-        return Nom_Stade;
+    public Jouer getJouer() {
+        return Jouer;
     }
 
     /**
-     * Set the value of Nom_Stade
+     * Set the value of Jouer
      *
-     * @param Nom_Stade new value of Nom_Stade
+     * @param Jouer new value of Jouer
      */
-    public void setNom_Stade(String Nom_Stade) {
-        this.Nom_Stade = Nom_Stade;
+    public void setJouer(Jouer Jouer) {
+        this.Jouer = Jouer;
+    }
+
+    private Match Match;
+
+    /**
+     * Get the value of Match
+     *
+     * @return the value of Match
+     */
+    public Match getMatch() {
+        return Match;
+    }
+
+    /**
+     * Set the value of Match
+     *
+     * @param Match new value of Match
+     */
+    public void setMatch(Match Match) {
+        this.Match = Match;
     }
 
     private static final long serialVersionUID = 1L;
@@ -88,10 +101,10 @@ public class Stade implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Stade)) {
+        if (!(object instanceof Buts)) {
             return false;
         }
-        Stade other = (Stade) object;
+        Buts other = (Buts) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +113,7 @@ public class Stade implements Serializable {
 
     @Override
     public String toString() {
-        return "Entite.Stade[ id=" + id + " ]";
+        return "Entite.Buts[ id=" + id + " ]";
     }
     
 }

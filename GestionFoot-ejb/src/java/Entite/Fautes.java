@@ -16,86 +16,86 @@ import javax.persistence.Id;
  * @author gabrielleite
  */
 @Entity
-public class Arbitre implements Serializable {
+public class Fautes implements Serializable {
 
-    private String Pass;
+    private Carton Carton;
 
     /**
-     * Get the value of Pass
+     * Get the value of Carton
      *
-     * @return the value of Pass
+     * @return the value of Carton
      */
-    public String getPass() {
-        return Pass;
+    public Carton getCarton() {
+        return Carton;
     }
 
     /**
-     * Set the value of Pass
+     * Set the value of Carton
      *
-     * @param Pass new value of Pass
+     * @param Carton new value of Carton
      */
-    public void setPass(String Pass) {
-        this.Pass = Pass;
+    public void setCarton(Carton Carton) {
+        this.Carton = Carton;
     }
 
-    private String Login;
+    private Match Match;
 
     /**
-     * Get the value of Login
+     * Get the value of Match
      *
-     * @return the value of Login
+     * @return the value of Match
      */
-    public String getLogin() {
-        return Login;
-    }
-
-    /**
-     * Set the value of Login
-     *
-     * @param Login new value of Login
-     */
-    public void setLogin(String Login) {
-        this.Login = Login;
-    }
-
-    private String Prenom;
-
-    /**
-     * Get the value of Prenom
-     *
-     * @return the value of Prenom
-     */
-    public String getPrenom() {
-        return Prenom;
+    public Match getMatch() {
+        return Match;
     }
 
     /**
-     * Set the value of Prenom
+     * Set the value of Match
      *
-     * @param Prenom new value of Prenom
+     * @param Match new value of Match
      */
-    public void setPrenom(String Prenom) {
-        this.Prenom = Prenom;
+    public void setMatch(Match Match) {
+        this.Match = Match;
     }
 
-    private String Nom;
+    private Arbitre Arbitre;
 
     /**
-     * Get the value of Nom
+     * Get the value of Arbitre
      *
-     * @return the value of Nom
+     * @return the value of Arbitre
      */
-    public String getNom() {
-        return Nom;
+    public Arbitre getArbitre() {
+        return Arbitre;
     }
 
     /**
-     * Set the value of Nom
+     * Set the value of Arbitre
      *
-     * @param Nom new value of Nom
+     * @param Arbitre new value of Arbitre
      */
-    public void setNom(String Nom) {
-        this.Nom = Nom;
+    public void setArbitre(Arbitre Arbitre) {
+        this.Arbitre = Arbitre;
+    }
+
+    private Jouer Joeur;
+
+    /**
+     * Get the value of Joeur
+     *
+     * @return the value of Joeur
+     */
+    public Jouer getJoeur() {
+        return Joeur;
+    }
+
+    /**
+     * Set the value of Joeur
+     *
+     * @param Joeur new value of Joeur
+     */
+    public void setJoeur(Jouer Joeur) {
+        this.Joeur = Joeur;
     }
 
     private static final long serialVersionUID = 1L;
@@ -121,10 +121,10 @@ public class Arbitre implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Arbitre)) {
+        if (!(object instanceof Fautes)) {
             return false;
         }
-        Arbitre other = (Arbitre) object;
+        Fautes other = (Fautes) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -133,7 +133,7 @@ public class Arbitre implements Serializable {
 
     @Override
     public String toString() {
-        return "Entite.Arbitres[ id=" + id + " ]";
+        return "Entite.Fautes[ id=" + id + " ]";
     }
     
 }

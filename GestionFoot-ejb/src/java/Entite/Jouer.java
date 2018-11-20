@@ -18,6 +18,46 @@ import javax.persistence.Id;
 @Entity
 public class Jouer implements Serializable {
 
+    private String Prenom;
+
+    /**
+     * Get the value of Prenom
+     *
+     * @return the value of Prenom
+     */
+    public String getPrenom() {
+        return Prenom;
+    }
+
+    /**
+     * Set the value of Prenom
+     *
+     * @param Prenom new value of Prenom
+     */
+    public void setPrenom(String Prenom) {
+        this.Prenom = Prenom;
+    }
+
+    private String Nom;
+
+    /**
+     * Get the value of Nom
+     *
+     * @return the value of Nom
+     */
+    public String getNom() {
+        return Nom;
+    }
+
+    /**
+     * Set the value of Nom
+     *
+     * @param Nom new value of Nom
+     */
+    public void setNom(String Nom) {
+        this.Nom = Nom;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

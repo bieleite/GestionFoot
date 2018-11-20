@@ -6,10 +6,12 @@
 package Entite;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -17,6 +19,89 @@ import javax.persistence.Id;
  */
 @Entity
 public class Entraineur implements Serializable {
+
+    @OneToMany(mappedBy = "Entraineur")
+    private List<Composition> compositions;
+
+    private String Pass;
+
+    /**
+     * Get the value of Pass
+     *
+     * @return the value of Pass
+     */
+    public String getPass() {
+        return Pass;
+    }
+
+    /**
+     * Set the value of Pass
+     *
+     * @param Pass new value of Pass
+     */
+    public void setPass(String Pass) {
+        this.Pass = Pass;
+    }
+
+    private String Login;
+
+    /**
+     * Get the value of Login
+     *
+     * @return the value of Login
+     */
+    public String getLogin() {
+        return Login;
+    }
+
+    /**
+     * Set the value of Login
+     *
+     * @param Login new value of Login
+     */
+    public void setLogin(String Login) {
+        this.Login = Login;
+    }
+
+    private String Prenom;
+
+    /**
+     * Get the value of Prenom
+     *
+     * @return the value of Prenom
+     */
+    public String getPrenom() {
+        return Prenom;
+    }
+
+    /**
+     * Set the value of Prenom
+     *
+     * @param Prenom new value of Prenom
+     */
+    public void setPrenom(String Prenom) {
+        this.Prenom = Prenom;
+    }
+
+    private String Nom;
+
+    /**
+     * Get the value of Nom
+     *
+     * @return the value of Nom
+     */
+    public String getNom() {
+        return Nom;
+    }
+
+    /**
+     * Set the value of Nom
+     *
+     * @param Nom new value of Nom
+     */
+    public void setNom(String Nom) {
+        this.Nom = Nom;
+    }
 
     private static final long serialVersionUID = 1L;
     @Id

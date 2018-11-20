@@ -6,63 +6,56 @@
 package Entite;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author gabrielleite
  */
 @Entity
-public class Stade implements Serializable {
+public class Composition implements Serializable {
 
-    @OneToMany(mappedBy = "Stade")
-    private List<Equipe> equipes;
-
-
-
-    private int Capacite;
+    private Entraineur Entraineur;
 
     /**
-     * Get the value of Capacite
+     * Get the value of Entraineur
      *
-     * @return the value of Capacite
+     * @return the value of Entraineur
      */
-    public int getCapacite() {
-        return Capacite;
+    public Entraineur getEntraineur() {
+        return Entraineur;
     }
 
     /**
-     * Set the value of Capacite
+     * Set the value of Entraineur
      *
-     * @param Capacite new value of Capacite
+     * @param Entraineur new value of Entraineur
      */
-    public void setCapacite(int Capacite) {
-        this.Capacite = Capacite;
+    public void setEntraineur(Entraineur Entraineur) {
+        this.Entraineur = Entraineur;
     }
 
-    private String Nom_Stade;
+    private Jouer Joeur;
 
     /**
-     * Get the value of Nom_Stade
+     * Get the value of Joeur
      *
-     * @return the value of Nom_Stade
+     * @return the value of Joeur
      */
-    public String getNom_Stade() {
-        return Nom_Stade;
+    public Jouer getJoeur() {
+        return Joeur;
     }
 
     /**
-     * Set the value of Nom_Stade
+     * Set the value of Joeur
      *
-     * @param Nom_Stade new value of Nom_Stade
+     * @param Joeur new value of Joeur
      */
-    public void setNom_Stade(String Nom_Stade) {
-        this.Nom_Stade = Nom_Stade;
+    public void setJoeur(Jouer Joeur) {
+        this.Joeur = Joeur;
     }
 
     private static final long serialVersionUID = 1L;
@@ -88,10 +81,10 @@ public class Stade implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Stade)) {
+        if (!(object instanceof Composition)) {
             return false;
         }
-        Stade other = (Stade) object;
+        Composition other = (Composition) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +93,7 @@ public class Stade implements Serializable {
 
     @Override
     public String toString() {
-        return "Entite.Stade[ id=" + id + " ]";
+        return "Entite.Composition[ id=" + id + " ]";
     }
     
 }
