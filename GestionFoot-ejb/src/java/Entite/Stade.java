@@ -23,6 +23,25 @@ public class Stade implements Serializable {
     @OneToMany(mappedBy = "Stade")
     private List<Equipe> equipes;
 
+    private String Adresse_Stade;
+
+    /**
+     * Get the value of Adresse_Stade
+     *
+     * @return the value of Adresse_Stade
+     */
+    public String getAdresse_Stade() {
+        return Adresse_Stade;
+    }
+
+    /**
+     * Set the value of Adresse_Stade
+     *
+     * @param Adresse_Stade new value of Adresse_Stade
+     */
+    public void setAdresse_Stade(String Adresse_Stade) {
+        this.Adresse_Stade = Adresse_Stade;
+    }
 
 
     private int Capacite;

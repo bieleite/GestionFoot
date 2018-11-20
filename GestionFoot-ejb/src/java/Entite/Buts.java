@@ -58,25 +58,6 @@ public class Buts implements Serializable {
         this.Jouer = Jouer;
     }
 
-    private Match Match;
-
-    /**
-     * Get the value of Match
-     *
-     * @return the value of Match
-     */
-    public Match getMatch() {
-        return Match;
-    }
-
-    /**
-     * Set the value of Match
-     *
-     * @param Match new value of Match
-     */
-    public void setMatch(Match Match) {
-        this.Match = Match;
-    }
 
     private static final long serialVersionUID = 1L;
     @Id
