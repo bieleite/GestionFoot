@@ -6,6 +6,10 @@
 package Facade;
 
 import Entite.Contrat_Entraineur;
+import Entite.Entraineur;
+import Entite.Equipe;
+import Entite.Statut;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +33,13 @@ public interface Contrat_EntraineurFacadeLocal {
     List<Contrat_Entraineur> findRange(int[] range);
 
     int count();
+    
+    void CreerContrat_Entraineur(Statut status,double salaire, Equipe equipe,Entraineur entraineur, Date dt_debut, Date dt_fin);
+    
+    List<Contrat_Entraineur> listContrat_Entraineur();
+
+    Contrat_Entraineur rechercheContrat_Entraineur(Long id);
+    
+    Contrat_Entraineur rechercheEquipeParContrat_Entraineur(Long id);
     
 }

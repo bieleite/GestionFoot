@@ -18,24 +18,24 @@ import javax.persistence.Id;
 @Entity
 public class Composition implements Serializable {
 
-    private Entraineur Entraineur;
+    private Equipe Equipe;
 
     /**
-     * Get the value of Entraineur
+     * Get the value of Equipe
      *
      * @return the value of Entraineur
      */
-    public Entraineur getEntraineur() {
-        return Entraineur;
+    public Equipe getEquipe() {
+        return Equipe;
     }
 
     /**
-     * Set the value of Entraineur
+     * Set the value of Equipe
      *
-     * @param Entraineur new value of Entraineur
+     * @param Equipe new value of Entraineur
      */
-    public void setEntraineur(Entraineur Entraineur) {
-        this.Entraineur = Entraineur;
+    public void setEquipe(Equipe Equipe) {
+        this.Equipe = Equipe;
     }
 
     private Jouer Joeur;

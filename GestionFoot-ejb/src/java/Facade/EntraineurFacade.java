@@ -31,7 +31,7 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
         super(Entraineur.class);
     }
     
-        @Override
+    @Override
     public void CreerEntraineur(String Nom, String Prenom, String Login, String Pass) {
         Entraineur f = new Entraineur();
         f.setNom(Nom);
@@ -40,7 +40,8 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
         f.setPass(Pass);
         em.persist(f);
     }
-        @Override
+    
+    @Override
     public List<Entraineur> listEntraineur() {
         List<Entraineur> fo=null;
         String txt="SELECT fo FROM Entraineur AS fo ";
@@ -61,5 +62,18 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
               f = (Entraineur) res.get(0);
         }
         return f;
+    }
+       @Override
+    public Entraineur authentification(String login, String mdp) {
+        Entraineur result=null;
+        String txt="SELECT c FROM Entraineur AS c WHERE c.Login=:login and c.MotDePasse=:mdp";
+        Query req=getEntityManager().createQuery(txt);
+        req=req.setParameter("login",login);
+        req=req.setParameter("mdp", mdp);
+        List<Entraineur> l=req.getResultList();
+        for(Entraineur ag:l){
+            result=ag;
+        }
+        return result;
     }
 }

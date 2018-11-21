@@ -6,6 +6,9 @@
 package Facade;
 
 import Entite.Composition;
+import Entite.Entraineur;
+import Entite.Equipe;
+import Entite.Jouer;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,4 +33,9 @@ public interface CompositionFacadeLocal {
 
     int count();
     
+    void CreerComposition(Equipe equipe, Jouer jouer);
+    
+    List<Composition> listComposition();
+
+    Composition rechercheComposition(Long id);
 }

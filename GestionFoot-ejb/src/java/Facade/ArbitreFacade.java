@@ -62,4 +62,17 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
         }
         return f;
     }
+    @Override
+    public Arbitre authentification(String login, String mdp) {
+        Arbitre result=null;
+        String txt="SELECT c FROM Arbitre AS c WHERE c.Login=:login and c.MotDePasse=:mdp";
+        Query req=getEntityManager().createQuery(txt);
+        req=req.setParameter("login",login);
+        req=req.setParameter("mdp", mdp);
+        List<Arbitre> l=req.getResultList();
+        for(Arbitre ag:l){
+            result=ag;
+        }
+        return result;
+    }
 }

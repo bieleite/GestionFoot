@@ -35,4 +35,6 @@ public interface ArbitreFacadeLocal {
     List<Arbitre> listArbitre();
 
     Arbitre rechercheArbitre(Long id);
+    
+    Arbitre authentification(String login, String mdp);
 }

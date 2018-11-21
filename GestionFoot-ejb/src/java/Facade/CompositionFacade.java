@@ -6,9 +6,14 @@
 package Facade;
 
 import Entite.Composition;
+import Entite.Entraineur;
+import Entite.Equipe;
+import Entite.Jouer;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +34,34 @@ public class CompositionFacade extends AbstractFacade<Composition> implements Co
         super(Composition.class);
     }
     
+        @Override
+    public void CreerComposition(Equipe equipe, Jouer jouer) {
+        Composition f = new Composition();
+        f.setEquipe(equipe);
+        f.setJoeur(jouer);
+        em.persist(f);
+    }
+    
+    @Override
+    public List<Composition> listComposition() {
+        List<Composition> fo=null;
+        String txt="SELECT fo FROM Composition AS fo ";
+        Query req=getEntityManager().createQuery(txt);
+        List<Composition> result=req.getResultList();
+        return result;
+    }
+
+    @Override
+    public Composition rechercheComposition(Long id) {
+        Composition f = null;        
+        String txt = "SELECT f FROM Composition AS f WHERE f.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);  
+        List<Composition> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              f = (Composition) res.get(0);
+        }
+        return f;
+    }
 }

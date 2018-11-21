@@ -6,9 +6,15 @@
 package Facade;
 
 import Entite.Contrat_Jouer;
+import Entite.Entraineur;
+import Entite.Equipe;
+import Entite.Jouer;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +35,37 @@ public class Contrat_JouerFacade extends AbstractFacade<Contrat_Jouer> implement
         super(Contrat_Jouer.class);
     }
     
+    @Override
+    public void CreerContrat_Jouer(double salaire, Equipe equipe,Jouer jouer, Date dt_fin, Date dt_debut) {
+        Contrat_Jouer f = new Contrat_Jouer();
+        f.setSalaire(salaire);
+        f.setEquipe(equipe);
+        f.setJoeur(jouer);
+        f.setDate_fin(dt_fin);
+        f.setDate_Debut(dt_debut);
+        em.persist(f);
+    }
+    
+    @Override
+    public List<Contrat_Jouer> listContrat_Jouer() {
+        List<Contrat_Jouer> fo=null;
+        String txt="SELECT fo FROM Contrat_Jouer AS fo ";
+        Query req=getEntityManager().createQuery(txt);
+        List<Contrat_Jouer> result=req.getResultList();
+        return result;
+    }
+
+    @Override
+    public Contrat_Jouer rechercheContrat_Jouer(Long id) {
+        Contrat_Jouer f = null;        
+        String txt = "SELECT f FROM Contrat_Jouer AS f WHERE f.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);  
+        List<Contrat_Jouer> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              f = (Contrat_Jouer) res.get(0);
+        }
+        return f;
+    }
 }

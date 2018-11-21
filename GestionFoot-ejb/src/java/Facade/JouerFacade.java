@@ -30,14 +30,16 @@ public class JouerFacade extends AbstractFacade<Jouer> implements JouerFacadeLoc
     public JouerFacade() {
         super(Jouer.class);
     }
-            @Override
+    
+    @Override
     public void CreerJouer(String Nom, String Prenom) {
         Jouer f = new Jouer();
         f.setNom(Nom);
         f.setPrenom(Prenom);
         em.persist(f);
     }
-        @Override
+    
+    @Override
     public List<Jouer> listJouer() {
         List<Jouer> fo=null;
         String txt="SELECT fo FROM Jouer AS fo ";

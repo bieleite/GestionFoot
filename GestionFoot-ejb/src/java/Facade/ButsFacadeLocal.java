@@ -6,6 +6,8 @@
 package Facade;
 
 import Entite.Buts;
+import Entite.Equipe;
+import Entite.Jouer;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +31,11 @@ public interface ButsFacadeLocal {
     List<Buts> findRange(int[] range);
 
     int count();
+    
+    void CreerButs(Equipe equipe, Jouer jouer);
+    
+    List<Buts> listButs();
+
+    Buts rechercheButs(Long id);
     
 }

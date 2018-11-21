@@ -5,6 +5,10 @@
  */
 package Session;
 
+import Entite.Entraineur;
+import Facade.CompositionFacadeLocal;
+import Facade.EntraineurFacadeLocal;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -13,6 +17,25 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class sessionEntraineur implements sessionEntraineurLocal {
+
+    @EJB
+    private CompositionFacadeLocal compositionFacade;
+
+    @EJB
+    private EntraineurFacadeLocal entraineurFacade;
+
+    @Override
+    public void CreerComposition(String log, String mdp, String nom) {
+        Entraineur c = null;    
+        c = entraineurFacade.authentification(log, mdp);
+        if (c != null)
+        {
+            
+            compositionFacade.CreerComposition(c, jouer);
+        }
+       
+        else System.out.println("Entraineur inéxistant");
+    }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

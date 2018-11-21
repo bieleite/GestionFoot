@@ -9,6 +9,6 @@ package Entite;
  *
  * @author gabrielleite
  */
-public enum Gagnant {
-    Oui,Non
+public enum Statut {
+    Actif,Inactif
 }

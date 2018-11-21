@@ -39,6 +39,7 @@ public class StadeFacade extends AbstractFacade<Stade> implements StadeFacadeLoc
         f.setCapacite(capacite);
         em.persist(f);
     }
+    
     @Override
     public List<Stade> listStade() {
         List<Stade> fo=null;

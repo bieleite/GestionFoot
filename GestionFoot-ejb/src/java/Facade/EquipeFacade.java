@@ -40,6 +40,7 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
         f.setStade(stade);
         em.persist(f);
     }
+    
     @Override
     public List<Equipe> listEquipe() {
         List<Equipe> fo=null;

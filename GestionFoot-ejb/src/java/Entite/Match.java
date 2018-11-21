@@ -6,6 +6,7 @@
 package Entite;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,26 @@ import javax.persistence.Id;
  */
 @Entity
 public class Match implements Serializable {
+
+    private Date Date;
+
+    /**
+     * Get the value of Date
+     *
+     * @return the value of Date
+     */
+    public Date getDate() {
+        return Date;
+    }
+
+    /**
+     * Set the value of Date
+     *
+     * @param Date new value of Date
+     */
+    public void setDate(Date Date) {
+        this.Date = Date;
+    }
 
     private Composition Composition_Away;
 

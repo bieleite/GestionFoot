@@ -6,6 +6,9 @@
 package Facade;
 
 import Entite.Contrat_Jouer;
+import Entite.Equipe;
+import Entite.Jouer;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,4 +33,9 @@ public interface Contrat_JouerFacadeLocal {
 
     int count();
     
+    void CreerContrat_Jouer(double salaire, Equipe equipe,Jouer jouer, Date dt_fin, Date dt_debut);
+    
+    List<Contrat_Jouer> listContrat_Jouer();
+
+    Contrat_Jouer rechercheContrat_Jouer(Long id);
 }

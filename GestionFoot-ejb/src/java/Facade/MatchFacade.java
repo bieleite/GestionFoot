@@ -8,11 +8,15 @@ package Facade;
 import Entite.Arbitre;
 import Entite.Composition;
 import Entite.Equipe;
-import Entite.Match;
 import Entite.Stade;
+import Entite.Match;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -34,8 +38,9 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     }
 
     @Override
-    public void CreerMatch(Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Composition compositiona, Composition compositionb) {
+    public void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Composition compositiona, Composition compositionb) {
         Match m = new Match();
+        m.setDate(date);
         m.setStade(stade);
         m.setEquipe_Home(equipeb);
         m.setEquipe_Away(equipea);
@@ -45,5 +50,27 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         em.persist(m);
     }
     
+    @Override
+    public List<Match> listMatch() {
+        List<Match> fo=null;
+        String txt="SELECT fo FROM Match AS fo ";
+        Query req=getEntityManager().createQuery(txt);
+        List<Match> result=req.getResultList();
+        return result;
+    }
+
+    @Override
+    public Match rechercheMatch(Long id) {
+        Match f = null;        
+        String txt = "SELECT f FROM Match AS f WHERE f.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);  
+        List<Match> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              f = (Match) res.get(0);
+        }
+        return f;
+    }
     
 }

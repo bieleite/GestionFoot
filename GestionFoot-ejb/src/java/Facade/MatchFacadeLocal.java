@@ -8,8 +8,9 @@ package Facade;
 import Entite.Arbitre;
 import Entite.Composition;
 import Entite.Equipe;
-import Entite.Match;
 import Entite.Stade;
+import Entite.Match;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -34,6 +35,9 @@ public interface MatchFacadeLocal {
 
     int count();
 
-    void CreerMatch(Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Composition compositiona, Composition compositionb);
+    void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Composition compositiona, Composition compositionb);
     
+        List<Match> listMatch();
+
+    Match rechercheMatch(Long id);
 }
