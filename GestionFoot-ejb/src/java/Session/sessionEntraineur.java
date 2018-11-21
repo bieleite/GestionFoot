@@ -6,6 +6,7 @@
 package Session;
 
 import Entite.Entraineur;
+import Entite.Equipe;
 import Facade.CompositionFacadeLocal;
 import Facade.EntraineurFacadeLocal;
 import javax.ejb.EJB;
@@ -30,8 +31,8 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         c = entraineurFacade.authentification(log, mdp);
         if (c != null)
         {
-            
-            compositionFacade.CreerComposition(c, jouer);
+            Equipe e = 
+            compositionFacade.CreerComposition(e, jouer);
         }
        
         else System.out.println("Entraineur inéxistant");

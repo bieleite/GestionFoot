@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Carton.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/FautesFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Equipe.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionFederation.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionArbitre.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Entraineur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/StadeFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Jouer.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionEntraineur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Resultat.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/AbstractFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/CompositionFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Fautes.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/MatchFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Match.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/ArbitreFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Contrat_Jouer.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/EquipeFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/EquipeFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionVisiteur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Arbitre.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionEntraineurLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Statut.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/ButsFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/MatchFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/ButsFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Buts.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/JouerFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/Contrat_EntraineurFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/EntraineurFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Stade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/Contrat_EntraineurFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Contrat_Entraineur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/CompositionFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Composition.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/ArbitreFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/Contrat_JouerFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/JouerFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/EntraineurFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/FautesFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/Contrat_JouerFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/StadeFacadeLocal.java</file>
+        </group>
+    </open-files>
+</project-private>

@@ -71,7 +71,7 @@ public class Contrat_EntraineurFacade extends AbstractFacade<Contrat_Entraineur>
     }
     
     @Override
-    public Contrat_Entraineur rechercheEquipeParContrat_Entraineur(Long id) {
+    public List<Contrat_Entraineur> rechercheEquipeParContrat_Entraineur(Long id) {
         Contrat_Entraineur f = null;        
         String txt = "SELECT f FROM Contrat_Entraineur AS f WHERE f.id=:id";
         Query req = getEntityManager().createQuery(txt);
