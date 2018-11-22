@@ -38,4 +38,6 @@ public interface CompositionFacadeLocal {
     List<Composition> listComposition();
 
     Composition rechercheComposition(Long id);
+    
+    Composition rechercheEquipeParEquipe(Equipe equi);
 }

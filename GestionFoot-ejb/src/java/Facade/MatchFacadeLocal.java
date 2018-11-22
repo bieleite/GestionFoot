@@ -37,7 +37,11 @@ public interface MatchFacadeLocal {
 
     void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Composition compositiona, Composition compositionb);
     
-        List<Match> listMatch();
+    List<Match> listMatch();
 
     Match rechercheMatch(Long id);
+    
+    List<Match> rechercheMatchStadeDate(Stade stad,Date dt);
+    
+    List<Match> rechercheMatchArbitreDate(Arbitre arb,Date dt);
 }

@@ -62,4 +62,18 @@ public class StadeFacade extends AbstractFacade<Stade> implements StadeFacadeLoc
         }
         return f;
     }
+    @Override
+    public  Stade rechercheStadeParNom(String nom) {
+        Stade e = null;        
+        String txt = "SELECT e FROM Stade AS e WHERE e.Nom_Stade=:nom ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", nom);
+        List<Stade> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              e = (Stade) res.get(0);
+        }
+        return e;
+        
+    }
 }

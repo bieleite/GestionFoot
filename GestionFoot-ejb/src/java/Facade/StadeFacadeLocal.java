@@ -35,4 +35,6 @@ public interface StadeFacadeLocal {
     List<Stade> listStade();
 
     Stade rechercheStade(Long id);
+    
+    Stade rechercheStadeParNom(String nom);
 }

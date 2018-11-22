@@ -73,4 +73,24 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         return f;
     }
     
+    @Override
+    public List<Match> rechercheMatchStadeDate(Stade stad,Date dt) {
+        String txt = "SELECT mat FROM Match AS mat WHERE mat.Stade=:stad and mat.Date=:dt";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("stad", stad);
+        req = req.setParameter("dt", dt);
+        List<Match> res = req.getResultList();
+        return res;
+        
+    }
+    @Override
+    public List<Match> rechercheMatchArbitreDate(Arbitre arb,Date dt) {
+        String txt = "SELECT mat FROM Match AS mat WHERE mat.Arbitre=:arb and mat.Date=:dt";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("stad", arb);
+        req = req.setParameter("dt", dt);
+        List<Match> res = req.getResultList();
+        return res;
+        
+    }
 }

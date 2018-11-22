@@ -64,4 +64,19 @@ public class CompositionFacade extends AbstractFacade<Composition> implements Co
         }
         return f;
     }
+    
+    @Override
+    public  Composition rechercheEquipeParEquipe(Equipe equi) {
+        Composition e = null;        
+        String txt = "SELECT e FROM Composition AS e WHERE e.Equipe=:nom ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", equi);
+        List<Composition> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              e = (Composition) res.get(0);
+        }
+        return e;
+        
+    }
 }

@@ -5,16 +5,25 @@
  */
 package Session;
 
+import Entite.Arbitre;
+import Entite.Composition;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
+import Entite.Match;
+import Entite.Stade;
 import Entite.Statut;
+import Facade.ArbitreFacadeLocal;
+import Facade.CompositionFacadeLocal;
 import Facade.Contrat_EntraineurFacadeLocal;
 import Facade.Contrat_JouerFacadeLocal;
 import Facade.EntraineurFacadeLocal;
 import Facade.EquipeFacadeLocal;
 import Facade.JouerFacadeLocal;
+import Facade.MatchFacadeLocal;
+import Facade.StadeFacadeLocal;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -24,6 +33,18 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class sessionFederation implements sessionFederationLocal {
+
+    @EJB
+    private ArbitreFacadeLocal arbitreFacade;
+
+    @EJB
+    private CompositionFacadeLocal compositionFacade;
+
+    @EJB
+    private MatchFacadeLocal matchFacade;
+
+    @EJB
+    private StadeFacadeLocal stadeFacade;
 
     @EJB
     private JouerFacadeLocal jouerFacade;
@@ -110,5 +131,43 @@ public class sessionFederation implements sessionFederationLocal {
         }
         
         else System.out.println("Vous n'avez pas les droits pour créer de Contrat Jouer ! ");
+    }
+
+    @Override
+    public void creerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre) {
+        if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+            Stade sta =stadeFacade.rechercheStadeParNom(stade);
+            List<Match> listeMatch = matchFacade.rechercheMatchStadeDate(sta, date);
+            if (listeMatch.isEmpty())
+            {
+                Equipe eqpa = equipeFacade.rechercheEquipeParNom(equipea);
+                Equipe eqpb = equipeFacade.rechercheEquipeParNom(equipeb);
+                if(eqpa!=null && eqpb!=null){
+                    Composition compa= compositionFacade.rechercheEquipeParEquipe(eqpa);
+                    Composition compb=compositionFacade.rechercheEquipeParEquipe(eqpb);
+                    if(compa!=null && compb !=null){
+                        Arbitre arb= arbitreFacade.rechercheArbitreParNom(arbitre);
+                        List<Match> listeMatchA = matchFacade.rechercheMatchArbitreDate(arb, date);
+                            if (listeMatchA.isEmpty())
+                            {
+                                matchFacade.CreerMatch(date, sta, eqpa, eqpb, arb, compa, compb);
+                            }
+                            else{
+                                System.out.println("Arbitre ocuupé! ");
+                            }
+                    }
+                    else{
+                        System.out.println("Composition inexistant! ");
+                    }
+                }
+                else{
+                    System.out.println("Equipe inexistant! ");
+                }
+            }
+            else{
+                System.out.println("Stade deja ocuppe!");
+            }
+        }
     }
 }

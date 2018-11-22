@@ -75,4 +75,20 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
         }
         return result;
     }
+    
+        @Override
+    public  Arbitre rechercheArbitreParNom(String nom) {
+        Arbitre e = null;        
+        String txt = "SELECT e FROM Arbitre AS e WHERE e.Nom=:nom ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", nom);
+        List<Arbitre> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              e = (Arbitre) res.get(0);
+        }
+        return e;
+        
+    }
+    
 }

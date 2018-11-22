@@ -22,5 +22,7 @@ public interface sessionFederationLocal {
     void CreerJouer(String log, String mdp, String nom, String pren);
 
     void CreerContratJouer(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin);
+
+    void creerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre);
     
 }
