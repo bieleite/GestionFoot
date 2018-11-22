@@ -40,4 +40,6 @@ public interface JouerFacadeLocal {
     Jouer rechercheJouerParEquipe(Equipe equi);
             
     Jouer rechercheJouerParNom(String nom);
+    
+    void modifEquipe(String Nom, Equipe equi);
 }

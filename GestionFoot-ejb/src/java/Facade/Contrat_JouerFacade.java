@@ -9,6 +9,7 @@ import Entite.Contrat_Jouer;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
+import Entite.Statut;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -36,8 +37,9 @@ public class Contrat_JouerFacade extends AbstractFacade<Contrat_Jouer> implement
     }
     
     @Override
-    public void CreerContrat_Jouer(double salaire, Equipe equipe,Jouer jouer, Date dt_fin, Date dt_debut) {
+    public void CreerContrat_Jouer(Statut status,double salaire, Equipe equipe,Jouer jouer, Date dt_fin, Date dt_debut) {
         Contrat_Jouer f = new Contrat_Jouer();
+        f.setStatus(status);
         f.setSalaire(salaire);
         f.setEquipe(equipe);
         f.setJoeur(jouer);

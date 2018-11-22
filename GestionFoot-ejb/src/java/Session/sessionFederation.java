@@ -7,10 +7,13 @@ package Session;
 
 import Entite.Entraineur;
 import Entite.Equipe;
+import Entite.Jouer;
 import Entite.Statut;
 import Facade.Contrat_EntraineurFacadeLocal;
+import Facade.Contrat_JouerFacadeLocal;
 import Facade.EntraineurFacadeLocal;
 import Facade.EquipeFacadeLocal;
+import Facade.JouerFacadeLocal;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -21,6 +24,12 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class sessionFederation implements sessionFederationLocal {
+
+    @EJB
+    private JouerFacadeLocal jouerFacade;
+
+    @EJB
+    private Contrat_JouerFacadeLocal contrat_JouerFacade;
 
 
     @EJB
@@ -68,5 +77,38 @@ public class sessionFederation implements sessionFederationLocal {
         }
         
         else System.out.println("Vous n'avez pas les droits pour créer de Contrat Entraineur ! ");
+    }
+
+    @Override
+    public void CreerJouer(String log, String mdp, String nom, String pren) {
+              if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+            jouerFacade.CreerJouer(nom, pren);
+        }
+        
+        else System.out.println("Vous n'avez pas les droits pour créer de Jouer ! ");
+    }
+
+    @Override
+    public void CreerContratJouer(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin) {
+            Statut u=null;
+        if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+            if (status.contains("Actif") || status.contains("Actif"))
+               u = u.Actif;
+            else if (status.contains("Inactif")|| status.contains("Inactif"))
+                u = u.Inactif;
+            Jouer ent = jouerFacade.rechercheJouerParNom(nom);
+            Equipe equi = equipeFacade.rechercheEquipeParNom(nom_equipe);
+            if(ent!=null && equi!=null){
+                contrat_JouerFacade.CreerContrat_Jouer(u, sal, equi, ent, dt_fin, dt_deb);
+                jouerFacade.modifEquipe(nom, equi);
+            }
+            else{
+                System.out.println("Equipe ou jouer inexistant! ");
+            }
+        }
+        
+        else System.out.println("Vous n'avez pas les droits pour créer de Contrat Jouer ! ");
     }
 }

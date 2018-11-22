@@ -19,6 +19,26 @@ import javax.persistence.Id;
 @Entity
 public class Contrat_Jouer implements Serializable {
 
+    private Statut Status;
+
+    /**
+     * Get the value of Status
+     *
+     * @return the value of Status
+     */
+    public Statut getStatus() {
+        return Status;
+    }
+
+    /**
+     * Set the value of Status
+     *
+     * @param Status new value of Status
+     */
+    public void setStatus(Statut Status) {
+        this.Status = Status;
+    }
+
     private double Salaire;
 
     /**
