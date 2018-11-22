@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -38,6 +39,7 @@ public class Fautes implements Serializable {
         this.Carton = Carton;
     }
 
+    @ManyToOne
     private Match Match;
 
     /**
@@ -58,6 +60,7 @@ public class Fautes implements Serializable {
         this.Match = Match;
     }
 
+    @ManyToOne
     private Arbitre Arbitre;
 
     /**
@@ -78,6 +81,7 @@ public class Fautes implements Serializable {
         this.Arbitre = Arbitre;
     }
 
+    @ManyToOne
     private Jouer Joeur;
 
     /**

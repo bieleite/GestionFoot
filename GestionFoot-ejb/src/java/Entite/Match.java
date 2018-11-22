@@ -7,10 +7,14 @@ package Entite;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -19,26 +23,31 @@ import javax.persistence.Id;
 @Entity
 public class Match implements Serializable {
 
-    private Date Date;
+    @OneToMany(mappedBy = "Match")
+    private List<Fautes> fautess;
+
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date Dt_Match;
 
     /**
-     * Get the value of Date
+     * Get the value of Dt_Match
      *
-     * @return the value of Date
+     * @return the value of Dt_Match
      */
     public Date getDate() {
-        return Date;
+        return Dt_Match;
     }
 
     /**
-     * Set the value of Date
+     * Set the value of Dt_Match
      *
-     * @param Date new value of Date
+     * @param Date new value of Dt_Match
      */
     public void setDate(Date Date) {
-        this.Date = Date;
+        this.Dt_Match = Date;
     }
 
+    @ManyToOne
     private Composition Composition_Away;
 
     /**
@@ -59,6 +68,7 @@ public class Match implements Serializable {
         this.Composition_Away = Composition_Away;
     }
 
+    @ManyToOne
     private Composition Composition_Home;
 
     /**
@@ -79,6 +89,7 @@ public class Match implements Serializable {
         this.Composition_Home = Composition_Home;
     }
 
+    @ManyToOne
     private Arbitre Arbitre;
 
     /**
@@ -99,6 +110,7 @@ public class Match implements Serializable {
         this.Arbitre = Arbitre;
     }
 
+    @ManyToOne
     private Equipe Equipe_Home;
 
     /**
@@ -119,6 +131,7 @@ public class Match implements Serializable {
         this.Equipe_Home = Equipe_Home;
     }
 
+    @ManyToOne
     private Equipe Equipe_Away;
 
     /**
@@ -139,6 +152,7 @@ public class Match implements Serializable {
         this.Equipe_Away = Equipe_Away;
     }
 
+    @ManyToOne
     private Stade Stade;
 
     /**

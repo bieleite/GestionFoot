@@ -22,6 +22,15 @@ import javax.persistence.OneToOne;
 @Entity
 public class Equipe implements Serializable {
 
+    @OneToMany(mappedBy = "Equipe_Home")
+    private List<Match> matchs;
+
+    @OneToMany(mappedBy = "Equipe")
+    private List<Contrat_Jouer> contrat_Jouers;
+
+    @OneToMany(mappedBy = "Equipe")
+    private List<Buts> butss;
+
     @OneToMany(mappedBy = "Equipe")
     private List<Jouer> jouers;
 

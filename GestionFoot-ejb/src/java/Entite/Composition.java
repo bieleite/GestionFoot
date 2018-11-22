@@ -7,11 +7,13 @@ package Entite;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -20,6 +22,9 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Composition implements Serializable {
+
+    @OneToMany(mappedBy = "Composition_Away")
+    private List<Match> matchs;
 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date Date_Comp;

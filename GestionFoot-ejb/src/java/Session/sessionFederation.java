@@ -6,7 +6,6 @@
 package Session;
 
 import Entite.Arbitre;
-import Entite.Composition;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
@@ -14,7 +13,6 @@ import Entite.Match;
 import Entite.Stade;
 import Entite.Statut;
 import Facade.ArbitreFacadeLocal;
-import Facade.CompositionFacadeLocal;
 import Facade.Contrat_EntraineurFacadeLocal;
 import Facade.Contrat_JouerFacadeLocal;
 import Facade.EntraineurFacadeLocal;
@@ -37,8 +35,6 @@ public class sessionFederation implements sessionFederationLocal {
     @EJB
     private ArbitreFacadeLocal arbitreFacade;
 
-    @EJB
-    private CompositionFacadeLocal compositionFacade;
 
     @EJB
     private MatchFacadeLocal matchFacade;
@@ -82,10 +78,10 @@ public class sessionFederation implements sessionFederationLocal {
         Statut u=null;
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            if (status.contains("Actif") || status.contains("Actif"))
-               u = u.Actif;
-            else if (status.contains("Inactif")|| status.contains("Inactif"))
-                u = u.Inactif;
+            if (status.contains("Actif") || status.contains("Ac"))
+               u = u.Ac;
+            else if (status.contains("Inactif")|| status.contains("In"))
+                u = u.In;
             Entraineur ent = entraineurFacade.rechercheEntraineurParNom(nom);
             Equipe equi = equipeFacade.rechercheEquipeParNom(nom_equipe);
             if(ent!=null && equi!=null){
@@ -115,10 +111,10 @@ public class sessionFederation implements sessionFederationLocal {
             Statut u=null;
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            if (status.contains("Actif") || status.contains("Actif"))
-               u = u.Actif;
-            else if (status.contains("Inactif")|| status.contains("Inactif"))
-                u = u.Inactif;
+            if (status.contains("Actif") || status.contains("Ac"))
+               u = u.Ac;
+            else if (status.contains("Inactif")|| status.contains("In"))
+                u = u.In;
             Jouer ent = jouerFacade.rechercheJouerParNom(nom);
             Equipe equi = equipeFacade.rechercheEquipeParNom(nom_equipe);
             if(ent!=null && equi!=null){

@@ -6,10 +6,12 @@
 package Entite;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -17,6 +19,12 @@ import javax.persistence.Id;
  */
 @Entity
 public class Arbitre implements Serializable {
+
+    @OneToMany(mappedBy = "Arbitre")
+    private List<Match> matchs;
+
+    @OneToMany(mappedBy = "Arbitre")
+    private List<Fautes> fautess;
 
     private String Pass;
 

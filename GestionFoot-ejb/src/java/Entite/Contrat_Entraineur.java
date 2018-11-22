@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -81,6 +82,7 @@ public class Contrat_Entraineur implements Serializable {
         this.Equipe = Equipe;
     }
 
+    @ManyToOne
     private Entraineur Entraineur;
 
     /**
@@ -101,6 +103,7 @@ public class Contrat_Entraineur implements Serializable {
         this.Entraineur = Entraineur;
     }
 
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date Date_Fin;
 
     /**
@@ -121,6 +124,7 @@ public class Contrat_Entraineur implements Serializable {
         this.Date_Fin = Date_Fin;
     }
 
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date Date_debut;
 
     /**

@@ -10,5 +10,5 @@ package Entite;
  * @author gabrielleite
  */
 public enum Statut {
-    Actif,Inactif
+    Ac,In
 }

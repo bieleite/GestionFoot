@@ -21,6 +21,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class Entraineur implements Serializable {
 
+    @OneToMany(mappedBy = "Entraineur")
+    private List<Contrat_Entraineur> contrat_Entraineurs;
+
     @OneToOne
     private Equipe Equipe;
 
@@ -42,8 +45,6 @@ public class Entraineur implements Serializable {
         this.Equipe = Equipe;
     }
 
-    @OneToMany(mappedBy = "Entraineur")
-    private List<Composition> compositions;
 
     private String Pass;
 

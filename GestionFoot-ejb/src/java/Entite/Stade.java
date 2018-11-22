@@ -21,6 +21,9 @@ import javax.persistence.OneToMany;
 public class Stade implements Serializable {
 
     @OneToMany(mappedBy = "Stade")
+    private List<Match> matchs;
+
+    @OneToMany(mappedBy = "Stade")
     private List<Equipe> equipes;
 
     private String Adresse_Stade;

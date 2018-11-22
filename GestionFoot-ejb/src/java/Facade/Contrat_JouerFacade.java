@@ -93,7 +93,7 @@ public class Contrat_JouerFacade extends AbstractFacade<Contrat_Jouer> implement
             if (res.size() >= 1)
             {
                   con = (Contrat_Jouer) res.get(0);
-                  con.setStatus(Statut.Inactif);
+                  con.setStatus(Statut.In);
                   em.merge(con);
             }
         }
@@ -107,7 +107,7 @@ public class Contrat_JouerFacade extends AbstractFacade<Contrat_Jouer> implement
             if (res.size() >= 1)
             {
                   con = (Contrat_Jouer) res.get(0);
-                  con.setStatus(Statut.Actif);
+                  con.setStatus(Statut.Ac);
                   em.merge(con);
             }
         }

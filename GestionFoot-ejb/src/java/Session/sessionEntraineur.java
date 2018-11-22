@@ -101,10 +101,10 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c!=null)
         {
-            if (status.contains("Actif") || status.contains("Actif"))
-               u = u.Actif;
-            else if (status.contains("Inactif")|| status.contains("Inactif"))
-                u = u.Inactif;
+            if (status.contains("Actif") || status.contains("Ac"))
+               u = u.Ac;
+            else if (status.contains("Inactif")|| status.contains("In"))
+                u = u.In;
             Jouer jo = jouerFacade.rechercheJouerParNom(nom);
             Equipe equi = equipeFacade.rechercheEquipeParEntraineur(c);
             if(jo!=null){

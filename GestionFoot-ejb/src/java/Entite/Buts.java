@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -18,6 +19,7 @@ import javax.persistence.Id;
 @Entity
 public class Buts implements Serializable {
 
+    @ManyToOne
     private Equipe Equipe;
 
     /**
@@ -38,6 +40,7 @@ public class Buts implements Serializable {
         this.Equipe = Equipe;
     }
 
+    @ManyToOne
     private Jouer Jouer;
 
     /**
