@@ -5,6 +5,7 @@
  */
 package Facade;
 
+import Entite.Equipe;
 import Entite.Jouer;
 import java.util.List;
 import javax.ejb.Local;
@@ -35,4 +36,8 @@ public interface JouerFacadeLocal {
     List<Jouer> listJouer();
 
     Jouer rechercheJouer(Long id);
+    
+    Jouer rechercheJouerParEquipe(Equipe equi);
+            
+    Jouer rechercheJouerParNom(String nom);
 }

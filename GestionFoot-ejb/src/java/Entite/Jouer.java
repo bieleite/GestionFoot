@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -17,6 +18,27 @@ import javax.persistence.Id;
  */
 @Entity
 public class Jouer implements Serializable {
+
+    @ManyToOne
+    private Equipe Equipe;
+
+    /**
+     * Get the value of Equipe
+     *
+     * @return the value of Equipe
+     */
+    public Equipe getEquipe() {
+        return Equipe;
+    }
+
+    /**
+     * Set the value of Equipe
+     *
+     * @param Equipe new value of Equipe
+     */
+    public void setEquipe(Equipe Equipe) {
+        this.Equipe = Equipe;
+    }
 
     private String Prenom;
 

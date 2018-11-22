@@ -5,10 +5,15 @@
  */
 package Session;
 
+import Entite.Contrat_Entraineur;
 import Entite.Entraineur;
 import Entite.Equipe;
+import Entite.Jouer;
 import Facade.CompositionFacadeLocal;
+import Facade.Contrat_EntraineurFacadeLocal;
 import Facade.EntraineurFacadeLocal;
+import Facade.EquipeFacadeLocal;
+import Facade.JouerFacadeLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -20,19 +25,35 @@ import javax.ejb.Stateless;
 public class sessionEntraineur implements sessionEntraineurLocal {
 
     @EJB
+    private JouerFacadeLocal jouerFacade;
+
+    @EJB
+    private EquipeFacadeLocal equipeFacade;
+
+    @EJB
+    private Contrat_EntraineurFacadeLocal contrat_EntraineurFacade;
+
+    @EJB
     private CompositionFacadeLocal compositionFacade;
 
     @EJB
     private EntraineurFacadeLocal entraineurFacade;
 
     @Override
-    public void CreerComposition(String log, String mdp, String nom) {
-        Entraineur c = null;    
-        c = entraineurFacade.authentification(log, mdp);
+    public void CreerComposition(String log, String mdp, String nom) {   
+        Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c != null)
         {
-            Equipe e = 
-            compositionFacade.CreerComposition(e, jouer);
+            Contrat_Entraineur cc = contrat_EntraineurFacade.rechercheContrat_EntraineurParEntraineur(c);
+            if(cc!=null){
+                Equipe e = equipeFacade.rechercheEquipeParEntraineur(c);
+                if(e!=null){
+                    Jouer jouer=jouerFacade.rechercheJouerParNom(nom);
+                     compositionFacade.CreerComposition(e, jouer);
+                }
+               
+            }
+            
         }
        
         else System.out.println("Entraineur inéxistant");

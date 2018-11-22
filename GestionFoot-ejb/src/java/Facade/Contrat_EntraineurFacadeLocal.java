@@ -40,6 +40,8 @@ public interface Contrat_EntraineurFacadeLocal {
 
     Contrat_Entraineur rechercheContrat_Entraineur(Long id);
     
-    List<Contrat_Entraineur> rechercheEquipeParContrat_Entraineur(Long id);
+    Contrat_Entraineur rechercheContrat_EntraineurParEntraineur(Entraineur ent);
+    
+    Contrat_Entraineur rechercheEquipeParContrat_EntraineurParEntraineur(Entraineur ent);
     
 }

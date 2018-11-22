@@ -5,6 +5,7 @@
  */
 package Facade;
 
+import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Stade;
 import java.util.List;
@@ -36,4 +37,8 @@ public interface EquipeFacadeLocal {
     List<Equipe> listEquipe();
 
     Equipe rechercheEquipe(Long id);
+    
+    Equipe rechercheEquipeParEntraineur(Entraineur ent);
+    
+    Equipe rechercheEquipeParNom(String nom);
 }

@@ -5,6 +5,7 @@
  */
 package Facade;
 
+import Entite.Equipe;
 import Entite.Jouer;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -61,4 +62,32 @@ public class JouerFacade extends AbstractFacade<Jouer> implements JouerFacadeLoc
         }
         return f;
     }
+    
+        @Override
+        public  Jouer rechercheJouerParEquipe(Equipe equi) {
+        Jouer j = null;        
+        String txt = "SELECT j FROM Jouer AS j WHERE j.Equipe=:equi ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("equi", equi);
+        List<Jouer> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              j = (Jouer) res.get(0);
+        }
+        return j;
+        
+    }
+        @Override
+        public  Jouer rechercheJouerParNom(String nom) {
+        Jouer j = null;        
+        String txt = "SELECT j FROM Jouer AS j WHERE j.Nom=:nom ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", nom);
+        List<Jouer> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              j = (Jouer) res.get(0);
+        }
+        return j;
+        }
 }

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -19,6 +20,27 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Entraineur implements Serializable {
+
+    @OneToOne
+    private Equipe Equipe;
+
+    /**
+     * Get the value of Equipe
+     *
+     * @return the value of Equipe
+     */
+    public Equipe getEquipe() {
+        return Equipe;
+    }
+
+    /**
+     * Set the value of Equipe
+     *
+     * @param Equipe new value of Equipe
+     */
+    public void setEquipe(Equipe Equipe) {
+        this.Equipe = Equipe;
+    }
 
     @OneToMany(mappedBy = "Entraineur")
     private List<Composition> compositions;

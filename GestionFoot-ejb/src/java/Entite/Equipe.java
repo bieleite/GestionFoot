@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -20,6 +21,15 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Equipe implements Serializable {
+
+    @OneToMany(mappedBy = "Equipe")
+    private List<Jouer> jouers;
+
+    @OneToOne(mappedBy = "Equipe")
+    private Entraineur entraineur;
+
+    @OneToMany(mappedBy = "Equipe")
+    private List<Contrat_Entraineur> contrat_Entraineurs;
 
     @OneToMany(mappedBy = "Equipe")
     private List<Composition> compositions;

@@ -5,6 +5,7 @@
  */
 package Facade;
 
+import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Stade;
 import java.util.List;
@@ -63,4 +64,34 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
         }
         return f;
     }
+    
+    @Override
+    public  Equipe rechercheEquipeParEntraineur(Entraineur ent) {
+        Equipe e = null;        
+        String txt = "SELECT e FROM Equipe AS e WHERE e.Entraineur=:ent ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("ent", ent);
+        List<Equipe> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              e = (Equipe) res.get(0);
+        }
+        return e;
+        
+    }
+    @Override
+    public  Equipe rechercheEquipeParNom(String nom) {
+        Equipe e = null;        
+        String txt = "SELECT e FROM Equipe AS e WHERE e.Nom_Equipe=:nom ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", nom);
+        List<Equipe> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              e = (Equipe) res.get(0);
+        }
+        return e;
+        
+    }
+
 }

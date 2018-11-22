@@ -14,6 +14,6 @@ import javax.ejb.Local;
 @Local
 public interface sessionEntraineurLocal {
 
-    void CreerComposition();
+    void CreerComposition(String log, String mdp, String nom);
     
 }

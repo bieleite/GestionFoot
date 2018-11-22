@@ -13,5 +13,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface sessionFederationLocal {
+
+    void CreerEntraineur(String log, String mdp, String nom, String pren, String log1, String mdp1);
+
+    void CreerContrantEntraineur();
     
 }

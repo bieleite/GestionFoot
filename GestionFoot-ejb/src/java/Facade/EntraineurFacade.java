@@ -6,6 +6,7 @@
 package Facade;
 
 import Entite.Entraineur;
+import Entite.Equipe;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -76,4 +77,33 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
         }
         return result;
     }
+    
+    @Override
+    public void modifEquipe(String Nom, Equipe equi) { 
+        Entraineur ent = null;
+        String txt = "SELECT ent FROM Entraineur AS det WHERE ent.Nom=:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", Nom);
+        List<Entraineur> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              ent = (Entraineur) res.get(0);
+              ent.setEquipe(equi);
+              em.merge(ent);
+        }
+    }
+    @Override
+    public  Entraineur rechercheEntraineurParNom(String nom) {
+        Entraineur e = null;        
+        String txt = "SELECT e FROM Entraineur AS e WHERE e.Nom=:nom ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", nom);
+        List<Entraineur> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              e = (Entraineur) res.get(0);
+        }
+        return e;
+    }
+        
 }
