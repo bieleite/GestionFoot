@@ -111,6 +111,11 @@ public class sessionEntraineur implements sessionEntraineurLocal {
                 Contrat_Jouer ac = contrat_JouerFacade.rechercheContrat_JouerParJouer(jo);
                 if(ac!=null){
                     contrat_JouerFacade.modifStatutInactif(jo,ac);
+                    contrat_JouerFacade.modifDateFinContrat(jo, ac, dt_deb);
+                    contrat_JouerFacade.CreerContrat_Jouer(u, sal, equi, jo, dt_fin, dt_deb);
+                    jouerFacade.modifEquipe(nom, equi);
+                }
+                else{
                     contrat_JouerFacade.CreerContrat_Jouer(u, sal, equi, jo, dt_fin, dt_deb);
                     jouerFacade.modifEquipe(nom, equi);
                 }

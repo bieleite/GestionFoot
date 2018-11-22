@@ -98,7 +98,7 @@ public class sessionFederation implements sessionFederationLocal {
 
     @Override
     public void CreerJouer(String log, String mdp, String nom, String pren) {
-              if ((log.contains("admin")) && (mdp.contains("admin")))
+        if ((log.contains("admin")) && (mdp.contains("admin")))
         {
             jouerFacade.CreerJouer(nom, pren);
         }

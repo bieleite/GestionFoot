@@ -111,4 +111,18 @@ public class Contrat_JouerFacade extends AbstractFacade<Contrat_Jouer> implement
                   em.merge(con);
             }
         }
+    
+    @Override
+    public void modifDateFinContrat(Jouer jo, Contrat_Jouer con,Date dt_fin) { 
+            String txt = "SELECT con FROM Contrat_Jouer AS con WHERE con.Jouer=:jo";
+            Query req = getEntityManager().createQuery(txt);
+            req = req.setParameter("jo", jo);
+            List<Contrat_Jouer> res = req.getResultList();
+            if (res.size() >= 1)
+            {
+                  con = (Contrat_Jouer) res.get(0);
+                  con.setDate_fin(dt_fin);
+                  em.merge(con);
+            }
+        }
 }

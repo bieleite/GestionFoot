@@ -45,4 +45,6 @@ public interface Contrat_JouerFacadeLocal {
     void modifStatutInactif(Jouer jo,Contrat_Jouer con);
     
     void modifStatutActif(Jouer jo);
+    
+    void modifDateFinContrat(Jouer jo, Contrat_Jouer con,Date dt_fin);
 }
