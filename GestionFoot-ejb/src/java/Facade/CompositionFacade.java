@@ -9,6 +9,7 @@ import Entite.Composition;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,8 +36,9 @@ public class CompositionFacade extends AbstractFacade<Composition> implements Co
     }
     
         @Override
-    public void CreerComposition(Equipe equipe, Jouer jouer) {
+    public void CreerComposition(Date dt_comp,Equipe equipe, Jouer jouer) {
         Composition f = new Composition();
+        f.setDate_Comp(dt_comp);
         f.setEquipe(equipe);
         f.setJoeur(jouer);
         em.persist(f);
@@ -66,17 +68,18 @@ public class CompositionFacade extends AbstractFacade<Composition> implements Co
     }
     
     @Override
-    public  Composition rechercheEquipeParEquipe(Equipe equi) {
+    public  Composition rechercheCompositionParEquipeEtDate(Equipe equi,Date dt) {
         Composition e = null;        
-        String txt = "SELECT e FROM Composition AS e WHERE e.Equipe=:nom ";
+        String txt = "SELECT e FROM Composition AS e WHERE e.Equipe=:nom and e.Date_Comp=:dt ";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("nom", equi);
+        req = req.setParameter("dt", dt);
         List<Composition> res = req.getResultList();
         if (res.size() >= 1)
         {
               e = (Composition) res.get(0);
         }
         return e;
-        
     }
+
 }

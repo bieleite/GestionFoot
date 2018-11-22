@@ -39,4 +39,10 @@ public interface Contrat_JouerFacadeLocal {
     List<Contrat_Jouer> listContrat_Jouer();
 
     Contrat_Jouer rechercheContrat_Jouer(Long id);
+    
+    Contrat_Jouer rechercheContrat_JouerParJouer(Jouer jouer);
+    
+    void modifStatutInactif(Jouer jo,Contrat_Jouer con);
+    
+    void modifStatutActif(Jouer jo);
 }

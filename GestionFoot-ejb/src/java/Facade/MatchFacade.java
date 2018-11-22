@@ -38,14 +38,12 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     }
 
     @Override
-    public void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Composition compositiona, Composition compositionb) {
+    public void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre) {
         Match m = new Match();
         m.setDate(date);
         m.setStade(stade);
         m.setEquipe_Home(equipeb);
         m.setEquipe_Away(equipea);
-        m.setComposition_Away(compositiona);
-        m.setComposition_Home(compositionb);
         m.setArbitre(arbitre);
         em.persist(m);
     }
@@ -93,4 +91,33 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         return res;
         
     }
+    
+    @Override
+    public void modifCompositionAway(Composition Com, Equipe equi) { 
+            Match ent = null;
+            String txt = "SELECT ent FROM Match AS det WHERE ent.Equipe=:nom";
+            Query req = getEntityManager().createQuery(txt);
+            req = req.setParameter("nom", equi);
+            List<Match> res = req.getResultList();
+            if (res.size() >= 1)
+            {
+                  ent = (Match) res.get(0);
+                  ent.setComposition_Away(Com);
+                  em.merge(ent);
+            }
+        }
+        @Override
+        public void modifCompositionHome(Composition Com, Equipe equi) { 
+            Match ent = null;
+            String txt = "SELECT ent FROM Match AS det WHERE ent.Equipe=:nom";
+            Query req = getEntityManager().createQuery(txt);
+            req = req.setParameter("nom", equi);
+            List<Match> res = req.getResultList();
+            if (res.size() >= 1)
+            {
+                  ent = (Match) res.get(0);
+                  ent.setComposition_Home(Com);
+                  em.merge(ent);
+            }
+        }
 }

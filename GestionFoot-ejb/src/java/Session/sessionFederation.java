@@ -144,22 +144,18 @@ public class sessionFederation implements sessionFederationLocal {
                 Equipe eqpa = equipeFacade.rechercheEquipeParNom(equipea);
                 Equipe eqpb = equipeFacade.rechercheEquipeParNom(equipeb);
                 if(eqpa!=null && eqpb!=null){
-                    Composition compa= compositionFacade.rechercheEquipeParEquipe(eqpa);
-                    Composition compb=compositionFacade.rechercheEquipeParEquipe(eqpb);
-                    if(compa!=null && compb !=null){
+
                         Arbitre arb= arbitreFacade.rechercheArbitreParNom(arbitre);
                         List<Match> listeMatchA = matchFacade.rechercheMatchArbitreDate(arb, date);
                             if (listeMatchA.isEmpty())
                             {
-                                matchFacade.CreerMatch(date, sta, eqpa, eqpb, arb, compa, compb);
+                                matchFacade.CreerMatch(date, sta, eqpa, eqpb, arb);
                             }
                             else{
                                 System.out.println("Arbitre ocuupé! ");
                             }
                     }
-                    else{
-                        System.out.println("Composition inexistant! ");
-                    }
+
                 }
                 else{
                     System.out.println("Equipe inexistant! ");
@@ -169,5 +165,5 @@ public class sessionFederation implements sessionFederationLocal {
                 System.out.println("Stade deja ocuppe!");
             }
         }
-    }
+    
 }

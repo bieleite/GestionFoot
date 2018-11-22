@@ -35,7 +35,7 @@ public interface MatchFacadeLocal {
 
     int count();
 
-    void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Composition compositiona, Composition compositionb);
+    void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre);
     
     List<Match> listMatch();
 
@@ -44,4 +44,8 @@ public interface MatchFacadeLocal {
     List<Match> rechercheMatchStadeDate(Stade stad,Date dt);
     
     List<Match> rechercheMatchArbitreDate(Arbitre arb,Date dt);
+    
+    void modifCompositionAway(Composition Com, Equipe equi);
+    
+    void modifCompositionHome(Composition Com, Equipe equi);
 }

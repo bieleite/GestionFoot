@@ -70,4 +70,45 @@ public class Contrat_JouerFacade extends AbstractFacade<Contrat_Jouer> implement
         }
         return f;
     }
+    @Override
+    public Contrat_Jouer rechercheContrat_JouerParJouer(Jouer jouer) {
+        Contrat_Jouer f = null;        
+        String txt = "SELECT f FROM Contrat_Jouer AS f WHERE f.Jouer=:joeur";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("joeur", jouer);  
+        List<Contrat_Jouer> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              f = (Contrat_Jouer) res.get(0);
+        }
+        return f;
+    }
+    
+    @Override
+    public void modifStatutInactif(Jouer jo, Contrat_Jouer con) { 
+            String txt = "SELECT con FROM Contrat_Jouer AS con WHERE con.Jouer=:jo";
+            Query req = getEntityManager().createQuery(txt);
+            req = req.setParameter("jo", jo);
+            List<Contrat_Jouer> res = req.getResultList();
+            if (res.size() >= 1)
+            {
+                  con = (Contrat_Jouer) res.get(0);
+                  con.setStatus(Statut.Inactif);
+                  em.merge(con);
+            }
+        }
+    @Override
+    public void modifStatutActif(Jouer jo) { 
+            Contrat_Jouer con= null;
+            String txt = "SELECT con FROM Contrat_Jouer AS con WHERE con.Jouer=:jo";
+            Query req = getEntityManager().createQuery(txt);
+            req = req.setParameter("jo", jo);
+            List<Contrat_Jouer> res = req.getResultList();
+            if (res.size() >= 1)
+            {
+                  con = (Contrat_Jouer) res.get(0);
+                  con.setStatus(Statut.Actif);
+                  em.merge(con);
+            }
+        }
 }

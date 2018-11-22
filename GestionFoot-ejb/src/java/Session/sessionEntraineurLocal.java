@@ -5,6 +5,7 @@
  */
 package Session;
 
+import java.util.Date;
 import javax.ejb.Local;
 
 /**
@@ -14,6 +15,10 @@ import javax.ejb.Local;
 @Local
 public interface sessionEntraineurLocal {
 
-    void CreerComposition(String log, String mdp, String nom);
+    void CreerComposition_Home(String log, String mdp, String nom,Date dt_comp);
+    
+    void CreerComposition_Away(String log, String mdp, String nom,Date dt_comp);
+    
+    void transfererJouer(String log, String mdp,String status,double sal, String nom, Date dt_deb, Date dt_fin);
     
 }

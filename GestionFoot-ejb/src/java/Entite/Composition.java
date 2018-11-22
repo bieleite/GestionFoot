@@ -6,10 +6,13 @@
 package Entite;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -18,6 +21,28 @@ import javax.persistence.Id;
 @Entity
 public class Composition implements Serializable {
 
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date Date_Comp;
+
+    /**
+     * Get the value of Date_Comp
+     *
+     * @return the value of Date_Comp
+     */
+    public Date getDate_Comp() {
+        return Date_Comp;
+    }
+
+    /**
+     * Set the value of Date_Comp
+     *
+     * @param Date_Comp new value of Date_Comp
+     */
+    public void setDate_Comp(Date Date_Comp) {
+        this.Date_Comp = Date_Comp;
+    }
+
+    @ManyToOne
     private Equipe Equipe;
 
     /**
@@ -38,6 +63,7 @@ public class Composition implements Serializable {
         this.Equipe = Equipe;
     }
 
+    @ManyToOne
     private Jouer Joeur;
 
     /**
