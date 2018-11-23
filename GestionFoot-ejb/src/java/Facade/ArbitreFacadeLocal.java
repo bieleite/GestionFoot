@@ -39,4 +39,6 @@ public interface ArbitreFacadeLocal {
     Arbitre authentification(String login, String mdp);
     
     Arbitre rechercheArbitreParNom(String nom);
+    
+    Arbitre rechercheArbitreParNomEtPrenom(String nom,String prenom);
 }

@@ -67,4 +67,45 @@ public class FautesFacade extends AbstractFacade<Fautes> implements FautesFacade
         }
         return f;
     }
+    
+    @Override
+    public List<Fautes> rechercheFautesParMatch(Matchs mt) {
+        List<Fautes> fo=null;
+        String txt = "SELECT f FROM Fautes AS f WHERE f.Match=:mt";
+        Query req=getEntityManager().createQuery(txt);
+        req = req.setParameter("mt", mt); 
+        List<Fautes> result=req.getResultList();
+        return result;
+    }
+    
+    @Override
+    public List<Fautes> rechercheFautesParJouer(Jouer jo) {
+        List<Fautes> fo=null;
+        String txt = "SELECT f FROM Fautes AS f WHERE f.Jouer=:jo";
+        Query req=getEntityManager().createQuery(txt);
+        req = req.setParameter("jo", jo); 
+        List<Fautes> result=req.getResultList();
+        return result;
+    }
+    
+    @Override
+    public List<Fautes> rechercheFautesParArbitre(Arbitre ab) {
+        List<Fautes> fo=null;
+        String txt = "SELECT f FROM Fautes AS f WHERE f.Arbitre=:ab";
+        Query req=getEntityManager().createQuery(txt);
+        req = req.setParameter("ab", ab); 
+        List<Fautes> result=req.getResultList();
+        return result;
+    }
+    
+    @Override
+    public List<Fautes> rechercheFautesParJouerEtMatch(Jouer jo,Matchs ma) {
+        List<Fautes> fo=null;
+        String txt = "SELECT f FROM Fautes AS f WHERE f.Jouer=:jo AND f.Matchs=:ma";
+        Query req=getEntityManager().createQuery(txt);
+        req = req.setParameter("jo", jo); 
+        req = req.setParameter("ma", ma); 
+        List<Fautes> result=req.getResultList();
+        return result;
+    }
 }

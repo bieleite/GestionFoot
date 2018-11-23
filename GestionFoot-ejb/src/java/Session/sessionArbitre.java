@@ -9,6 +9,7 @@ import Entite.Arbitre;
 import Entite.Buts;
 import Entite.Carton;
 import Entite.Equipe;
+import Entite.Fautes;
 import Entite.Jouer;
 import Entite.Matchs;
 import Entite.Resultat;
@@ -19,6 +20,7 @@ import Facade.EquipeFacadeLocal;
 import Facade.FautesFacadeLocal;
 import Facade.JouerFacadeLocal;
 import Facade.MatchFacadeLocal;
+import Facade.OutOfGameFacadeLocal;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -30,6 +32,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class sessionArbitre implements sessionArbitreLocal {
+
+    @EJB
+    private OutOfGameFacadeLocal outOfGameFacade;
 
     @EJB
     private ClassementFacadeLocal classementFacade;
@@ -65,6 +70,7 @@ public class sessionArbitre implements sessionArbitreLocal {
     public void creerFautes(String log, String mdp, String nom, Date dt_match, String carton) {
         /*
             Method pour creer des fautes d'une jouer
+            Si la faute à comme carton: rouge , add le jouer dans la liste OutOfGame
         */
         Carton cart =null;
         Arbitre a = arbitreFacade.authentification(log, mdp);
@@ -80,7 +86,12 @@ public class sessionArbitre implements sessionArbitreLocal {
             if(match!=null){
                 Jouer jo= jouerFacade.rechercheJouerParNom(nom);
                 if(jo!=null){
-                        fautesFacade.CreerFautes(cart, match, a, jo);
+                       fautesFacade.CreerFautes(cart, match, a, jo);
+                        if(cart==cart.Rouge){
+                            Matchs prox_match =matchFacade.rechercheProxMatchParDateEtNum(dt_match, 1);
+                            Date dt_fin = prox_match.getDate();
+                            outOfGameFacade.CreerOutOfGame(jo, dt_match, dt_fin);
+                        }
                 }
                 else System.out.println("Jouer inexistant ");
             }

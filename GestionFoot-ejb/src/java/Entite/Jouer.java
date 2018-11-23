@@ -21,6 +21,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Jouer implements Serializable {
 
+    @OneToMany(mappedBy = "leJouer")
+    private List<OutOfGame> outOfGames;
+
     @OneToMany(mappedBy = "Joeur")
     private List<Fautes> fautess;
 

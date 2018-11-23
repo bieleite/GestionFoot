@@ -85,6 +85,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         return res;
         
     }
+    
     @Override
     public List<Matchs> rechercheMatchArbitreDate(Arbitre arb,Date dt) {
         String txt = "SELECT mat FROM Match AS mat WHERE mat.Arbitre=:arb and mat.Date=:dt";
@@ -109,117 +110,146 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
                   ent.setComposition_Away(Com);
                   em.merge(ent);
             }
+    }
+    @Override
+    public void modifCompositionHome(Composition Com, Equipe equi) { 
+        Matchs ent = null;
+        String txt = "SELECT ent FROM Match AS det WHERE ent.Equipe=:nom";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", equi);
+        List<Matchs> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              ent = (Matchs) res.get(0);
+              ent.setComposition_Home(Com);
+              em.merge(ent);
         }
-        @Override
-        public void modifCompositionHome(Composition Com, Equipe equi) { 
-            Matchs ent = null;
-            String txt = "SELECT ent FROM Match AS det WHERE ent.Equipe=:nom";
-            Query req = getEntityManager().createQuery(txt);
-            req = req.setParameter("nom", equi);
-            List<Matchs> res = req.getResultList();
-            if (res.size() >= 1)
-            {
-                  ent = (Matchs) res.get(0);
-                  ent.setComposition_Home(Com);
-                  em.merge(ent);
-            }
-        }
+    }
         
-        @Override
-        public Matchs rechercheMatchParArbitreEtDate(Arbitre arb, Date dt_match) {
-        Matchs f = null;        
-        String txt = "SELECT f FROM Match AS f WHERE f.Arbitre=:arb and f.Dt_Match=:dt";
+    @Override
+    public Matchs rechercheMatchParArbitreEtDate(Arbitre arb, Date dt_match) {
+    Matchs f = null;        
+    String txt = "SELECT f FROM Match AS f WHERE f.Arbitre=:arb and f.Dt_Match=:dt";
+    Query req = getEntityManager().createQuery(txt);
+    req = req.setParameter("arb", arb);
+    req = req.setParameter("dt", dt_match);
+    List<Matchs> res = req.getResultList();
+    if (res.size() >= 1)
+    {
+          f = (Matchs) res.get(0);
+    }
+    return f;
+    }
+    
+    @Override
+    public Matchs rechercheMatchParDate(Date dt_match) {
+    Matchs f = null;        
+    String txt = "SELECT f FROM Match AS f WHERE f.Dt_Match=:dt";
+    Query req = getEntityManager().createQuery(txt);
+    req = req.setParameter("dt", dt_match);
+    List<Matchs> res = req.getResultList();
+    if (res.size() >= 1)
+    {
+          f = (Matchs) res.get(0);
+    }
+    return f;
+    }
+    
+    @Override
+    public void setResultat_Away(Arbitre arb, Date dt_match,Resultat resul) { 
+        Matchs m=null;
+        String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("arb", arb);
         req = req.setParameter("dt", dt_match);
         List<Matchs> res = req.getResultList();
         if (res.size() >= 1)
         {
-              f = (Matchs) res.get(0);
+              m = (Matchs) res.get(0);
+              m.setResultat_away(resul);
+              em.merge(m);
         }
-        return f;
     }
-        @Override
-        public void setResultat_Away(Arbitre arb, Date dt_match,Resultat resul) { 
-            Matchs m=null;
-            String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
-            Query req = getEntityManager().createQuery(txt);
-            req = req.setParameter("arb", arb);
-            req = req.setParameter("dt", dt_match);
-            List<Matchs> res = req.getResultList();
-            if (res.size() >= 1)
-            {
-                  m = (Matchs) res.get(0);
-                  m.setResultat_away(resul);
-                  em.merge(m);
-            }
-        }
         
-        @Override
-        public void setResultat_Home(Arbitre arb, Date dt_match,Resultat resul) { 
-            Matchs m=null;
-            String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
-            Query req = getEntityManager().createQuery(txt);
-            req = req.setParameter("arb", arb);
-            req = req.setParameter("dt", dt_match);
-            List<Matchs> res = req.getResultList();
-            if (res.size() >= 1)
-            {
-                  m = (Matchs) res.get(0);
-                  m.setResultat_home(resul);
-                  em.merge(m);
-            }
-        }
-        
-        @Override
-        public void setScore_Away(Arbitre arb, Date dt_match,int buts) { 
-            Matchs m=null;
-            String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
-            Query req = getEntityManager().createQuery(txt);
-            req = req.setParameter("arb", arb);
-            req = req.setParameter("dt", dt_match);
-            List<Matchs> res = req.getResultList();
-            if (res.size() >= 1)
-            {
-                  m = (Matchs) res.get(0);
-                  m.setScore_Away(buts);
-                  em.merge(m);
-            }
-        }
-        
-        @Override
-        public void setScore_Home(Arbitre arb, Date dt_match,int buts) { 
-            Matchs m=null;
-            String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
-            Query req = getEntityManager().createQuery(txt);
-            req = req.setParameter("arb", arb);
-            req = req.setParameter("dt", dt_match);
-            List<Matchs> res = req.getResultList();
-            if (res.size() >= 1)
-            {
-                  m = (Matchs) res.get(0);
-                  m.setScore_Home(buts);
-                  em.merge(m);
-            }
-        }
-        
-        @Override
-        public List<Matchs> rechercheMatchEquipe_Away(Equipe eq,Date dt) {
-        String txt = "SELECT mat FROM Match AS mat WHERE mat.Equipe=:equi and mat.Date=:dt";
+    @Override
+    public void setResultat_Home(Arbitre arb, Date dt_match,Resultat resul) { 
+        Matchs m=null;
+        String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
         Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("equi", eq);
-        req = req.setParameter("dt", dt);
+        req = req.setParameter("arb", arb);
+        req = req.setParameter("dt", dt_match);
         List<Matchs> res = req.getResultList();
-        return res;
-         }
-        
-        @Override
-        public List<Matchs> rechercheMatchEquipe_Home(Equipe eq,Date dt) {
-        String txt = "SELECT mat FROM Match AS mat WHERE mat.Equipe=:equi and mat.Date=:dt";
+        if (res.size() >= 1)
+        {
+              m = (Matchs) res.get(0);
+              m.setResultat_home(resul);
+              em.merge(m);
+        }
+    }
+
+    @Override
+    public void setScore_Away(Arbitre arb, Date dt_match,int buts) { 
+        Matchs m=null;
+        String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
         Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("equi", eq);
-        req = req.setParameter("dt", dt);
+        req = req.setParameter("arb", arb);
+        req = req.setParameter("dt", dt_match);
         List<Matchs> res = req.getResultList();
-        return res;
-         }
+        if (res.size() >= 1)
+        {
+              m = (Matchs) res.get(0);
+              m.setScore_Away(buts);
+              em.merge(m);
+        }
+    }
+
+    @Override
+    public void setScore_Home(Arbitre arb, Date dt_match,int buts) { 
+        Matchs m=null;
+        String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("arb", arb);
+        req = req.setParameter("dt", dt_match);
+        List<Matchs> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              m = (Matchs) res.get(0);
+              m.setScore_Home(buts);
+              em.merge(m);
+        }
+    }
+
+    @Override
+    public List<Matchs> rechercheMatchEquipe_Away(Equipe eq,Date dt) {
+    String txt = "SELECT mat FROM Match AS mat WHERE mat.Equipe=:equi and mat.Date=:dt";
+    Query req = getEntityManager().createQuery(txt);
+    req = req.setParameter("equi", eq);
+    req = req.setParameter("dt", dt);
+    List<Matchs> res = req.getResultList();
+    return res;
+     }
+
+    @Override
+    public List<Matchs> rechercheMatchEquipe_Home(Equipe eq,Date dt) {
+    String txt = "SELECT mat FROM Match AS mat WHERE mat.Equipe=:equi and mat.Date=:dt";
+    Query req = getEntityManager().createQuery(txt);
+    req = req.setParameter("equi", eq);
+    req = req.setParameter("dt", dt);
+    List<Matchs> res = req.getResultList();
+    return res;
+     }
+        
+    @Override
+    public Matchs rechercheProxMatchParDateEtNum(Date dt_match,int num) {
+    Matchs f = null;        
+    String txt = "SELECT f FROM Match AS f WHERE f.Dt_Match=:dt";
+    Query req = getEntityManager().createQuery(txt);
+    req = req.setParameter("dt", dt_match);
+    List<Matchs> res = req.getResultList();
+    if (res.size() >= 1)
+    {
+          f = (Matchs) res.get(num);
+    }
+    return f;
+    }
 }

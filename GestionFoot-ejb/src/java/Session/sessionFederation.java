@@ -9,8 +9,10 @@ import Entite.Arbitre;
 import Entite.Championnat;
 import Entite.Entraineur;
 import Entite.Equipe;
+import Entite.Fautes;
 import Entite.Jouer;
 import Entite.Matchs;
+import Entite.OutOfGame;
 import Entite.Stade;
 import Entite.Statut;
 import Facade.ArbitreFacadeLocal;
@@ -19,9 +21,12 @@ import Facade.Contrat_EntraineurFacadeLocal;
 import Facade.Contrat_JouerFacadeLocal;
 import Facade.EntraineurFacadeLocal;
 import Facade.EquipeFacadeLocal;
+import Facade.FautesFacadeLocal;
 import Facade.JouerFacadeLocal;
 import Facade.MatchFacadeLocal;
+import Facade.OutOfGameFacadeLocal;
 import Facade.StadeFacadeLocal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -33,6 +38,12 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class sessionFederation implements sessionFederationLocal {
+
+    @EJB
+    private OutOfGameFacadeLocal outOfGameFacade;
+
+    @EJB
+    private FautesFacadeLocal fautesFacade;
 
     @EJB
     private ChampionnatFacadeLocal championnatFacade;
@@ -151,13 +162,14 @@ public class sessionFederation implements sessionFederationLocal {
     }
 
     @Override
-    public void creerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre,String cham) {
+    public void CreerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre,String cham) {
         /*
             Pour la creation d'une match on a besoin de rechercher une championnat d'ou participe cette match
             Après voir si le stade n'est pas ocuppe, il fait la meme chose pour l'arbitre , si tout est bon le match 
             est crée 
         
                     ***IMPORTANT*** faire la verification de l'equipe aussi***
+                    ***IMPORTANT*** Ajouter heure pour les matchs***
         */
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
@@ -194,17 +206,36 @@ public class sessionFederation implements sessionFederationLocal {
         }
         }
     @Override
-    public void CreerEquipe(String log, String mdp, String Nom, String Adresse, String stade) {
+    public void CreerEquipe(String log, String mdp, String Nom, String Adresse, long id ) {
         /*
         Creer equipe
         */
         
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            Stade st =stadeFacade.rechercheStadeParNom(stade);
+            
+            Stade st =stadeFacade.rechercheStade(id);
             if(st!=null){
                 equipeFacade.CreerEquipe(Nom, Adresse, st);
             }
+            
+        }
+        
+        else System.out.println("Vous n'avez pas les droits pour créer de Entraineur ! ");
+        
+    }
+    
+    @Override
+    public void CreerStade(String log, String mdp, String Nom, String Adresse, int capacite) {
+        /*
+        Creer equipe
+        */
+        
+        if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+ 
+           stadeFacade.CreerStade(Nom, Adresse, capacite);
+            
             
         }
         
@@ -225,4 +256,98 @@ public class sessionFederation implements sessionFederationLocal {
         else System.out.println("Vous n'avez pas les droits pour créer de Entraineur ! ");
         
     }
+    
+    @Override
+    public List<Fautes> AfficherFautesParJouer(Long id) {
+        /*
+        Afficher les fautes d'un jouer
+        */
+        List<Fautes> liste = new ArrayList<Fautes>();
+        Jouer f = jouerFacade.rechercheJouer(id);
+        if(f!=null){
+            liste = fautesFacade.rechercheFautesParJouer(f);
+        }
+        else{
+            System.out.println("Jouer non trouvé");
+        }
+        return liste;
+    }
+    
+    @Override
+    public List<Fautes> AfficherFautesParArbitre(String nom, String prenom) {
+        /*
+        Afficher les fautes comises par des jouers lors des matchs arbitrés par un arbitre de nom 
+        et prenom donnés
+        */
+        List<Fautes> liste = new ArrayList<Fautes>();
+        Arbitre f = arbitreFacade.rechercheArbitreParNomEtPrenom(nom, prenom);
+        if(f!=null){
+            liste = fautesFacade.rechercheFautesParArbitre(f);
+        }
+        else{
+            System.out.println("Arbitre non trouve");
+        }
+        return liste;
+    }
+    
+    @Override
+    public List<Fautes> AfficherFautesParMatch(Date dt) {
+        /*
+        Afficher les differents fautes commises pour les matches d'une date donnée
+        */
+        List<Fautes> liste = new ArrayList<Fautes>();
+        Matchs f= matchFacade.rechercheMatchParDate(dt);
+        if(f!=null){
+            liste = fautesFacade.rechercheFautesParMatch(f);
+        }
+        else{
+            System.out.println("Aucune match dans cette date");
+        }
+        return liste;
+    }
+
+    @Override
+    public void CreerOutOfGame(String log, String mdp,String nom,Date dt_deb,int num) {
+        if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+            Jouer jo= jouerFacade.rechercheJouerParNom(nom);
+            if(jo!=null){
+                Matchs ma = matchFacade.rechercheMatchParDate(dt_deb);
+                List<Fautes> liste = fautesFacade.rechercheFautesParJouerEtMatch(jo, ma);
+                if (!liste.isEmpty())
+                {   
+                    Matchs mf=matchFacade.rechercheProxMatchParDateEtNum(dt_deb, num);
+                    Date dt_fin=mf.getDate();
+                    outOfGameFacade.CreerOutOfGame(jo, dt_deb, dt_fin);
+                    
+                     
+                }
+                
+               
+            }
+        }
+        
+    }
+    
+    @Override
+    public List<OutOfGame> AfficherOutOfGameParPeriode(String log, String mdp,Date dtD , Date dtF) {
+        /*
+        Afficher la liste OutOfGame d'une periode
+        */
+        List<OutOfGame> liste = new ArrayList<OutOfGame>();
+        liste = outOfGameFacade.listOutOfGameParDate(dtD, dtF);
+        return liste;  
+    }
+    
+    @Override
+    public List<Stade> afficherStade() {
+        List<Stade> liste = stadeFacade.listStade(); 
+        return liste;
+    }
+
+    @Override
+    public void stadeParNum(Long id) {
+        stadeFacade.rechercheStade(id);
+    }
+    
 }

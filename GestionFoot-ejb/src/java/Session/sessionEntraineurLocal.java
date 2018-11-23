@@ -5,7 +5,9 @@
  */
 package Session;
 
+import Entite.OutOfGame;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -24,5 +26,7 @@ public interface sessionEntraineurLocal {
     void supprimerJouer(String log, String mdp,String nom);
 
     void affecterJouer(String log, String mdp,String nom,double sal, Date dt_deb, Date dt_fin);
+    
+    List<OutOfGame> AfficherOutOfGameParPeriode(String log, String mdp,Date dtD , Date dtF);
     
 }

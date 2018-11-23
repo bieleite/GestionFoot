@@ -54,6 +54,8 @@ public interface MatchFacadeLocal {
     
     Matchs rechercheMatchParArbitreEtDate(Arbitre arb, Date dt_match);
     
+    Matchs rechercheMatchParDate(Date dt_match);
+    
     void setResultat_Away(Arbitre arb, Date dt_match,Resultat resul);
     
     void setResultat_Home(Arbitre arb, Date dt_match,Resultat resul);
@@ -65,4 +67,6 @@ public interface MatchFacadeLocal {
     List<Matchs> rechercheMatchEquipe_Home(Equipe eq,Date dt);
     
     List<Matchs> rechercheMatchEquipe_Away(Equipe eq,Date dt);
+    
+    Matchs rechercheProxMatchParDateEtNum(Date dt_match,int num);
 }

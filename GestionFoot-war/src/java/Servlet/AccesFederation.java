@@ -1,0 +1,277 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Servlet;
+
+import Entite.Stade;
+import Session.sessionArbitreLocal;
+import Session.sessionFederationLocal;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author gabrielleite
+ */
+@WebServlet(name = "AccesFederation", urlPatterns = {"/AccesFederation"})
+public class AccesFederation extends HttpServlet {
+
+
+
+    @EJB
+    private sessionFederationLocal sessionFederation;
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+String jspClient=null;
+        String act=request.getParameter("action");
+            if((act==null)||(act.equals("vide")))
+            {
+                jspClient="/ChoixF.jsp";
+                request.setAttribute("message","pas d'information");
+            }
+            else if(act.equals("insereStade"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererStade(request,response);
+            }
+            else if(act.equals("CreerEquipes"))
+            {
+                List<Stade> list= sessionFederation.afficherStade();
+                request.setAttribute("listefournisseur",list);
+                jspClient="/CreerEquipes.jsp";
+
+            
+            }
+            else if(act.equals("insereEquipe"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererEquipe(request,response);
+            }
+//            else if(act.equals("insererV"))
+//            {
+//                jspClient="/Choix.jsp";
+//                doActionInsererV(request,response);
+//            }
+//            else if(act.equals("insererFr"))
+//            {
+//                jspClient="/Choix.jsp";
+//                doActionInsererFr(request,response);
+//            }
+
+//            else if(act.equals("creerAFr"))
+//            {
+//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
+//                request.setAttribute("listefournisseur",list);
+//                jspClient="/CreerFraicheur.jsp";
+//
+//            
+//            }
+//            else if(act.equals("creerAFv"))
+//            {
+//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
+//                request.setAttribute("listefournisseur",list);
+//                jspClient="/CreerVetement.jsp";
+//
+//            
+//            }
+//            else if(act.equals("afficheF"))
+//            {
+//                jspClient="/AfficherFournisseur.jsp";
+//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
+//                request.setAttribute("listefournisseur",list);
+//                request.setAttribute("message","Liste des fournisseurs existants");
+//            }
+//            else if(act.equals("afficheAF"))
+//            {
+//                jspClient="/AfficherArticle.jsp";
+//                String ide= request.getParameter("fournisseurArticle");
+//                if(!ide.trim().isEmpty()){
+//                Long id = Long.valueOf(ide);
+//                List<Article> list= sessionArticle.AfficherArticleparFounisseur(id);
+//                request.setAttribute("listefournisseur",list);
+//                request.setAttribute("message","Liste des fournisseurs existants");
+//                }
+//            }
+//            else if(act.equals("rechercherAPF"))
+//            {
+//      
+//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
+//                request.setAttribute("listefournisseur",list);
+//                jspClient="/RechercheFournisseur.jsp";
+//            }
+//            else if(act.equals("afficheAP"))
+//            {
+//                jspClient="/AfficherPrixArticle.jsp";
+//                String ide= request.getParameter("fournisseurArticle");
+//                if(!ide.trim().isEmpty()){
+//                Long id = Long.valueOf(ide);
+//                double list= sessionArticle.AfficherSumArticleFourni(id);
+//                request.setAttribute("listefournisseur",list);
+//                request.setAttribute("message","Liste des fournisseurs existants");
+//                }
+//            }
+//            else if(act.equals("rechercherAPFP"))
+//            {
+//      
+//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
+//                request.setAttribute("listefournisseur",list);
+//                jspClient="/RecFourPrix.jsp";
+//            }
+        RequestDispatcher Rd;
+        Rd = getServletContext().getRequestDispatcher(jspClient);
+        Rd.forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AccesFederation</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AccesFederation at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+protected void doActionInsererStade(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String nom = request.getParameter("nomStade");
+        String adresse = request.getParameter("adresseStade");
+        String capacite = request.getParameter("capaciteStade");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()|| adresse.trim().isEmpty()||capacite.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerStade.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un stade.";
+        }
+        else {
+            int cap = Integer.valueOf(capacite);
+            sessionFederation.CreerStade(login, pass, nom, adresse, cap);
+            message= "Stade créé avec succès !";
+            
+        }
+        request.setAttribute("message", message);
+        
+    }
+    protected void doActionInsererEquipe(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String nom = request.getParameter("nomEquipe");
+        String adresse = request.getParameter("adresseEquipe");
+        String stade = request.getParameter("stadeEquipe");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()|| adresse.trim().isEmpty()||stade.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerEquipe.jsp\">Clique ici </a>pour accéder au formulaire de creation d'une Equipe.";
+        }
+        else {
+            Long id = Long.valueOf(stade);
+            sessionFederation.CreerEquipe(login, pass, nom, adresse, id);
+            message= "Equipe créé avec succès !";
+            
+        }
+        request.setAttribute("message", message);
+        
+    }
+//    protected void doActionInsererV(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        String designation = request.getParameter("designationVetement");
+//        String prix = request.getParameter("prixVetement");
+//        String idd = request.getParameter("fournisseurVetement");
+//        String coloris = request.getParameter("colorisVetement");
+//        String message;
+//        if(designation.trim().isEmpty()|| prix.trim().isEmpty()||idd.trim().isEmpty()||coloris.trim().isEmpty()){
+//            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerFounisseur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un fournisseur.";
+//        }
+//        else {
+//            Long id = Long.valueOf(idd);
+//            Double pri = Double.valueOf(prix);
+//            sessionArticle.creerVetement(coloris, designation, pri,  id);
+//            message= "Article créé avec succès !";
+//            
+//        }
+//        request.setAttribute("message", message);
+//    }
+//    protected void doActionInsererFr(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        String designation = request.getParameter("designationFraicheur");
+//        String prix = request.getParameter("prixFraicheur");
+//        String idd = request.getParameter("fournisseurFraicheur");
+//        String date_lim = request.getParameter("dtlimitFraicheur");
+//        String message;
+//        if(designation.trim().isEmpty()|| prix.trim().isEmpty()||idd.trim().isEmpty()||date_lim.trim().isEmpty()){
+//            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerFounisseur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un fournisseur.";
+//        }
+//        else {
+//            Long id = Long.valueOf(idd);
+//            Date d = Date.valueOf(date_lim);
+//            Double pri = Double.valueOf(prix);
+//            sessionArticle.crerrFraicheur(d, designation, pri, id);
+//            message= "Article créé avec succès !";
+//            
+//        }
+//        request.setAttribute("message", message);
+//    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

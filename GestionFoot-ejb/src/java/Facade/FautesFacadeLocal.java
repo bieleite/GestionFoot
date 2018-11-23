@@ -39,4 +39,12 @@ public interface FautesFacadeLocal {
     List<Fautes> listFautes();
 
     Fautes rechercheFautes(Long id);
+    
+    List<Fautes> rechercheFautesParMatch(Matchs mt);
+    
+    List<Fautes> rechercheFautesParJouer(Jouer jo);
+    
+    List<Fautes> rechercheFautesParArbitre(Arbitre ab);
+    
+    List<Fautes> rechercheFautesParJouerEtMatch(Jouer jo,Matchs ma);
 }

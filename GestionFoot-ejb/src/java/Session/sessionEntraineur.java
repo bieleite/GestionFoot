@@ -11,6 +11,7 @@ import Entite.Contrat_Jouer;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
+import Entite.OutOfGame;
 import Entite.Statut;
 import Facade.CompositionFacadeLocal;
 import Facade.Contrat_EntraineurFacadeLocal;
@@ -19,7 +20,10 @@ import Facade.EntraineurFacadeLocal;
 import Facade.EquipeFacadeLocal;
 import Facade.JouerFacadeLocal;
 import Facade.MatchFacadeLocal;
+import Facade.OutOfGameFacadeLocal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -29,6 +33,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class sessionEntraineur implements sessionEntraineurLocal {
+
+    @EJB
+    private OutOfGameFacadeLocal outOfGameFacade;
 
     @EJB
     private Contrat_JouerFacadeLocal contrat_JouerFacade;
@@ -182,4 +189,13 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         else System.out.println("Vous n'avez pas les droits pour créer de Contrat Jouer ! ");
         }
     
+    @Override
+    public List<OutOfGame> AfficherOutOfGameParPeriode(String log, String mdp,Date dtD , Date dtF) {
+        /*
+        Afficher la liste OutOfGame d'une periode
+        */
+        List<OutOfGame> liste = new ArrayList<OutOfGame>();
+        liste = outOfGameFacade.listOutOfGameParDate(dtD, dtF);
+        return liste;  
+    }
 }
