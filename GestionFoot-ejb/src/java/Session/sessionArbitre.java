@@ -63,6 +63,9 @@ public class sessionArbitre implements sessionArbitreLocal {
 
     @Override
     public void creerFautes(String log, String mdp, String nom, Date dt_match, String carton) {
+        /*
+            Method pour creer des fautes d'une jouer
+        */
         Carton cart =null;
         Arbitre a = arbitreFacade.authentification(log, mdp);
         if (a!=null)
@@ -90,7 +93,11 @@ public class sessionArbitre implements sessionArbitreLocal {
 
     @Override
     public void creerButs(String log, String mdp, String nom, Date dt_match) {
-           Arbitre a = arbitreFacade.authentification(log, mdp);
+        /*
+            Method pour creer des buts et au meme moment calculer le resultat du match
+            Apres ajouter dans le classement les points
+        */
+        Arbitre a = arbitreFacade.authentification(log, mdp);
         if (a!=null)
         {
             Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);

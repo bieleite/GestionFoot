@@ -65,6 +65,9 @@ public class sessionFederation implements sessionFederationLocal {
 
     @Override
     public void CreerEntraineur(String log, String mdp, String nom, String pren, String log1, String mdp1) {
+        /*
+            Creer entraineur !
+        */
         
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
@@ -80,6 +83,12 @@ public class sessionFederation implements sessionFederationLocal {
 
     @Override
     public void CreerContrantEntraineur(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin) {
+        /*
+            Pour l'historique du Entraineur j'ai decidé de créer une classe contrat, comme ça on peut afficher 
+            la liste des tout les contrats que l'entraineur participe, pour ça j'ai fait la recherche par nom
+            apres une recherche de l'equipe par nom, au fin le contrat est crée et l'equipe du entraineur modifié
+            comme ça on a toujour l'equipe actualisé a chaque nouveux contrat
+        */
         Statut u=null;
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
@@ -103,6 +112,9 @@ public class sessionFederation implements sessionFederationLocal {
 
     @Override
     public void CreerJouer(String log, String mdp, String nom, String pren) {
+        /*
+        Creation d'une jouer
+        */
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
             jouerFacade.CreerJouer(nom, pren);
@@ -113,6 +125,10 @@ public class sessionFederation implements sessionFederationLocal {
 
     @Override
     public void CreerContratJouer(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin) {
+        /*
+            Meme idée du creer contrat entraineur /\
+                                                  ||
+        */
             Statut u=null;
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
@@ -136,6 +152,13 @@ public class sessionFederation implements sessionFederationLocal {
 
     @Override
     public void creerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre,String cham) {
+        /*
+            Pour la creation d'une match on a besoin de rechercher une championnat d'ou participe cette match
+            Après voir si le stade n'est pas ocuppe, il fait la meme chose pour l'arbitre , si tout est bon le match 
+            est crée 
+        
+                    ***IMPORTANT*** faire la verification de l'equipe aussi***
+        */
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
             Championnat champ= championnatFacade.rechercheChampionnatParNom(cham);
@@ -146,6 +169,7 @@ public class sessionFederation implements sessionFederationLocal {
             {
                 Equipe eqpa = equipeFacade.rechercheEquipeParNom(equipea);
                 Equipe eqpb = equipeFacade.rechercheEquipeParNom(equipeb);
+                //Faire une verification pour l'equipe
                 if(eqpa!=null && eqpb!=null){
 
                         Arbitre arb= arbitreFacade.rechercheArbitreParNom(arbitre);
@@ -171,6 +195,9 @@ public class sessionFederation implements sessionFederationLocal {
         }
     @Override
     public void CreerEquipe(String log, String mdp, String Nom, String Adresse, String stade) {
+        /*
+        Creer equipe
+        */
         
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
@@ -187,7 +214,9 @@ public class sessionFederation implements sessionFederationLocal {
     
     @Override
     public void CreerArbitre(String log, String mdp, String nom, String pren, String log1, String mdp1) {
-        
+        /*
+        Creer Arbitre
+        */
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
            arbitreFacade.CreerArbitre(nom, pren, log1, pren);

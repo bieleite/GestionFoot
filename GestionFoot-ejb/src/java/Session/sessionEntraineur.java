@@ -52,7 +52,10 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     private EntraineurFacadeLocal entraineurFacade;
 
     @Override
-    public void CreerComposition_Home(String log, String mdp, String nom,Date dt_comp) {   
+    public void CreerComposition_Home(String log, String mdp, String nom,Date dt_comp) {
+        /*
+            Creer composition home, il faut voir si il y a le besoin d'ajouter une class pour la liste de jouer
+        */
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c != null)
         {
@@ -74,7 +77,10 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     }
     
     @Override
-    public void CreerComposition_Away(String log, String mdp, String nom,Date dt_comp) {   
+    public void CreerComposition_Away(String log, String mdp, String nom,Date dt_comp) {  
+        /*
+            Creer composition away, il faut voir si il y a le besoin d'ajouter une class pour la liste de jouer
+        */
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c != null)
         {
@@ -97,6 +103,12 @@ public class sessionEntraineur implements sessionEntraineurLocal {
 
     @Override
     public void transfererJouer(String log, String mdp,String status,double sal, String nom, Date dt_deb, Date dt_fin) {
+        /*
+            Pour Transferer le jouer d'une equipe a l'autre, le method changé le status du ancien contrat vers Inactif
+            et la date fin pour la date de debut du nouveaux contrat, au fin il modifie l'equipe du jouer pour l'equipe 
+            de l'entraineur
+        ps: regarder la necessté du if else du status
+        */
         Statut u= null;
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c!=null)
@@ -134,6 +146,9 @@ public class sessionEntraineur implements sessionEntraineurLocal {
 
     @Override
     public void supprimerJouer(String log, String mdp,String nom) {
+        /*
+            Supprimer le jouer, pas de plus
+        */
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c!=null)
         {
@@ -146,6 +161,10 @@ public class sessionEntraineur implements sessionEntraineurLocal {
 
     @Override
     public void affecterJouer(String log, String mdp,String nom,double sal, Date dt_deb, Date dt_fin) {
+        /*
+            Affecter le jouer sans equipe dans l'equipe du entraineur 
+            Apres reflechir la vrai necessité de cette method
+        */
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c!=null)
         {
