@@ -10,7 +10,7 @@ import Entite.Buts;
 import Entite.Carton;
 import Entite.Equipe;
 import Entite.Jouer;
-import Entite.Match;
+import Entite.Matchs;
 import Entite.Resultat;
 import Facade.ArbitreFacadeLocal;
 import Facade.ButsFacadeLocal;
@@ -69,7 +69,7 @@ public class sessionArbitre implements sessionArbitreLocal {
                 cart = cart.Jaune;
             else if (carton.contains("Non")|| carton.contains("Non"))
                 cart = cart.Non;
-            Match match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);
+            Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);
             if(match!=null){
                 Jouer jo= jouerFacade.rechercheJouerParNom(nom);
                 if(jo!=null){
@@ -89,17 +89,17 @@ public class sessionArbitre implements sessionArbitreLocal {
            Arbitre a = arbitreFacade.authentification(log, mdp);
         if (a!=null)
         {
-            Match match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);
+            Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);
             if(match!=null){
                 Jouer jo= jouerFacade.rechercheJouerParNom(nom);
                 if(jo!=null){
                     Equipe equipe = equipeFacade.rechercheEquipeParJouer(jo);
                     butsFacade.CreerButs(equipe, jo, match);
                     int qtbuts= butsFacade.qntButsParEquipeEtMatch(equipe, match);
-                    List<Match> equipe_away = matchFacade.rechercheMatchEquipe_Away(equipe, dt_match);
+                    List<Matchs> equipe_away = matchFacade.rechercheMatchEquipe_Away(equipe, dt_match);
                     if (equipe_away.isEmpty())
                     {
-                        List<Match> equipe_home = matchFacade.rechercheMatchEquipe_Home(equipe, dt_match);
+                        List<Matchs> equipe_home = matchFacade.rechercheMatchEquipe_Home(equipe, dt_match);
                         if (equipe_home.isEmpty())
                         {
                             System.out.println("Equipe non trouve ");

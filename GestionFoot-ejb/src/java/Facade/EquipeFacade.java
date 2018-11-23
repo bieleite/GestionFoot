@@ -8,6 +8,7 @@ package Facade;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
+import Entite.Matchs;
 import Entite.Stade;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -109,5 +110,9 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
         return e;
         
     }
+    
+
+  
+    
 
 }

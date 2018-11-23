@@ -6,13 +6,15 @@
 package Session;
 
 import Entite.Arbitre;
+import Entite.Championnat;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
-import Entite.Match;
+import Entite.Matchs;
 import Entite.Stade;
 import Entite.Statut;
 import Facade.ArbitreFacadeLocal;
+import Facade.ChampionnatFacadeLocal;
 import Facade.Contrat_EntraineurFacadeLocal;
 import Facade.Contrat_JouerFacadeLocal;
 import Facade.EntraineurFacadeLocal;
@@ -31,6 +33,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class sessionFederation implements sessionFederationLocal {
+
+    @EJB
+    private ChampionnatFacadeLocal championnatFacade;
 
     @EJB
     private ArbitreFacadeLocal arbitreFacade;
@@ -130,11 +135,13 @@ public class sessionFederation implements sessionFederationLocal {
     }
 
     @Override
-    public void creerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre) {
+    public void creerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre,String cham) {
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
+            Championnat champ= championnatFacade.rechercheChampionnatParNom(cham);
+            if(champ!=null){
             Stade sta =stadeFacade.rechercheStadeParNom(stade);
-            List<Match> listeMatch = matchFacade.rechercheMatchStadeDate(sta, date);
+            List<Matchs> listeMatch = matchFacade.rechercheMatchStadeDate(sta, date);
             if (listeMatch.isEmpty())
             {
                 Equipe eqpa = equipeFacade.rechercheEquipeParNom(equipea);
@@ -142,10 +149,10 @@ public class sessionFederation implements sessionFederationLocal {
                 if(eqpa!=null && eqpb!=null){
 
                         Arbitre arb= arbitreFacade.rechercheArbitreParNom(arbitre);
-                        List<Match> listeMatchA = matchFacade.rechercheMatchArbitreDate(arb, date);
+                        List<Matchs> listeMatchA = matchFacade.rechercheMatchArbitreDate(arb, date);
                             if (listeMatchA.isEmpty())
                             {
-                                matchFacade.CreerMatch(date, sta, eqpa, eqpb, arb);
+                                matchFacade.CreerMatch(date, sta, eqpa, eqpb, arb,champ);
                             }
                             else{
                                 System.out.println("Arbitre ocuupé! ");
@@ -160,6 +167,7 @@ public class sessionFederation implements sessionFederationLocal {
             else{
                 System.out.println("Stade deja ocuppe!");
             }
+        }
         }
     @Override
     public void CreerEquipe(String log, String mdp, String Nom, String Adresse, String stade) {

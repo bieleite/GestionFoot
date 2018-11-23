@@ -8,7 +8,7 @@ package Facade;
 import Entite.Buts;
 import Entite.Equipe;
 import Entite.Jouer;
-import Entite.Match;
+import Entite.Matchs;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,7 +35,7 @@ public class ButsFacade extends AbstractFacade<Buts> implements ButsFacadeLocal 
     }
     
     @Override
-    public void CreerButs(Equipe equipe, Jouer jouer,Match match) {
+    public void CreerButs(Equipe equipe, Jouer jouer,Matchs match) {
         Buts f = new Buts();
         f.setLeMatch(match);
         f.setEquipe(equipe);
@@ -76,7 +76,7 @@ public class ButsFacade extends AbstractFacade<Buts> implements ButsFacadeLocal 
     }
     
     @Override
-    public int qntButsParEquipeEtMatch(Equipe eq,Match mt ) {
+    public int qntButsParEquipeEtMatch(Equipe eq,Matchs mt ) {
         Buts bu=null;
         Query req = getEntityManager().createQuery("SELECT COUNT(bu) FROM Buts AS bu WHERE bu.Equipe=:equipe and bu.leMatch=:match");
         req.setParameter("equipe", eq);

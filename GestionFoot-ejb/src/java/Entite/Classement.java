@@ -6,87 +6,79 @@
 package Entite;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
 
 /**
  *
  * @author gabrielleite
  */
 @Entity
-public class Composition implements Serializable {
+public class Classement implements Serializable {
 
-    @OneToMany(mappedBy = "Composition_Away")
-    private List<Matchs> matchs;
-
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date Date_Comp;
+    @ManyToOne
+    private Championnat leChampionnat;
 
     /**
-     * Get the value of Date_Comp
+     * Get the value of leChampionnat
      *
-     * @return the value of Date_Comp
+     * @return the value of leChampionnat
      */
-    public Date getDate_Comp() {
-        return Date_Comp;
+    public Championnat getLeChampionnat() {
+        return leChampionnat;
     }
 
     /**
-     * Set the value of Date_Comp
+     * Set the value of leChampionnat
      *
-     * @param Date_Comp new value of Date_Comp
+     * @param leChampionnat new value of leChampionnat
      */
-    public void setDate_Comp(Date Date_Comp) {
-        this.Date_Comp = Date_Comp;
+    public void setLeChampionnat(Championnat leChampionnat) {
+        this.leChampionnat = leChampionnat;
     }
 
     @ManyToOne
-    private Equipe Equipe;
+    private Equipe leEquipe;
 
     /**
-     * Get the value of Equipe
+     * Get the value of leEquipe
      *
-     * @return the value of Entraineur
+     * @return the value of leEquipe
      */
-    public Equipe getEquipe() {
-        return Equipe;
+    public Equipe getLeEquipe() {
+        return leEquipe;
     }
 
     /**
-     * Set the value of Equipe
+     * Set the value of leEquipe
      *
-     * @param Equipe new value of Entraineur
+     * @param leEquipe new value of leEquipe
      */
-    public void setEquipe(Equipe Equipe) {
-        this.Equipe = Equipe;
+    public void setLeEquipe(Equipe leEquipe) {
+        this.leEquipe = leEquipe;
     }
 
-    @ManyToOne
-    private Jouer Joeur;
+    private int Point;
 
     /**
-     * Get the value of Joeur
+     * Get the value of Point
      *
-     * @return the value of Joeur
+     * @return the value of Point
      */
-    public Jouer getJoeur() {
-        return Joeur;
+    public int getPoint() {
+        return Point;
     }
 
     /**
-     * Set the value of Joeur
+     * Set the value of Point
      *
-     * @param Joeur new value of Joeur
+     * @param Point new value of Point
      */
-    public void setJoeur(Jouer Joeur) {
-        this.Joeur = Joeur;
+    public void setPoint(int Point) {
+        this.Point = Point;
     }
 
     private static final long serialVersionUID = 1L;
@@ -112,10 +104,10 @@ public class Composition implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Composition)) {
+        if (!(object instanceof Classement)) {
             return false;
         }
-        Composition other = (Composition) object;
+        Classement other = (Classement) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -124,7 +116,7 @@ public class Composition implements Serializable {
 
     @Override
     public String toString() {
-        return "Entite.Composition[ id=" + id + " ]";
+        return "Entite.Classement[ id=" + id + " ]";
     }
     
 }

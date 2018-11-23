@@ -20,14 +20,14 @@ import javax.persistence.ManyToOne;
 public class Buts implements Serializable {
 
     @ManyToOne
-    private Match leMatch;
+    private Matchs leMatch;
 
     /**
      * Get the value of leMatch
      *
      * @return the value of leMatch
      */
-    public Match getLeMatch() {
+    public Matchs getLeMatch() {
         return leMatch;
     }
 
@@ -36,7 +36,7 @@ public class Buts implements Serializable {
      *
      * @param leMatch new value of leMatch
      */
-    public void setLeMatch(Match leMatch) {
+    public void setLeMatch(Matchs leMatch) {
         this.leMatch = leMatch;
     }
 

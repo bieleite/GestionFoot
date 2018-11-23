@@ -9,7 +9,7 @@ import Entite.Arbitre;
 import Entite.Carton;
 import Entite.Fautes;
 import Entite.Jouer;
-import Entite.Match;
+import Entite.Matchs;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -36,7 +36,7 @@ public class FautesFacade extends AbstractFacade<Fautes> implements FautesFacade
     }
     
         @Override
-    public void CreerFautes(Carton carton,Match match, Arbitre arbitre, Jouer jouer) {
+    public void CreerFautes(Carton carton,Matchs match, Arbitre arbitre, Jouer jouer) {
         Fautes f = new Fautes();
         f.setCarton(carton);
         f.setMatch(match);

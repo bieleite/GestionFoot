@@ -7,10 +7,11 @@ package Facade;
 
 import Entite.Arbitre;
 import Entite.Buts;
+import Entite.Championnat;
 import Entite.Composition;
 import Entite.Equipe;
 import Entite.Stade;
-import Entite.Match;
+import Entite.Matchs;
 import Entite.Resultat;
 import java.util.Date;
 import java.util.List;
@@ -23,35 +24,35 @@ import javax.ejb.Local;
 @Local
 public interface MatchFacadeLocal {
 
-    void create(Match match);
+    void create(Matchs match);
 
-    void edit(Match match);
+    void edit(Matchs match);
 
-    void remove(Match match);
+    void remove(Matchs match);
 
-    Match find(Object id);
+    Matchs find(Object id);
 
-    List<Match> findAll();
+    List<Matchs> findAll();
 
-    List<Match> findRange(int[] range);
+    List<Matchs> findRange(int[] range);
 
     int count();
 
-    void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre);
+    void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Championnat champ);
     
-    List<Match> listMatch();
+    List<Matchs> listMatch();
 
-    Match rechercheMatch(Long id);
+    Matchs rechercheMatch(Long id);
     
-    List<Match> rechercheMatchStadeDate(Stade stad,Date dt);
+    List<Matchs> rechercheMatchStadeDate(Stade stad,Date dt);
     
-    List<Match> rechercheMatchArbitreDate(Arbitre arb,Date dt);
+    List<Matchs> rechercheMatchArbitreDate(Arbitre arb,Date dt);
     
     void modifCompositionAway(Composition Com, Equipe equi);
     
     void modifCompositionHome(Composition Com, Equipe equi);
     
-    Match rechercheMatchParArbitreEtDate(Arbitre arb, Date dt_match);
+    Matchs rechercheMatchParArbitreEtDate(Arbitre arb, Date dt_match);
     
     void setResultat_Away(Arbitre arb, Date dt_match,Resultat resul);
     
@@ -61,7 +62,7 @@ public interface MatchFacadeLocal {
     
     void setScore_Home(Arbitre arb, Date dt_match,int buts);
     
-    List<Match> rechercheMatchEquipe_Home(Equipe eq,Date dt);
+    List<Matchs> rechercheMatchEquipe_Home(Equipe eq,Date dt);
     
-    List<Match> rechercheMatchEquipe_Away(Equipe eq,Date dt);
+    List<Matchs> rechercheMatchEquipe_Away(Equipe eq,Date dt);
 }

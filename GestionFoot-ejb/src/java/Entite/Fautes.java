@@ -40,23 +40,23 @@ public class Fautes implements Serializable {
     }
 
     @ManyToOne
-    private Match Match;
+    private Matchs Match;
 
     /**
-     * Get the value of Match
+     * Get the value of Matchs
      *
-     * @return the value of Match
+     * @return the value of Matchs
      */
-    public Match getMatch() {
+    public Matchs getMatch() {
         return Match;
     }
 
     /**
-     * Set the value of Match
+     * Set the value of Matchs
      *
-     * @param Match new value of Match
+     * @param Match new value of Matchs
      */
-    public void setMatch(Match Match) {
+    public void setMatch(Matchs Match) {
         this.Match = Match;
     }
 

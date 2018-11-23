@@ -9,7 +9,7 @@ import Entite.Arbitre;
 import Entite.Carton;
 import Entite.Fautes;
 import Entite.Jouer;
-import Entite.Match;
+import Entite.Matchs;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -34,7 +34,7 @@ public interface FautesFacadeLocal {
 
     int count();
     
-    void CreerFautes(Carton carton,Match match, Arbitre arbitre, Jouer jouer);
+    void CreerFautes(Carton carton,Matchs match, Arbitre arbitre, Jouer jouer);
     
     List<Fautes> listFautes();
 
