@@ -131,4 +131,36 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public void supprimerJouer(String log, String mdp,String nom) {
+        Entraineur c = entraineurFacade.authentification(log, mdp);
+        if (c!=null)
+        {
+            Jouer jo = jouerFacade.rechercheJouerParNom(nom);
+            if(jo!=null){
+                jouerFacade.supprimerJouer(jo);
+            }
+        }
+    }
+
+    @Override
+    public void affecterJouer(String log, String mdp,String nom,double sal, Date dt_deb, Date dt_fin) {
+        Entraineur c = entraineurFacade.authentification(log, mdp);
+        if (c!=null)
+        {
+            Jouer jo = jouerFacade.rechercheJouerParNom(nom);
+            Equipe equi = equipeFacade.rechercheEquipeParEntraineur(c);
+            if(jo!=null){
+                    contrat_JouerFacade.CreerContrat_Jouer(Statut.Ac, sal, equi, jo, dt_fin, dt_deb);
+                    jouerFacade.modifEquipe(nom, equi);
+                }
+            else{
+                System.out.println("Equipe ou jouer inexistant! ");
+            }
+        
+        } 
+        else System.out.println("Vous n'avez pas les droits pour créer de Contrat Jouer ! ");
+        }
+    
 }

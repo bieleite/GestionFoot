@@ -23,8 +23,91 @@ import javax.persistence.Temporal;
 @Entity
 public class Match implements Serializable {
 
+    private Resultat Resultat_home;
+
+    /**
+     * Get the value of Resultat_home
+     *
+     * @return the value of Resultat_home
+     */
+    public Resultat getResultat_home() {
+        return Resultat_home;
+    }
+
+    /**
+     * Set the value of Resultat_home
+     *
+     * @param Resultat_home new value of Resultat_home
+     */
+    public void setResultat_home(Resultat Resultat_home) {
+        this.Resultat_home = Resultat_home;
+    }
+
+    private Resultat Resultat_away;
+
+    /**
+     * Get the value of Resultat_away
+     *
+     * @return the value of Resultat_away
+     */
+    public Resultat getResultat_away() {
+        return Resultat_away;
+    }
+
+    /**
+     * Set the value of Resultat_away
+     *
+     * @param Resultat_away new value of Resultat_away
+     */
+    public void setResultat_away(Resultat Resultat_away) {
+        this.Resultat_away = Resultat_away;
+    }
+
+    @OneToMany(mappedBy = "leMatch")
+    private List<Buts> butss;
+
     @OneToMany(mappedBy = "Match")
     private List<Fautes> fautess;
+
+    private int Score_Away;
+
+    /**
+     * Get the value of Score_Away
+     *
+     * @return the value of Score_Away
+     */
+    public int getScore_Away() {
+        return Score_Away;
+    }
+
+    /**
+     * Set the value of Score_Away
+     *
+     * @param Score_Away new value of Score_Away
+     */
+    public void setScore_Away(int Score_Away) {
+        this.Score_Away = Score_Away;
+    }
+
+    private int Score_Home;
+
+    /**
+     * Get the value of Score_Home
+     *
+     * @return the value of Score_Home
+     */
+    public int getScore_Home() {
+        return Score_Home;
+    }
+
+    /**
+     * Set the value of Score_Home
+     *
+     * @param Score_Home new value of Score_Home
+     */
+    public void setScore_Home(int Score_Home) {
+        this.Score_Home = Score_Home;
+    }
 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date Dt_Match;
@@ -130,6 +213,7 @@ public class Match implements Serializable {
     public void setEquipe_Home(Equipe Equipe_Home) {
         this.Equipe_Home = Equipe_Home;
     }
+
 
     @ManyToOne
     private Equipe Equipe_Away;

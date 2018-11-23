@@ -5,6 +5,7 @@
  */
 package Session;
 
+import java.util.Date;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +14,11 @@ import javax.ejb.Local;
  */
 @Local
 public interface sessionArbitreLocal {
+
+    void saisirResultat();
+
+    void creerFautes(String log, String mdp, String nom, Date dt_match, String carton);
+
+    void creerButs(String log, String mdp, String nom, Date dt_match);
     
 }

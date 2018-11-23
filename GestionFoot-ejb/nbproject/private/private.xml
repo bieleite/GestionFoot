@@ -5,6 +5,7 @@
         <group>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Carton.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/FautesFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionArbitreLocal.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Equipe.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionFederation.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionArbitre.java</file>
@@ -18,6 +19,7 @@
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Fautes.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/MatchFacade.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Match.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/setup/glassfish-resources.xml</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/ArbitreFacade.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Contrat_Jouer.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/EquipeFacade.java</file>
@@ -28,6 +30,8 @@
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Statut.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/ButsFacade.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/MatchFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionVisiteurLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/conf/persistence.xml</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/ButsFacadeLocal.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Buts.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/JouerFacadeLocal.java</file>
@@ -45,6 +49,7 @@
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/FautesFacadeLocal.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/Contrat_JouerFacadeLocal.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/StadeFacadeLocal.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionFederationLocal.java</file>
         </group>
     </open-files>
 </project-private>

@@ -25,4 +25,7 @@ public interface sessionFederationLocal {
 
     void creerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre);
     
+    void CreerEquipe(String log, String mdp, String Nom, String Adresse, String stade);
+    
+    void CreerArbitre(String log, String mdp, String nom, String pren, String log1, String mdp1);
 }

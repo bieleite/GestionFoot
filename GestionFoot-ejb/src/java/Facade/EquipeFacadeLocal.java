@@ -7,6 +7,7 @@ package Facade;
 
 import Entite.Entraineur;
 import Entite.Equipe;
+import Entite.Jouer;
 import Entite.Stade;
 import java.util.List;
 import javax.ejb.Local;
@@ -41,4 +42,6 @@ public interface EquipeFacadeLocal {
     Equipe rechercheEquipeParEntraineur(Entraineur ent);
     
     Equipe rechercheEquipeParNom(String nom);
+    
+    Equipe rechercheEquipeParJouer(Jouer enjot);
 }

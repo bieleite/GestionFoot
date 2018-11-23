@@ -6,10 +6,12 @@
 package Facade;
 
 import Entite.Arbitre;
+import Entite.Buts;
 import Entite.Composition;
 import Entite.Equipe;
 import Entite.Stade;
 import Entite.Match;
+import Entite.Resultat;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -48,4 +50,18 @@ public interface MatchFacadeLocal {
     void modifCompositionAway(Composition Com, Equipe equi);
     
     void modifCompositionHome(Composition Com, Equipe equi);
+    
+    Match rechercheMatchParArbitreEtDate(Arbitre arb, Date dt_match);
+    
+    void setResultat_Away(Arbitre arb, Date dt_match,Resultat resul);
+    
+    void setResultat_Home(Arbitre arb, Date dt_match,Resultat resul);
+    
+    void setScore_Away(Arbitre arb, Date dt_match,int buts);
+    
+    void setScore_Home(Arbitre arb, Date dt_match,int buts);
+    
+    List<Match> rechercheMatchEquipe_Home(Equipe eq,Date dt);
+    
+    List<Match> rechercheMatchEquipe_Away(Equipe eq,Date dt);
 }

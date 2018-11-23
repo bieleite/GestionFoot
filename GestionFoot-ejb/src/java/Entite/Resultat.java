@@ -10,5 +10,5 @@ package Entite;
  * @author gabrielleite
  */
 public enum Resultat {
-    Gagnat,Perdant,Nulle
+    Winner,Loser,Nulle
 }

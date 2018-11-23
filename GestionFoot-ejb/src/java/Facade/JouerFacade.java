@@ -105,5 +105,17 @@ public class JouerFacade extends AbstractFacade<Jouer> implements JouerFacadeLoc
                   em.merge(ent);
             }
         }
-
+        
+        @Override
+        public Jouer supprimerJouer(Jouer c) {
+        Jouer co=null;
+        String txt="SELECT co FROM Jouer AS co WHERE co.numero=:numcompte" ;
+        Query req=getEntityManager().createQuery(txt);
+        req=req.setParameter("numclient", c);
+        List<Jouer> result=req.getResultList();
+        if(result.size()==1){
+                em.remove(co);
+        }
+        return co;
+    }
 }

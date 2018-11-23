@@ -7,6 +7,7 @@ package Facade;
 
 import Entite.Entraineur;
 import Entite.Equipe;
+import Entite.Jouer;
 import Entite.Stade;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -85,6 +86,21 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
         String txt = "SELECT e FROM Equipe AS e WHERE e.Nom_Equipe=:nom ";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("nom", nom);
+        List<Equipe> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              e = (Equipe) res.get(0);
+        }
+        return e;
+        
+    }
+    
+        @Override
+    public  Equipe rechercheEquipeParJouer(Jouer jo) {
+        Equipe e = null;        
+        String txt = "SELECT e FROM Equipe AS e WHERE e.Jouer=:jo ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("jo", jo);
         List<Equipe> res = req.getResultList();
         if (res.size() >= 1)
         {

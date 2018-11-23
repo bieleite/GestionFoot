@@ -161,5 +161,31 @@ public class sessionFederation implements sessionFederationLocal {
                 System.out.println("Stade deja ocuppe!");
             }
         }
+    @Override
+    public void CreerEquipe(String log, String mdp, String Nom, String Adresse, String stade) {
+        
+        if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+            Stade st =stadeFacade.rechercheStadeParNom(stade);
+            if(st!=null){
+                equipeFacade.CreerEquipe(Nom, Adresse, st);
+            }
+            
+        }
+        
+        else System.out.println("Vous n'avez pas les droits pour créer de Entraineur ! ");
+        
+    }
     
+    @Override
+    public void CreerArbitre(String log, String mdp, String nom, String pren, String log1, String mdp1) {
+        
+        if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+           arbitreFacade.CreerArbitre(nom, pren, log1, pren);
+        }
+        
+        else System.out.println("Vous n'avez pas les droits pour créer de Entraineur ! ");
+        
+    }
 }

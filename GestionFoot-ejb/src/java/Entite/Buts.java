@@ -20,6 +20,27 @@ import javax.persistence.ManyToOne;
 public class Buts implements Serializable {
 
     @ManyToOne
+    private Match leMatch;
+
+    /**
+     * Get the value of leMatch
+     *
+     * @return the value of leMatch
+     */
+    public Match getLeMatch() {
+        return leMatch;
+    }
+
+    /**
+     * Set the value of leMatch
+     *
+     * @param leMatch new value of leMatch
+     */
+    public void setLeMatch(Match leMatch) {
+        this.leMatch = leMatch;
+    }
+
+    @ManyToOne
     private Equipe Equipe;
 
     /**
