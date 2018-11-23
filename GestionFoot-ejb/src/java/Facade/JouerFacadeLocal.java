@@ -44,4 +44,6 @@ public interface JouerFacadeLocal {
     void modifEquipe(String Nom, Equipe equi);
     
     Jouer supprimerJouer(Jouer c);
+    
+    Jouer rechercheJouerSansEquipeParNom(String nom);
 }

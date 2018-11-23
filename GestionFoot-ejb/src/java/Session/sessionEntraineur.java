@@ -149,14 +149,14 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c!=null)
         {
-            Jouer jo = jouerFacade.rechercheJouerParNom(nom);
+            Jouer jo = jouerFacade.rechercheJouerSansEquipeParNom(nom);
             Equipe equi = equipeFacade.rechercheEquipeParEntraineur(c);
             if(jo!=null){
                     contrat_JouerFacade.CreerContrat_Jouer(Statut.Ac, sal, equi, jo, dt_fin, dt_deb);
                     jouerFacade.modifEquipe(nom, equi);
                 }
             else{
-                System.out.println("Equipe ou jouer inexistant! ");
+                System.out.println("Jouer inexistant! ");
             }
         
         } 

@@ -92,6 +92,20 @@ public class JouerFacade extends AbstractFacade<Jouer> implements JouerFacadeLoc
         }
         
         @Override
+        public  Jouer rechercheJouerSansEquipeParNom(String nom) {
+        Jouer j = null;        
+        String txt = "SELECT j FROM Jouer AS j WHERE j.Nom=:nom AND j.Equipe IS EMPTY";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("nom", nom);
+        List<Jouer> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              j = (Jouer) res.get(0);
+        }
+        return j;
+        }
+        
+        @Override
         public void modifEquipe(String Nom, Equipe equi) { 
             Jouer ent = null;
             String txt = "SELECT ent FROM Jouer AS det WHERE ent.Nom=:nom";

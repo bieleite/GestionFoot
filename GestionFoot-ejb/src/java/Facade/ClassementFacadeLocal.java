@@ -33,4 +33,8 @@ public interface ClassementFacadeLocal {
     int count();
     
     void CreerClassement(Championnat Champ, Equipe equi);
+
+    void setPointsParEquipeGagnant(Equipe equi);
+    
+    void setPointsParEquipeNulle(Equipe equi);
 }
