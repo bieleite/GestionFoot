@@ -13,14 +13,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Creer Article</title>
+        <title>Creer Match</title>
         <jsp:useBean id="listeStade" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="listeEquipe" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="listeArbitre" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="listeChampionnat" scope="request" class="java.util.List"></jsp:useBean>
     </head>
 <body>
-        <h1>Creer Article</h1>
+        <h1>Creer Match</h1>
 <% List<Stade> lesStades=listeStade;%>
 <% List<Equipe> lesEquipes=listeEquipe;%>
 <% List<Arbitre> lesArbitres=listeArbitre;%>

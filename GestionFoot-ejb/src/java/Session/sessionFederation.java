@@ -93,7 +93,7 @@ public class sessionFederation implements sessionFederationLocal {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void CreerContrantEntraineur(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin) {
+    public void CreerContratEntraineur(String log, String mdp,Statut status,double sal, long entr, long nom_equipe, Date dt_deb, Date dt_fin) {
         /*
             Pour l'historique du Entraineur j'ai decidé de créer une classe contrat, comme ça on peut afficher 
             la liste des tout les contrats que l'entraineur participe, pour ça j'ai fait la recherche par nom
@@ -103,15 +103,11 @@ public class sessionFederation implements sessionFederationLocal {
         Statut u=null;
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            if (status.contains("Actif") || status.contains("Ac"))
-               u = u.Ac;
-            else if (status.contains("Inactif")|| status.contains("In"))
-                u = u.In;
-            Entraineur ent = entraineurFacade.rechercheEntraineurParNom(nom);
-            Equipe equi = equipeFacade.rechercheEquipeParNom(nom_equipe);
+            Entraineur ent = entraineurFacade.rechercheEntraineur(entr);
+            Equipe equi = equipeFacade.rechercheEquipe(nom_equipe);
             if(ent!=null && equi!=null){
-                contrat_EntraineurFacade.CreerContrat_Entraineur(u, sal, equi, ent, dt_deb, dt_fin);
-                entraineurFacade.modifEquipe(nom, equi);
+                contrat_EntraineurFacade.CreerContrat_Entraineur(status, sal, equi, ent, dt_deb, dt_fin);
+                entraineurFacade.modifEquipe(entr, equi);
             }
             else{
                 System.out.println("Equipe ou entraineur inexistant! ");
@@ -148,7 +144,7 @@ public class sessionFederation implements sessionFederationLocal {
     }
     
     @Override
-    public void CreerContratJouer(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin) {
+    public void CreerContratJouer(String log, String mdp,Statut status,double sal, long jouer, long equipe, Date dt_deb, Date dt_fin) {
         /*
             Meme idée du creer contrat entraineur /\
                                                   ||
@@ -156,15 +152,11 @@ public class sessionFederation implements sessionFederationLocal {
             Statut u=null;
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            if (status.contains("Actif") || status.contains("Ac"))
-               u = u.Ac;
-            else if (status.contains("Inactif")|| status.contains("In"))
-                u = u.In;
-            Jouer ent = jouerFacade.rechercheJouerParNom(nom);
-            Equipe equi = equipeFacade.rechercheEquipeParNom(nom_equipe);
+            Jouer ent = jouerFacade.rechercheJouer(equipe);
+            Equipe equi = equipeFacade.rechercheEquipe(equipe);
             if(ent!=null && equi!=null){
                 contrat_JouerFacade.CreerContrat_Jouer(u, sal, equi, ent, dt_fin, dt_deb);
-                jouerFacade.modifEquipe(nom, equi);
+                jouerFacade.modifEquipe(jouer, equi);
             }
             else{
                 System.out.println("Equipe ou jouer inexistant! ");
@@ -373,6 +365,18 @@ public class sessionFederation implements sessionFederationLocal {
     @Override
     public List<Championnat> afficherChampionnat() {
         List<Championnat> liste = championnatFacade.listChampionnat();
+        return liste;
+    }
+    
+    @Override
+    public List<Entraineur> afficherEntraineur() {
+        List<Entraineur> liste = entraineurFacade.listEntraineur();
+        return liste;
+    }
+    
+    @Override
+    public List<Jouer> afficherJouer() {
+        List<Jouer> liste = jouerFacade.listJouer();
         return liste;
     }
     

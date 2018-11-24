@@ -79,11 +79,11 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
     }
     
     @Override
-    public void modifEquipe(String Nom, Equipe equi) { 
+    public void modifEquipe(long id, Equipe equi) { 
         Entraineur ent = null;
-        String txt = "SELECT ent FROM Entraineur AS det WHERE ent.Nom=:nom";
+        String txt = "SELECT ent FROM Entraineur AS ent WHERE ent.id=:id";
         Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("nom", Nom);
+        req = req.setParameter("id", id);
         List<Entraineur> res = req.getResultList();
         if (res.size() >= 1)
         {

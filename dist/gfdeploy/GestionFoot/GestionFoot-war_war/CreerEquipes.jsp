@@ -11,11 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Creer Article</title>
+        <title>Creer Equipes</title>
         <jsp:useBean id="listeStade" scope="request" class="java.util.List"></jsp:useBean>
     </head>
 <body>
-        <h1>Creer Article</h1>
+        <h1>Creer Equipes</h1>
 <% List<Stade> lesStades=listeStade;%>
         <form method="get" action="AccesFederation">
             <fieldset>

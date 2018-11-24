@@ -9,29 +9,49 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu</title>
+        <title>Menu Federation</title>
     </head>
     <body>
-        <h1>Menu</h1>
+        <h1>Menu Federation</h1>
         <p>
             <% 
                 String attribut = (String) request.getAttribute("message");
                 out.println(attribut);
             %>
         </p>
+        <h2>Creer</h2>
         <table>
             <tr>
-                <td width="25%"> <a href="AccesFederation?action=CreerEquipes">Creer Equipes</a></td>
-                <td width="25%"> <a href="CreerArbitres.jsp">Creer Arbitres</a></td><br/>
-                <td width="25%"> <a href="CreerEntraineurs.jsp">Creer Entraineurs</a></td><br/>
-                <td width="25%"> <a href="CreerJouers.jsp">Creer Joeurs</a></td><br/>
-                <td width="25%"> <a href="CreerStade.jsp">Creer Stade</a></td><br/>
-                <td width="25%"> <a href="CreerChampionnat.jsp">Creer Championnat</a></td><br/>
-                <td width="25%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
-                <td width="25%"><a href="AccesArticle?action=afficherFautesMatch">Afficher Fautes par Match</a></td><br/>
-                <td width="25%"><a href="AccesArticle?action=rechercherJouer">Afficher Jouer</a></td><br/>
-                <td width="25%"><a href="AccesArticle?action=rechercherEntraineur">Afficher Entraineur</a></td><br/>
-                <td width="25%"><a href="AccesArticle?action=rechercherJouer">Afficher Jouer</a></td><br/>
+                <td width="10%"> <a href="AccesFederation?action=CreerEquipes">Creer Equipes</a></td>
+                <td width="10%"> <a href="CreerArbitres.jsp">Creer Arbitres</a></td>
+                <td width="10%"> <a href="CreerEntraineur.jsp">Creer Entraineurs</a></td>
+                <td width="10%"> <a href="CreerJouer.jsp">Creer Joeurs</a></td>
+                <td width="10%"> <a href="CreerStade.jsp">Creer Stade</a></td>
+                <td width="10%"> <a href="CreerChampionnat.jsp">Creer Championnat</a></td>
+                <td width="10%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
+            </tr>
+        </table>
+        <h2>Contrat</h2>
+        <table>
+            <tr>
+                <td width="50%"> <a href="AccesFederation?action=CreerContratEntraineur">Affecter Entraineur</a></td>
+                <td width="50%"> <a href="AccesFederation?action=CreerContratJouer">Affecter Jouer</a></td>
+            </tr>
+        </table>
+        <h2>Afficher</h2>
+        <table>
+            <tr>
+                <td width="25%"><a href="AccesArticle?action=afficherFautesMatch">Afficher Fautes par Match</a></td>
+                <td width="25%"><a href="AccesArticle?action=rechercherJouer">Afficher Jouer</a></td>
+                <td width="25%"><a href="AccesArticle?action=rechercherEntraineur">Afficher Entraineur</a></td>
+                <td width="25%"><a href="AccesArticle?action=rechercherArbitre">Afficher Arbitre</a></td>
+            </tr>
+        </table>
+        <h2>Out of game</h2>
+        <table>
+            <tr>
+                <td width="50%"> <a href="AccesFederation?action=CreerOutOfGame">Creer Out of game</a></td>
+                <td width="50%"> <a href="AccesFederation?action=afficherOutOfGame">Afficher Out of Game</a></td>
             </tr>
         </table>
     </body>

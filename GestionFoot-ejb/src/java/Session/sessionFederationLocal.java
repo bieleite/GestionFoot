@@ -7,10 +7,13 @@ package Session;
 
 import Entite.Arbitre;
 import Entite.Championnat;
+import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Fautes;
+import Entite.Jouer;
 import Entite.OutOfGame;
 import Entite.Stade;
+import Entite.Statut;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -24,13 +27,13 @@ public interface sessionFederationLocal {
 
     void CreerEntraineur(String log, String mdp, String nom, String pren, String log1, String mdp1);
 
-    void CreerContrantEntraineur(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin);
+    void CreerContratEntraineur(String log, String mdp,Statut status,double sal, long entr, long nom_equipe, Date dt_deb, Date dt_fin);
 
     void CreerJouer(String log, String mdp, String nom, String pren);
     
     void CreerChampionnat(String log, String mdp, String nom, Date date_deb, Date date_fin);
 
-    void CreerContratJouer(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin);
+    void CreerContratJouer(String log, String mdp,Statut status,double sal, long jouer, long equipe, Date dt_deb, Date dt_fin);
 
     void CreerMatch(String log, String mdp,Date date,long stade, long equipea,long equipeb,long arbitre,long cham);
     
@@ -57,6 +60,10 @@ public interface sessionFederationLocal {
     List<Arbitre> afficherArbitre();
     
     List<Championnat> afficherChampionnat();
+    
+    List<Entraineur> afficherEntraineur();
+    
+    List<Jouer> afficherJouer();
 
     void stadeParNum(Long id);
     

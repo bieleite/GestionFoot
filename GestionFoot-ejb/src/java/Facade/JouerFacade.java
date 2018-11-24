@@ -106,17 +106,17 @@ public class JouerFacade extends AbstractFacade<Jouer> implements JouerFacadeLoc
         }
         
         @Override
-        public void modifEquipe(String Nom, Equipe equi) { 
-            Jouer ent = null;
-            String txt = "SELECT ent FROM Jouer AS det WHERE ent.Nom=:nom";
+        public void modifEquipe(long Nom, Equipe equi) { 
+            Jouer jo = null;
+            String txt = "SELECT jo FROM Jouer AS jo WHERE jo.id=:nom";
             Query req = getEntityManager().createQuery(txt);
             req = req.setParameter("nom", Nom);
             List<Jouer> res = req.getResultList();
             if (res.size() >= 1)
             {
-                  ent = (Jouer) res.get(0);
-                  ent.setEquipe(equi);
-                  em.merge(ent);
+                  jo = (Jouer) res.get(0);
+                  jo.setEquipe(equi);
+                  em.merge(jo);
             }
         }
         

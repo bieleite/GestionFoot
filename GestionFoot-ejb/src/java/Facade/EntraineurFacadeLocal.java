@@ -39,7 +39,7 @@ public interface EntraineurFacadeLocal {
     
     Entraineur authentification(String login, String mdp);
     
-    void modifEquipe(String Nom, Equipe equi);
+    void modifEquipe(long id, Equipe equi);
     
     Entraineur rechercheEntraineurParNom(String nom);
 }

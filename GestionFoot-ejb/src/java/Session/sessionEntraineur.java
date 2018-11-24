@@ -109,7 +109,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     }
 
     @Override
-    public void transfererJouer(String log, String mdp,String status,double sal, String nom, Date dt_deb, Date dt_fin) {
+    public void transfererJouer(String log, String mdp,Statut status,double sal, long jouer, Date dt_deb, Date dt_fin) {
         /*
             Pour Transferer le jouer d'une equipe a l'autre, le method changé le status du ancien contrat vers Inactif
             et la date fin pour la date de debut du nouveaux contrat, au fin il modifie l'equipe du jouer pour l'equipe 
@@ -120,11 +120,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c!=null)
         {
-            if (status.contains("Actif") || status.contains("Ac"))
-               u = u.Ac;
-            else if (status.contains("Inactif")|| status.contains("In"))
-                u = u.In;
-            Jouer jo = jouerFacade.rechercheJouerParNom(nom);
+            Jouer jo = jouerFacade.rechercheJouer(jouer);
             Equipe equi = equipeFacade.rechercheEquipeParEntraineur(c);
             if(jo!=null){
                 Contrat_Jouer ac = contrat_JouerFacade.rechercheContrat_JouerParJouer(jo);
@@ -132,11 +128,11 @@ public class sessionEntraineur implements sessionEntraineurLocal {
                     contrat_JouerFacade.modifStatutInactif(jo,ac);
                     contrat_JouerFacade.modifDateFinContrat(jo, ac, dt_deb);
                     contrat_JouerFacade.CreerContrat_Jouer(u, sal, equi, jo, dt_fin, dt_deb);
-                    jouerFacade.modifEquipe(nom, equi);
+                    jouerFacade.modifEquipe(jouer, equi);
                 }
                 else{
                     contrat_JouerFacade.CreerContrat_Jouer(u, sal, equi, jo, dt_fin, dt_deb);
-                    jouerFacade.modifEquipe(nom, equi);
+                    jouerFacade.modifEquipe(jouer, equi);
                 }
                 
                 
@@ -167,7 +163,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     }
 
     @Override
-    public void affecterJouer(String log, String mdp,String nom,double sal, Date dt_deb, Date dt_fin) {
+    public void affecterJouer(String log, String mdp,long jouer,double sal, Date dt_deb, Date dt_fin) {
         /*
             Affecter le jouer sans equipe dans l'equipe du entraineur 
             Apres reflechir la vrai necessité de cette method
@@ -175,11 +171,11 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c!=null)
         {
-            Jouer jo = jouerFacade.rechercheJouerSansEquipeParNom(nom);
+            Jouer jo = jouerFacade.rechercheJouer(jouer);
             Equipe equi = equipeFacade.rechercheEquipeParEntraineur(c);
             if(jo!=null){
                     contrat_JouerFacade.CreerContrat_Jouer(Statut.Ac, sal, equi, jo, dt_fin, dt_deb);
-                    jouerFacade.modifEquipe(nom, equi);
+                    jouerFacade.modifEquipe(jouer, equi);
                 }
             else{
                 System.out.println("Jouer inexistant! ");

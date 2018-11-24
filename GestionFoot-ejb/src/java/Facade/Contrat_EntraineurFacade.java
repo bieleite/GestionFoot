@@ -38,7 +38,7 @@ public class Contrat_EntraineurFacade extends AbstractFacade<Contrat_Entraineur>
     @Override
     public void CreerContrat_Entraineur(Statut status,double salaire, Equipe equipe,Entraineur entraineur, Date dt_debut, Date dt_fin) {
         Contrat_Entraineur f = new Contrat_Entraineur();
-        f.setStatus(Statut.Ac);
+        f.setStatus(status);
         f.setSalaire(salaire);
         f.setEquipe(equipe);
         f.setEntraineur(entraineur);

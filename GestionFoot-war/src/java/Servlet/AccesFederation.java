@@ -7,8 +7,11 @@ package Servlet;
 
 import Entite.Arbitre;
 import Entite.Championnat;
+import Entite.Entraineur;
 import Entite.Equipe;
+import Entite.Jouer;
 import Entite.Stade;
+import Entite.Statut;
 import Session.sessionFederationLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -105,76 +108,33 @@ String jspClient=null;
                 jspClient="/ChoixF.jsp";
                 doActionInsererMatch(request,response);
             }
-//            else if(act.equals("insererV"))
-//            {
-//                jspClient="/Choix.jsp";
-//                doActionInsererV(request,response);
-//            }
-//            else if(act.equals("insererFr"))
-//            {
-//                jspClient="/Choix.jsp";
-//                doActionInsererFr(request,response);
-//            }
+            else if(act.equals("CreerContratEntraineur"))
+            {
+                List<Entraineur> lists= sessionFederation.afficherEntraineur();
+                request.setAttribute("listeEntraineur",lists);
+                List<Equipe> liste= sessionFederation.afficherEquipe();
+                request.setAttribute("listeEquipe",liste);
+                jspClient="/CreerContratEntraineur.jsp";
+            }
+            else if(act.equals("insereContratEntraineur"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererContratEntraineur(request,response);
+            }
+            else if(act.equals("CreerContratJouer"))
+            {
+                List<Jouer> lists= sessionFederation.afficherJouer();
+                request.setAttribute("listeJouer",lists);
+                List<Equipe> liste= sessionFederation.afficherEquipe();
+                request.setAttribute("listeEquipe",liste);
+                jspClient="/CreerContratJouer.jsp";
+            }
+            else if(act.equals("insereContratJouer"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererContratJouer(request,response);
+            }
 
-//            else if(act.equals("creerAFr"))
-//            {
-//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
-//                request.setAttribute("listefournisseur",list);
-//                jspClient="/CreerFraicheur.jsp";
-//
-//            
-//            }
-//            else if(act.equals("creerAFv"))
-//            {
-//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
-//                request.setAttribute("listefournisseur",list);
-//                jspClient="/CreerVetement.jsp";
-//
-//            
-//            }
-//            else if(act.equals("afficheF"))
-//            {
-//                jspClient="/AfficherFournisseur.jsp";
-//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
-//                request.setAttribute("listefournisseur",list);
-//                request.setAttribute("message","Liste des fournisseurs existants");
-//            }
-//            else if(act.equals("afficheAF"))
-//            {
-//                jspClient="/AfficherArticle.jsp";
-//                String ide= request.getParameter("fournisseurArticle");
-//                if(!ide.trim().isEmpty()){
-//                Long id = Long.valueOf(ide);
-//                List<Article> list= sessionArticle.AfficherArticleparFounisseur(id);
-//                request.setAttribute("listefournisseur",list);
-//                request.setAttribute("message","Liste des fournisseurs existants");
-//                }
-//            }
-//            else if(act.equals("rechercherAPF"))
-//            {
-//      
-//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
-//                request.setAttribute("listefournisseur",list);
-//                jspClient="/RechercheFournisseur.jsp";
-//            }
-//            else if(act.equals("afficheAP"))
-//            {
-//                jspClient="/AfficherPrixArticle.jsp";
-//                String ide= request.getParameter("fournisseurArticle");
-//                if(!ide.trim().isEmpty()){
-//                Long id = Long.valueOf(ide);
-//                double list= sessionArticle.AfficherSumArticleFourni(id);
-//                request.setAttribute("listefournisseur",list);
-//                request.setAttribute("message","Liste des fournisseurs existants");
-//                }
-//            }
-//            else if(act.equals("rechercherAPFP"))
-//            {
-//      
-//                List<Fournisseur> list= sessionFournisseur.afficherFournisseur();
-//                request.setAttribute("listefournisseur",list);
-//                jspClient="/RecFourPrix.jsp";
-//            }
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
         Rd.forward(request, response);
@@ -332,6 +292,60 @@ String jspClient=null;
             message= "Match créé avec succès !";
         }
         request.setAttribute("message", message);    
+    }
+    protected void doActionInsererContratEntraineur(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String equipe = request.getParameter("equipeContrat");
+        String salaire = request.getParameter("salaireContrat");
+        String datedeb = request.getParameter("datedebContrat");
+        String datefin = request.getParameter("datefinContrat");
+        String entraineur = request.getParameter("entraineurContrat");
+        String statut = request.getParameter("statutContrat");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||equipe.trim().isEmpty()||salaire.trim().isEmpty()||datedeb.trim().isEmpty()|| datefin.trim().isEmpty()|| entraineur.trim().isEmpty()|| statut.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerContratEntraineur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Contrat Entraineur.";
+        }
+        else {
+            Long eq = Long.valueOf(equipe);
+            Double sal = Double.valueOf(salaire);
+            Date db = Date.valueOf(datedeb);
+            Date df = Date.valueOf(datefin);
+            Long en = Long.valueOf(entraineur);
+            Statut stat = Statut.valueOf(statut);
+            sessionFederation.CreerContratEntraineur(login, pass, stat, sal, en, eq, db, df);
+            message= "Contrat entraineur créé avec succès !";
+        }
+        request.setAttribute("message", message);
+        
+    }
+    protected void doActionInsererContratJouer(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String equipe = request.getParameter("equipeContrat");
+        String salaire = request.getParameter("salaireContrat");
+        String datedeb = request.getParameter("datedebContrat");
+        String datefin = request.getParameter("datefinContrat");
+        String jouer = request.getParameter("jouerContrat");
+        String statut = request.getParameter("statutContrat");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||equipe.trim().isEmpty()||salaire.trim().isEmpty()||datedeb.trim().isEmpty()|| datefin.trim().isEmpty()|| jouer.trim().isEmpty()|| statut.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerContratEntraineur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Contrat jouer.";
+        }
+        else {
+            Long eq = Long.valueOf(equipe);
+            Double sal = Double.valueOf(salaire);
+            Date db = Date.valueOf(datedeb);
+            Date df = Date.valueOf(datefin);
+            Long jo = Long.valueOf(jouer);
+            Statut stat = Statut.valueOf(statut);
+            sessionFederation.CreerContratJouer(login, pass, stat, sal, jo, eq, db, df);
+            message= "Contrat jouer créé avec succès !";
+        }
+        request.setAttribute("message", message);
+        
     }
 //    protected void doActionInsererV(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
