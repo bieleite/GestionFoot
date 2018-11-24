@@ -67,7 +67,7 @@ public class sessionArbitre implements sessionArbitreLocal {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void creerFautes(String log, String mdp, String nom, Date dt_match, String carton) {
+    public void creerFautes(String log, String mdp, long jouer, Date dt_match, String carton) {
         /*
             Method pour creer des fautes d'une jouer
             Si la faute à comme carton: rouge , add le jouer dans la liste OutOfGame
@@ -84,7 +84,7 @@ public class sessionArbitre implements sessionArbitreLocal {
                 cart = cart.Non;
             Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);
             if(match!=null){
-                Jouer jo= jouerFacade.rechercheJouerParNom(nom);
+                Jouer jo= jouerFacade.rechercheJouer(jouer);
                 if(jo!=null){
                        fautesFacade.CreerFautes(cart, match, a, jo);
                         if(cart==cart.Rouge){

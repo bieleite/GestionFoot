@@ -36,4 +36,6 @@ public interface ChampionnatFacadeLocal {
     Championnat rechercheChampionnatParNom(String nom);
     
     List<Championnat> listChampionnat();
+    
+    Championnat rechercheArbitre(Long id);
 }

@@ -63,5 +63,18 @@ public class ChampionnatFacade extends AbstractFacade<Championnat> implements Ch
         List<Championnat> result=req.getResultList();
         return result;
     }
-
+    
+    @Override
+    public Championnat rechercheArbitre(Long id) {
+        Championnat f = null;        
+        String txt = "SELECT f FROM Championnat AS f WHERE f.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);  
+        List<Championnat> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              f = (Championnat) res.get(0);
+        }
+        return f;
+    }
 }

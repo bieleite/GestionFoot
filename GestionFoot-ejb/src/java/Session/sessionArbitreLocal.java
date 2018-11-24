@@ -17,7 +17,7 @@ public interface sessionArbitreLocal {
 
     void saisirResultat();
 
-    void creerFautes(String log, String mdp, String nom, Date dt_match, String carton);
+    void creerFautes(String log, String mdp, long jouer, Date dt_match, String carton);
 
     void creerButs(String log, String mdp, String nom, Date dt_match);
     

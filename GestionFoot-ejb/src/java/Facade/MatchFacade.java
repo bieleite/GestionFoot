@@ -55,7 +55,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public List<Matchs> listMatch() {
         List<Matchs> fo=null;
-        String txt="SELECT fo FROM Match AS fo ";
+        String txt="SELECT fo FROM Matchs AS fo ";
         Query req=getEntityManager().createQuery(txt);
         List<Matchs> result=req.getResultList();
         return result;
@@ -64,7 +64,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public Matchs rechercheMatch(Long id) {
         Matchs f = null;        
-        String txt = "SELECT f FROM Match AS f WHERE f.id=:id";
+        String txt = "SELECT f FROM Matchs AS f WHERE f.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("id", id);  
         List<Matchs> res = req.getResultList();
@@ -77,7 +77,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     
     @Override
     public List<Matchs> rechercheMatchStadeDate(Stade stad,Date dt) {
-        String txt = "SELECT mat FROM Match AS mat WHERE mat.Stade=:stad and mat.Date=:dt";
+        String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Stade=:stad and mat.Dt_Match=:dt";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("stad", stad);
         req = req.setParameter("dt", dt);
@@ -88,9 +88,9 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     
     @Override
     public List<Matchs> rechercheMatchArbitreDate(Arbitre arb,Date dt) {
-        String txt = "SELECT mat FROM Match AS mat WHERE mat.Arbitre=:arb and mat.Date=:dt";
+        String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Arbitre=:arb and mat.Dt_Match=:dt";
         Query req = getEntityManager().createQuery(txt);
-        req = req.setParameter("stad", arb);
+        req = req.setParameter("arb", arb);
         req = req.setParameter("dt", dt);
         List<Matchs> res = req.getResultList();
         return res;
@@ -100,7 +100,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public void modifCompositionAway(Composition Com, Equipe equi) { 
             Matchs ent = null;
-            String txt = "SELECT ent FROM Match AS det WHERE ent.Equipe=:nom";
+            String txt = "SELECT ent FROM Matchs AS det WHERE ent.Equipe=:nom";
             Query req = getEntityManager().createQuery(txt);
             req = req.setParameter("nom", equi);
             List<Matchs> res = req.getResultList();
@@ -114,7 +114,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public void modifCompositionHome(Composition Com, Equipe equi) { 
         Matchs ent = null;
-        String txt = "SELECT ent FROM Match AS det WHERE ent.Equipe=:nom";
+        String txt = "SELECT ent FROM Matchs AS det WHERE ent.Equipe=:nom";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("nom", equi);
         List<Matchs> res = req.getResultList();
@@ -129,7 +129,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public Matchs rechercheMatchParArbitreEtDate(Arbitre arb, Date dt_match) {
     Matchs f = null;        
-    String txt = "SELECT f FROM Match AS f WHERE f.Arbitre=:arb and f.Dt_Match=:dt";
+    String txt = "SELECT f FROM Matchs AS f WHERE f.Arbitre=:arb and f.Dt_Match=:dt";
     Query req = getEntityManager().createQuery(txt);
     req = req.setParameter("arb", arb);
     req = req.setParameter("dt", dt_match);
@@ -144,7 +144,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public Matchs rechercheMatchParDate(Date dt_match) {
     Matchs f = null;        
-    String txt = "SELECT f FROM Match AS f WHERE f.Dt_Match=:dt";
+    String txt = "SELECT f FROM Matchs AS f WHERE f.Dt_Match=:dt";
     Query req = getEntityManager().createQuery(txt);
     req = req.setParameter("dt", dt_match);
     List<Matchs> res = req.getResultList();
@@ -158,7 +158,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public void setResultat_Away(Arbitre arb, Date dt_match,Resultat resul) { 
         Matchs m=null;
-        String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
+        String txt = "SELECT m FROM Matchs AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("arb", arb);
         req = req.setParameter("dt", dt_match);
@@ -174,7 +174,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public void setResultat_Home(Arbitre arb, Date dt_match,Resultat resul) { 
         Matchs m=null;
-        String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
+        String txt = "SELECT m FROM Matchs AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("arb", arb);
         req = req.setParameter("dt", dt_match);
@@ -190,7 +190,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public void setScore_Away(Arbitre arb, Date dt_match,int buts) { 
         Matchs m=null;
-        String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
+        String txt = "SELECT m FROM Matchs AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("arb", arb);
         req = req.setParameter("dt", dt_match);
@@ -206,7 +206,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public void setScore_Home(Arbitre arb, Date dt_match,int buts) { 
         Matchs m=null;
-        String txt = "SELECT m FROM Match AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
+        String txt = "SELECT m FROM Matchs AS m WHERE m.Arbitre=:arb and m.Dt_Match=:dt ";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("arb", arb);
         req = req.setParameter("dt", dt_match);
@@ -221,7 +221,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
 
     @Override
     public List<Matchs> rechercheMatchEquipe_Away(Equipe eq,Date dt) {
-    String txt = "SELECT mat FROM Match AS mat WHERE mat.Equipe=:equi and mat.Date=:dt";
+    String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Equipe=:equi and mat.Dt_Match=:dt";
     Query req = getEntityManager().createQuery(txt);
     req = req.setParameter("equi", eq);
     req = req.setParameter("dt", dt);
@@ -231,7 +231,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
 
     @Override
     public List<Matchs> rechercheMatchEquipe_Home(Equipe eq,Date dt) {
-    String txt = "SELECT mat FROM Match AS mat WHERE mat.Equipe=:equi and mat.Date=:dt";
+    String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Equipe=:equi and mat.Dt_Match=:dt";
     Query req = getEntityManager().createQuery(txt);
     req = req.setParameter("equi", eq);
     req = req.setParameter("dt", dt);
@@ -240,11 +240,25 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
      }
         
     @Override
-    public Matchs rechercheProxMatchParDateEtNum(Date dt_match,int num) {
+    public Matchs rechercheProxMatchParIdEtNum(long id,int num) {
     Matchs f = null;        
-    String txt = "SELECT f FROM Match AS f WHERE f.Dt_Match=:dt";
+    String txt = "SELECT f FROM Matchs AS f WHERE f.id=:id";
     Query req = getEntityManager().createQuery(txt);
-    req = req.setParameter("dt", dt_match);
+    req = req.setParameter("id", id);
+    List<Matchs> res = req.getResultList();
+    if (res.size() >= 1)
+    {
+          f = (Matchs) res.get(num);
+    }
+    return f;
+    }
+    
+    @Override
+    public Matchs rechercheProxMatchParDateEtNum(Date dt,int num) {
+    Matchs f = null;        
+    String txt = "SELECT f FROM Matchs AS f WHERE f.Dt_Match=:dt";
+    Query req = getEntityManager().createQuery(txt);
+    req = req.setParameter("dt", dt);
     List<Matchs> res = req.getResultList();
     if (res.size() >= 1)
     {

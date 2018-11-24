@@ -68,5 +68,7 @@ public interface MatchFacadeLocal {
     
     List<Matchs> rechercheMatchEquipe_Away(Equipe eq,Date dt);
     
-    Matchs rechercheProxMatchParDateEtNum(Date dt_match,int num);
+    Matchs rechercheProxMatchParIdEtNum(long id,int num);
+    
+    Matchs rechercheProxMatchParDateEtNum(Date dt,int num);
 }

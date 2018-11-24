@@ -5,8 +5,10 @@
  */
 package Servlet;
 
+import Entite.Arbitre;
+import Entite.Championnat;
+import Entite.Equipe;
 import Entite.Stade;
-import Session.sessionArbitreLocal;
 import Session.sessionFederationLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -58,15 +60,50 @@ String jspClient=null;
             else if(act.equals("CreerEquipes"))
             {
                 List<Stade> list= sessionFederation.afficherStade();
-                request.setAttribute("listefournisseur",list);
+                request.setAttribute("listeStade",list);
                 jspClient="/CreerEquipes.jsp";
-
-            
             }
             else if(act.equals("insereEquipe"))
             {
                 jspClient="/ChoixF.jsp";
                 doActionInsererEquipe(request,response);
+            }
+            else if(act.equals("insereArbitre"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererArbitre(request,response);
+            }
+            else if(act.equals("insereEntraineur"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererEntraineur(request,response);
+            }
+            else if(act.equals("insereJouer"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererJouer(request,response);
+            }
+            else if(act.equals("insereChampionnat"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererChampionnat(request,response);
+            }
+            else if(act.equals("CreerMatchs"))
+            {
+                List<Stade> lists= sessionFederation.afficherStade();
+                request.setAttribute("listeStade",lists);
+                List<Equipe> liste= sessionFederation.afficherEquipe();
+                request.setAttribute("listeEquipe",liste);
+                List<Arbitre> lista= sessionFederation.afficherArbitre();
+                request.setAttribute("listeArbitre",lista);
+                List<Championnat> listc= sessionFederation.afficherChampionnat();
+                request.setAttribute("listeChampionnat",listc);
+                jspClient="/CreerMatch.jsp";
+            }
+            else if(act.equals("insereMatch"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererMatch(request,response);
             }
 //            else if(act.equals("insererV"))
 //            {
@@ -155,7 +192,7 @@ String jspClient=null;
             out.println("</html>");
         }
     }
-protected void doActionInsererStade(HttpServletRequest request, HttpServletResponse response)
+    protected void doActionInsererStade(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
@@ -194,6 +231,107 @@ protected void doActionInsererStade(HttpServletRequest request, HttpServletRespo
         }
         request.setAttribute("message", message);
         
+    }
+    protected void doActionInsererArbitre(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String nom = request.getParameter("nomArbitre");
+        String prenom = request.getParameter("nomArbitre");
+        String loginar = request.getParameter("loginArbitre");
+        String passar = request.getParameter("passArbitre");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()||prenom.trim().isEmpty()|| loginar.trim().isEmpty()|| passar.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerArbitre.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un arbitre.";
+        }
+        else {
+            sessionFederation.CreerArbitre(login, pass, nom, prenom, loginar, passar);
+            message= "Arbitre créé avec succès !";
+
+        }
+        request.setAttribute("message", message);
+        
+    }
+    protected void doActionInsererEntraineur(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String nom = request.getParameter("nomEntraineur");
+        String prenom = request.getParameter("prenomEntraineur");
+        String loginen = request.getParameter("loginEntraineur");
+        String passen = request.getParameter("passEntraineur");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()||prenom.trim().isEmpty()|| loginen.trim().isEmpty()|| passen.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerEntraineur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Entraineur.";
+        }
+        else {
+            sessionFederation.CreerEntraineur(login, pass, nom, prenom, login, passen);
+            message= "Entraineur créé avec succès !";
+
+        }
+        request.setAttribute("message", message);
+        
+    }
+    protected void doActionInsererJouer(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String nom = request.getParameter("nomJouer");
+        String prenom = request.getParameter("prenomJouer");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()||prenom.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerJouer.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Jouer.";
+        }
+        else {
+            sessionFederation.CreerJouer(login, pass, nom, prenom);
+            message= "Jouer créé avec succès !";
+        }
+        request.setAttribute("message", message);    
+    }
+    protected void doActionInsererChampionnat(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String nom = request.getParameter("nomChampionnat");
+        String date_deb = request.getParameter("dtdebChampionnat");
+        String date_fin = request.getParameter("dtfinChampionnat");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()||date_deb.trim().isEmpty()||date_fin.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerChampionnat.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Championnat.";
+        }
+        else {
+            Date dd = Date.valueOf(date_deb);
+            Date df = Date.valueOf(date_fin);
+            sessionFederation.CreerChampionnat(login, pass, nom, dd, df);
+            message= "Championnat créé avec succès !";
+        }
+        request.setAttribute("message", message);    
+    }
+    protected void doActionInsererMatch(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String date = request.getParameter("dateMatch");
+        String stade = request.getParameter("stadeMatch");
+        String equipeH = request.getParameter("equipeHMatch");
+        String equipeA = request.getParameter("equipeAMatch");
+        String arbitre = request.getParameter("arbitreMatch");
+        String championnat = request.getParameter("championnatMatch");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||date.trim().isEmpty()||stade.trim().isEmpty()||equipeH.trim().isEmpty()||equipeA.trim().isEmpty()||arbitre.trim().isEmpty()||championnat.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerMatch.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Match.";
+        }
+        else {
+            Date d = Date.valueOf(date);
+            Long st = Long.valueOf(stade);
+            Long eH = Long.valueOf(equipeH);
+            Long eA = Long.valueOf(equipeA);
+            Long ar = Long.valueOf(arbitre);
+            Long ch = Long.valueOf(championnat);
+            sessionFederation.CreerMatch(login, pass, d, st, eH, eA, ar, ch);
+            message= "Match créé avec succès !";
+        }
+        request.setAttribute("message", message);    
     }
 //    protected void doActionInsererV(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {

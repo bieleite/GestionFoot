@@ -135,6 +135,19 @@ public class sessionFederation implements sessionFederationLocal {
     }
 
     @Override
+    public void CreerChampionnat(String log, String mdp, String nom, Date date_deb, Date date_fin) {
+        /*
+        Creation d'une jouer
+        */
+        if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+            championnatFacade.CreerChampionnat(nom, date_fin, date_fin);
+        }
+        
+        else System.out.println("Vous n'avez pas les droits pour créer de Jouer ! ");
+    }
+    
+    @Override
     public void CreerContratJouer(String log, String mdp,String status,double sal, String nom, String nom_equipe, Date dt_deb, Date dt_fin) {
         /*
             Meme idée du creer contrat entraineur /\
@@ -162,7 +175,7 @@ public class sessionFederation implements sessionFederationLocal {
     }
 
     @Override
-    public void CreerMatch(String log, String mdp,Date date,String stade, String equipea,String equipeb,String arbitre,String cham) {
+    public void CreerMatch(String log, String mdp,Date date,long stade, long equipea,long equipeb,long arbitre,long cham) {
         /*
             Pour la creation d'une match on a besoin de rechercher une championnat d'ou participe cette match
             Après voir si le stade n'est pas ocuppe, il fait la meme chose pour l'arbitre , si tout est bon le match 
@@ -173,18 +186,18 @@ public class sessionFederation implements sessionFederationLocal {
         */
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            Championnat champ= championnatFacade.rechercheChampionnatParNom(cham);
+            Championnat champ= championnatFacade.rechercheArbitre(cham);
             if(champ!=null){
-            Stade sta =stadeFacade.rechercheStadeParNom(stade);
+            Stade sta =stadeFacade.rechercheStade(stade);
             List<Matchs> listeMatch = matchFacade.rechercheMatchStadeDate(sta, date);
             if (listeMatch.isEmpty())
             {
-                Equipe eqpa = equipeFacade.rechercheEquipeParNom(equipea);
-                Equipe eqpb = equipeFacade.rechercheEquipeParNom(equipeb);
+                Equipe eqpa = equipeFacade.rechercheEquipe(equipea);
+                Equipe eqpb = equipeFacade.rechercheEquipe(equipeb);
                 //Faire une verification pour l'equipe
                 if(eqpa!=null && eqpb!=null){
 
-                        Arbitre arb= arbitreFacade.rechercheArbitreParNom(arbitre);
+                        Arbitre arb= arbitreFacade.rechercheArbitre(arbitre);
                         List<Matchs> listeMatchA = matchFacade.rechercheMatchArbitreDate(arb, date);
                             if (listeMatchA.isEmpty())
                             {
@@ -307,10 +320,10 @@ public class sessionFederation implements sessionFederationLocal {
     }
 
     @Override
-    public void CreerOutOfGame(String log, String mdp,String nom,Date dt_deb,int num) {
+    public void CreerOutOfGame(String log, String mdp,long jouer,Date dt_deb,int num) {
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            Jouer jo= jouerFacade.rechercheJouerParNom(nom);
+            Jouer jo= jouerFacade.rechercheJouer(jouer);
             if(jo!=null){
                 Matchs ma = matchFacade.rechercheMatchParDate(dt_deb);
                 List<Fautes> liste = fautesFacade.rechercheFautesParJouerEtMatch(jo, ma);
@@ -344,7 +357,25 @@ public class sessionFederation implements sessionFederationLocal {
         List<Stade> liste = stadeFacade.listStade(); 
         return liste;
     }
+    
+    @Override
+    public List<Equipe> afficherEquipe() {
+        List<Equipe> liste = equipeFacade.listEquipe();
+        return liste;
+    }
 
+    @Override
+    public List<Arbitre> afficherArbitre() {
+        List<Arbitre> liste = arbitreFacade.listArbitre();
+        return liste;
+    }
+    
+    @Override
+    public List<Championnat> afficherChampionnat() {
+        List<Championnat> liste = championnatFacade.listChampionnat();
+        return liste;
+    }
+    
     @Override
     public void stadeParNum(Long id) {
         stadeFacade.rechercheStade(id);
