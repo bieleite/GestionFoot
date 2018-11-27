@@ -401,7 +401,7 @@ public class sessionFederation implements sessionFederationLocal {
                 Championnat champ=championnatFacade.find(championnat);
                 classementFacade.CreerClassement(champ, equi);
             }
-            
+            else System.out.println("Nao func");
         }
         
         else System.out.println("Vous n'avez pas les droits pour créer le classement ! ");

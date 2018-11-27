@@ -283,4 +283,13 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     }
     return f;
     }
+    
+    @Override
+    public List<Matchs> listMatchSansResultat() {
+        List<Matchs> fo=null;
+        String txt="SELECT fo FROM Matchs AS fo WHERE fo.Resultat_away=null and fo.Resultat_home=null";
+        Query req=getEntityManager().createQuery(txt);
+        List<Matchs> result=req.getResultList();
+        return result;
+    }
 }

@@ -23,7 +23,7 @@
             <tr>
                 <td width="25%"><a href="AccesArbitre?action=CreerButs">Creer Buts</a></td>
                 <td width="25%"><a href="AccesArbitre?action=CreerFautes">Creer Fautes</a></td>
-                <td width="25%"><a href="AccesArbitre?action=affecterResultat">Saisir Resultat</a></td>
+                <td width="25%"><a href="AccesArbitre?action=CalcularMatch">Saisir Resultat</a></td>
             </tr>
         </table>
         <table>

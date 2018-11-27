@@ -189,10 +189,11 @@ public class sessionArbitre implements sessionArbitreLocal {
         return liste;
     }
     @Override
-    public void calculerMatch(String log, String mdp,Matchs match) {
+    public void calculerMatch(String log, String mdp,Long id_match) {
         Arbitre a = arbitreFacade.authentification(log, mdp);
         if (a!=null)
-        {
+        {   
+            Matchs match=matchFacade.rechercheMatch(id_match);
             Date dt_match =match.getDate();
             if(match.getScore_Home()>match.getScore_Away()){
                 matchFacade.setResultat_Home(a, dt_match, Resultat.Winner);
@@ -216,5 +217,11 @@ public class sessionArbitre implements sessionArbitreLocal {
             }
         }
         
+    }
+    
+    @Override
+    public List<Matchs> afficherMatchSansResultat() {
+        List<Matchs> liste = matchFacade.listMatchSansResultat();
+        return liste;
     }
 }

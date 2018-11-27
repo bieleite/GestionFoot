@@ -73,6 +73,17 @@ public class AccesArbitre extends HttpServlet {
                 jspClient="/ChoixA.jsp";
                 doActionInsererFautes(request,response);
             }
+            else if(act.equals("CalcularMatch"))
+            {
+                List<Matchs> listMatch= sessionArbitre.afficherMatchSansResultat();
+                request.setAttribute("listeMatch",listMatch);
+                jspClient="/AffecterResultat.jsp";
+            }
+            else if(act.equals("insereResultat"))
+            {
+                jspClient="/ChoixA.jsp";
+                doActionCalculerMatch(request,response);
+            }
 
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -99,13 +110,13 @@ public class AccesArbitre extends HttpServlet {
         String match = request.getParameter("matchBut");
         String message;
         if(login.trim().isEmpty()|| pass.trim().isEmpty()||jouer.trim().isEmpty()|| match.trim().isEmpty()){
-            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerStade.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un stade.";
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerBut.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un stade.";
         }
         else {
             Long jo = Long.valueOf(jouer);
             Long ma = Long.valueOf(match);
             sessionArbitre.creerButs(login, pass, jo, ma);
-            message= "Stade créé avec succès !";
+            message= "But créé avec succès !";
             
         }
         request.setAttribute("message", message);
@@ -120,7 +131,7 @@ public class AccesArbitre extends HttpServlet {
         String carton = request.getParameter("cartonFaute");
         String message;
         if(login.trim().isEmpty()|| pass.trim().isEmpty()||jouer.trim().isEmpty()|| dt_match.trim().isEmpty()||carton.trim().isEmpty()){
-            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerEquipe.jsp\">Clique ici </a>pour accéder au formulaire de creation d'une Equipe.";
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerFaute.jsp\">Clique ici </a>pour accéder au formulaire de creation d'une Equipe.";
         }
         else {
 
@@ -128,7 +139,25 @@ public class AccesArbitre extends HttpServlet {
             Date d = Date.valueOf(dt_match);
             Carton cart = Carton.valueOf(carton);
             sessionArbitre.creerFautes(login, pass, jo, d, cart);
-            message= "Equipe créé avec succès !";
+            message= "Faute créé avec succès !";
+            
+        }
+        request.setAttribute("message", message);
+        
+    }
+    protected void doActionCalculerMatch(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String match = request.getParameter("match");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||match.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"AffecterResultat.jsp\">Clique ici </a>pour accéder au formulaire láffection d'une resultat";
+        }
+        else {
+            Long mat = Long.valueOf(match);
+            sessionArbitre.calculerMatch(login, pass,mat);
+            message= "Resultat calculé !";
             
         }
         request.setAttribute("message", message);

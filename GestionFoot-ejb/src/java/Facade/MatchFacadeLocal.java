@@ -73,4 +73,6 @@ public interface MatchFacadeLocal {
     Matchs rechercheProxMatchParDateEtNum(Date dt,int num);
     
     Matchs rechercheMatchArbitreEtId(Arbitre arb,long id);
+    
+    List<Matchs> listMatchSansResultat();
 }

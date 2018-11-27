@@ -29,5 +29,7 @@ public interface sessionArbitreLocal {
     
     List<Matchs> afficherMatch();
 
-    void calculerMatch(String log, String mdp,Matchs match);
+    void calculerMatch(String log, String mdp,Long id_match);
+    
+    List<Matchs> afficherMatchSansResultat();
 }

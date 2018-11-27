@@ -373,7 +373,7 @@ String jspClient=null;
         else {
             Long eq = Long.valueOf(equipe);
             Long ch = Long.valueOf(championnat);
-            sessionFederation.CreerClassement(login, pass, eq, ch);
+            sessionFederation.CreerClassement(login, pass, ch, eq);
             message= "Classement créé avec succès !";
         }
         request.setAttribute("message", message);
