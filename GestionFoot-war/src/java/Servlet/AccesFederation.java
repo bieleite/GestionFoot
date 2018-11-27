@@ -64,7 +64,7 @@ String jspClient=null;
             {
                 List<Stade> list= sessionFederation.afficherStade();
                 request.setAttribute("listeStade",list);
-                jspClient="/CreerEquipes.jsp";
+                jspClient="/Federation/CreerEquipes.jsp";
             }
             else if(act.equals("insereEquipe"))
             {
@@ -101,7 +101,7 @@ String jspClient=null;
                 request.setAttribute("listeArbitre",lista);
                 List<Championnat> listc= sessionFederation.afficherChampionnat();
                 request.setAttribute("listeChampionnat",listc);
-                jspClient="/CreerMatch.jsp";
+                jspClient="/Federation/CreerMatch.jsp";
             }
             else if(act.equals("insereMatch"))
             {
@@ -114,7 +114,7 @@ String jspClient=null;
                 request.setAttribute("listeEntraineur",lists);
                 List<Equipe> liste= sessionFederation.afficherEquipe();
                 request.setAttribute("listeEquipe",liste);
-                jspClient="/CreerContratEntraineur.jsp";
+                jspClient="/Federation/CreerContratEntraineur.jsp";
             }
             else if(act.equals("insereContratEntraineur"))
             {
@@ -127,7 +127,7 @@ String jspClient=null;
                 request.setAttribute("listeJouer",lists);
                 List<Equipe> liste= sessionFederation.afficherEquipe();
                 request.setAttribute("listeEquipe",liste);
-                jspClient="/CreerContratJouer.jsp";
+                jspClient="/Federation/CreerContratJouer.jsp";
             }
             else if(act.equals("insereContratJouer"))
             {
@@ -140,7 +140,7 @@ String jspClient=null;
                 request.setAttribute("listeChampionnat",lists);
                 List<Equipe> liste= sessionFederation.afficherEquipe();
                 request.setAttribute("listeEquipe",liste);
-                jspClient="/CreerClassement.jsp";
+                jspClient="/Federation/CreerClassement.jsp";
             }
             else if(act.equals("insereClassement"))
             {

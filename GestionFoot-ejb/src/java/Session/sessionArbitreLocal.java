@@ -21,7 +21,7 @@ public interface sessionArbitreLocal {
 
     void saisirResultat();
 
-    void creerFautes(String log, String mdp, long jouer, Date dt_match, Carton carton);
+    void creerFautes(String log, String mdp, long jouer, Long id_match, Carton carton);
 
     void creerButs(String log, String mdp, long jouer, Long mat);
     
@@ -32,4 +32,6 @@ public interface sessionArbitreLocal {
     void calculerMatch(String log, String mdp,Long id_match);
     
     List<Matchs> afficherMatchSansResultat();
+    
+    List<Matchs> afficherMatchSansAvantAuj();
 }

@@ -4,6 +4,7 @@
     Author     : gabrielleite
 --%>
 
+<%@page import="Entite.Matchs"%>
 <%@page import="Entite.Jouer"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,23 +12,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Creer Equipes</title>
+        <title>Creer Faute</title>
         <jsp:useBean id="listeJouer" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="listeMatch" scope="request" class="java.util.List"></jsp:useBean>
     </head>
 <body>
-        <h1>Creer Equipes</h1>
+        <h1>Creer Faute</h1>
 <% List<Jouer> lesJouer=listeJouer;%>
+<% List<Matchs> lesMatch=listeMatch;%>
         <form method="get" action="AccesArbitre">
             <fieldset>
-                <legend>Informations Equipe</legend>
+                <legend>Informations Faute</legend>
                 <label for="login"> Login<span class="requis">*</span></label>
                 <input type="text" name="login" value="" size="20" maxlength="20"/>
                 <br/>
                 <label for="pass"> Pass<span class="requis">*</span></label>
                 <input type="text" name="pass" value="" size="20" maxlength="20"/>
                 <br/>
-                <label for="dtFaute"> Date <span class="requis">*</span></label>
-                <input type="date" name="dtFaute" value="" size="80" maxlength="80"/>
+                <label for="matchFaute"> Match <span class="requis">*</span></label>
+                <select name="matchFaute">
+                    <% for (Matchs m:lesMatch){%>
+                    
+                    <option value="<%=m.getId()%>"><%=m.getInfo() %></option>
+                    <%}%>
+                </select>
                 <br/>
                 <label for="jouerFaute"> Jouer<span class="requis">*</span></label>
                 <select name="jouerFaute">

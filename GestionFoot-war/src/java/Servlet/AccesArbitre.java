@@ -55,7 +55,7 @@ public class AccesArbitre extends HttpServlet {
                 request.setAttribute("listeJouer",list);
                 List<Matchs> listMatch= sessionArbitre.afficherMatch();
                 request.setAttribute("listeMatch",listMatch);
-                jspClient="/CreerButs.jsp";
+                jspClient="/Arbitre/CreerButs.jsp";
             }
             else if(act.equals("insereButs"))
             {
@@ -66,7 +66,9 @@ public class AccesArbitre extends HttpServlet {
             {
                 List<Jouer> list= sessionArbitre.afficherJouer();
                 request.setAttribute("listeJouer",list);
-                jspClient="/CreerFaute.jsp";
+                List<Matchs> listMatch= sessionArbitre.afficherMatch();
+                request.setAttribute("listeMatch",listMatch);
+                jspClient="/Arbitre/CreerFaute.jsp";
             }
             else if(act.equals("insereFautes"))
             {
@@ -77,7 +79,7 @@ public class AccesArbitre extends HttpServlet {
             {
                 List<Matchs> listMatch= sessionArbitre.afficherMatchSansResultat();
                 request.setAttribute("listeMatch",listMatch);
-                jspClient="/AffecterResultat.jsp";
+                jspClient="/Arbitre/AffecterResultat.jsp";
             }
             else if(act.equals("insereResultat"))
             {
@@ -127,18 +129,18 @@ public class AccesArbitre extends HttpServlet {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
         String jouer = request.getParameter("jouerFaute");
-        String dt_match = request.getParameter("dtFaute");
+        String match = request.getParameter("matchFaute");
         String carton = request.getParameter("cartonFaute");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||jouer.trim().isEmpty()|| dt_match.trim().isEmpty()||carton.trim().isEmpty()){
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||jouer.trim().isEmpty()|| match.trim().isEmpty()||carton.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerFaute.jsp\">Clique ici </a>pour accéder au formulaire de creation d'une Equipe.";
         }
         else {
 
             Long jo = Long.valueOf(jouer);
-            Date d = Date.valueOf(dt_match);
+            Long mt = Long.valueOf(match);
             Carton cart = Carton.valueOf(carton);
-            sessionArbitre.creerFautes(login, pass, jo, d, cart);
+            sessionArbitre.creerFautes(login, pass, jo, mt, cart);
             message= "Faute créé avec succès !";
             
         }

@@ -68,7 +68,7 @@ public class sessionArbitre implements sessionArbitreLocal {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void creerFautes(String log, String mdp, long jouer, Date dt_match, Carton carton) {
+    public void creerFautes(String log, String mdp, long jouer, Long id_match, Carton carton) {
         /*
             Method pour creer des fautes d'une jouer
             Si la faute à comme carton: rouge , add le jouer dans la liste OutOfGame
@@ -76,15 +76,19 @@ public class sessionArbitre implements sessionArbitreLocal {
         Arbitre a = arbitreFacade.authentification(log, mdp);
         if (a!=null)
         {
-            Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);
+            Matchs match= matchFacade.rechercheMatchArbitreEtId(a, id_match);
             if(match!=null){
                 Jouer jo= jouerFacade.rechercheJouer(jouer);
                 if(jo!=null){
                        fautesFacade.CreerFautes(carton, match, a, jo);
                         if(carton==carton.Rouge){
+                            Date dt_match = match.getDate();
                             Matchs prox_match =matchFacade.rechercheProxMatchParDateEtNum(dt_match, 1);
+                            if(prox_match!=null){
                             Date dt_fin = prox_match.getDate();
                             outOfGameFacade.CreerOutOfGame(jo, dt_match, dt_fin);
+                            }
+                            else System.out.println("Pas de match prochain ");
                         }
                 }
                 else System.out.println("Jouer inexistant ");
@@ -222,6 +226,12 @@ public class sessionArbitre implements sessionArbitreLocal {
     @Override
     public List<Matchs> afficherMatchSansResultat() {
         List<Matchs> liste = matchFacade.listMatchSansResultat();
+        return liste;
+    }
+    
+    @Override
+    public List<Matchs> afficherMatchSansAvantAuj() {
+        List<Matchs> liste = matchFacade.listMatchSansAvantAuj();
         return liste;
     }
 }

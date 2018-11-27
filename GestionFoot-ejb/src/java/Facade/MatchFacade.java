@@ -273,7 +273,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public Matchs rechercheProxMatchParDateEtNum(Date dt,int num) {
     Matchs f = null;        
-    String txt = "SELECT f FROM Matchs AS f WHERE f.Dt_Match=:dt";
+    String txt = "SELECT f FROM Matchs AS f WHERE f.Dt_Match>=:dt";
     Query req = getEntityManager().createQuery(txt);
     req = req.setParameter("dt", dt);
     List<Matchs> res = req.getResultList();
@@ -288,6 +288,15 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     public List<Matchs> listMatchSansResultat() {
         List<Matchs> fo=null;
         String txt="SELECT fo FROM Matchs AS fo WHERE fo.Resultat_away=null and fo.Resultat_home=null";
+        Query req=getEntityManager().createQuery(txt);
+        List<Matchs> result=req.getResultList();
+        return result;
+    }
+    
+    @Override
+    public List<Matchs> listMatchSansAvantAuj() {
+        List<Matchs> fo=null;
+        String txt="SELECT fo FROM Matchs AS fo WHERE fo.Dt_Match>=getDate()";
         Query req=getEntityManager().createQuery(txt);
         List<Matchs> result=req.getResultList();
         return result;
