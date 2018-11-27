@@ -130,6 +130,26 @@ public class Matchs implements Serializable {
         this.Score_Home = Score_Home;
     }
 
+    private Date heure;
+
+    /**
+     * Get the value of heure
+     *
+     * @return the value of heure
+     */
+    public Date getHeure() {
+        return heure;
+    }
+
+    /**
+     * Set the value of heure
+     *
+     * @param heure new value of heure
+     */
+    public void setHeure(Date heure) {
+        this.heure = heure;
+    }
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date Dt_Match;
 

@@ -7,6 +7,7 @@ package Session;
 
 import Entite.Carton;
 import Entite.Jouer;
+import Entite.Matchs;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -25,4 +26,6 @@ public interface sessionArbitreLocal {
     void creerButs(String log, String mdp, long jouer, Date dt_match);
     
     List<Jouer> afficherJouer();
+
+    void calculerMatch(String log, String mdp,Matchs match);
 }

@@ -10,6 +10,7 @@ import Entite.Buts;
 import Entite.Carton;
 import Entite.Equipe;
 import Entite.Fautes;
+import static Entite.Fautes_.Match;
 import Entite.Jouer;
 import Entite.Matchs;
 import Entite.Resultat;
@@ -179,5 +180,35 @@ public class sessionArbitre implements sessionArbitreLocal {
     public List<Jouer> afficherJouer() {
         List<Jouer> liste = jouerFacade.listJouer();
         return liste;
+    }
+
+    @Override
+    public void calculerMatch(String log, String mdp,Matchs match) {
+        Arbitre a = arbitreFacade.authentification(log, mdp);
+        if (a!=null)
+        {
+            Date dt_match =match.getDate();
+            if(match.getScore_Home()>match.getScore_Away()){
+                matchFacade.setResultat_Home(a, dt_match, Resultat.Winner);
+                Equipe eh = match.getEquipe_Home();
+                classementFacade.setPointsParEquipeGagnant(eh);
+                matchFacade.setResultat_Away(a, dt_match, Resultat.Loser);
+            }
+            else if(match.getScore_Home()<match.getScore_Away()){
+                matchFacade.setResultat_Home(a, dt_match, Resultat.Loser);
+                matchFacade.setResultat_Away(a, dt_match, Resultat.Winner);
+                Equipe ea =match.getEquipe_Away();
+                classementFacade.setPointsParEquipeGagnant(ea);
+            }
+            else if(match.getScore_Home()==match.getScore_Away()){
+                matchFacade.setResultat_Home(a, dt_match, Resultat.Nulle);
+                Equipe eh = match.getEquipe_Home();
+                classementFacade.setPointsParEquipeNulle(eh);
+                matchFacade.setResultat_Away(a, dt_match, Resultat.Nulle);
+                Equipe ea =match.getEquipe_Away();
+                classementFacade.setPointsParEquipeNulle(ea);
+            }
+        }
+        
     }
 }
