@@ -5,10 +5,8 @@
  */
 package Servlet;
 
-import Session.sessionArbitreLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gabrielleite
  */
-@WebServlet(name = "AccessArbitre", urlPatterns = {"/AccessArbitre"})
-public class AccessArbitre extends HttpServlet {
-
-    @EJB
-    private sessionArbitreLocal sessionArbitre;
+@WebServlet(name = "Menu", urlPatterns = {"/Menu"})
+public class Menu extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +37,13 @@ public class AccessArbitre extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AccessArbitre</title>");            
+            out.println("<title>Servlet Menu</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AccessArbitre at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Menu at " + request.getContextPath() + "</h1>");
+            out.println("<a href='AccesArbitre'>Arbitre</a>");
+            out.println("<a href='AccesEntraineur'>Entraineur</a>");
+            out.println("<a href='AccesFederation'>Federation</a>");
             out.println("</body>");
             out.println("</html>");
         }

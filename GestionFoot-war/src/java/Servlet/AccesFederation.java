@@ -134,6 +134,19 @@ String jspClient=null;
                 jspClient="/ChoixF.jsp";
                 doActionInsererContratJouer(request,response);
             }
+            else if(act.equals("CreerClassement"))
+            {
+                List<Championnat> lists= sessionFederation.afficherChampionnat();
+                request.setAttribute("listeChampionnat",lists);
+                List<Equipe> liste= sessionFederation.afficherEquipe();
+                request.setAttribute("listeEquipe",liste);
+                jspClient="/CreerClassement.jsp";
+            }
+            else if(act.equals("insereClassement"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererClassement(request,response);
+            }
 
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -343,6 +356,25 @@ String jspClient=null;
             Statut stat = Statut.valueOf(statut);
             sessionFederation.CreerContratJouer(login, pass, stat, sal, jo, eq, db, df);
             message= "Contrat jouer créé avec succès !";
+        }
+        request.setAttribute("message", message);
+        
+    }
+    protected void doActionInsererClassement(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String equipe = request.getParameter("equipeClassement");
+        String championnat = request.getParameter("championnatClassement");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||equipe.trim().isEmpty()||championnat.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerClassement.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Classement.";
+        }
+        else {
+            Long eq = Long.valueOf(equipe);
+            Long ch = Long.valueOf(championnat);
+            sessionFederation.CreerClassement(login, pass, eq, ch);
+            message= "Classement créé avec succès !";
         }
         request.setAttribute("message", message);
         

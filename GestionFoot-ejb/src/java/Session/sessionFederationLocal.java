@@ -66,5 +66,7 @@ public interface sessionFederationLocal {
     List<Jouer> afficherJouer();
 
     void stadeParNum(Long id);
+
+    void CreerClassement(String log, String mdp,long championnat, long equipe);
     
 }

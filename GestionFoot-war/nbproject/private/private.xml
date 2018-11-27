@@ -6,7 +6,10 @@
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/AfficherFautesParMatch.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixA.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesEntraineur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/Menu.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerStade.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerButs.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerFaute.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerChampionnat.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesFederation.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerContratEntraineur.jsp</file>
@@ -15,10 +18,11 @@
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerMatch.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixE.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixV.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerClassement.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerEquipes.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerContratJouer.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerJouer.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccessArbitre.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesArbitre.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/CreerEntraineur.jsp</file>
         </group>
     </open-files>

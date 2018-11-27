@@ -31,5 +31,10 @@
                 <td width="25%"><a href="AccesArticle?action=rechercherAPFP">Afficher Prix Article</a></td>
             </tr>
         </table>
+        <table>
+            <tr>
+                <td width="25%"><a href="/GestionFoot-war/Menu">Retour</a></td>
+            </tr>
+        </table>
     </body>
 </html>

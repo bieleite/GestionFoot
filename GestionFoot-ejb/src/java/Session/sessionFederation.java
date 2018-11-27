@@ -17,6 +17,7 @@ import Entite.Stade;
 import Entite.Statut;
 import Facade.ArbitreFacadeLocal;
 import Facade.ChampionnatFacadeLocal;
+import Facade.ClassementFacadeLocal;
 import Facade.Contrat_EntraineurFacadeLocal;
 import Facade.Contrat_JouerFacadeLocal;
 import Facade.EntraineurFacadeLocal;
@@ -38,6 +39,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class sessionFederation implements sessionFederationLocal {
+
+    @EJB
+    private ClassementFacadeLocal classementFacade;
 
     @EJB
     private OutOfGameFacadeLocal outOfGameFacade;
@@ -152,10 +156,10 @@ public class sessionFederation implements sessionFederationLocal {
             Statut u=null;
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            Jouer ent = jouerFacade.rechercheJouer(equipe);
+            Jouer jo = jouerFacade.rechercheJouer(jouer);
             Equipe equi = equipeFacade.rechercheEquipe(equipe);
-            if(ent!=null && equi!=null){
-                contrat_JouerFacade.CreerContrat_Jouer(u, sal, equi, ent, dt_fin, dt_deb);
+            if(jo!=null && equi!=null){
+                contrat_JouerFacade.CreerContrat_Jouer(status, sal, equi, jo, dt_fin, dt_deb);
                 jouerFacade.modifEquipe(jouer, equi);
             }
             else{
@@ -383,6 +387,24 @@ public class sessionFederation implements sessionFederationLocal {
     @Override
     public void stadeParNum(Long id) {
         stadeFacade.rechercheStade(id);
+    }
+
+    @Override
+    public void CreerClassement(String log, String mdp,long championnat, long equipe) {
+        /*
+        Affecter une equipe dans une championnat
+        */
+        if ((log.contains("admin")) && (mdp.contains("admin")))
+        {
+            Equipe equi = equipeFacade.rechercheEquipe(equipe);
+            if(equi!=null){
+                Championnat champ=championnatFacade.find(championnat);
+                classementFacade.CreerClassement(champ, equi);
+            }
+            
+        }
+        
+        else System.out.println("Vous n'avez pas les droits pour créer le classement ! ");
     }
     
 }

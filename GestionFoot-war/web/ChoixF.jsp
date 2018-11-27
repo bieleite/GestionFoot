@@ -28,6 +28,7 @@
                 <td width="10%"> <a href="CreerJouer.jsp">Creer Joeurs</a></td>
                 <td width="10%"> <a href="CreerStade.jsp">Creer Stade</a></td>
                 <td width="10%"> <a href="CreerChampionnat.jsp">Creer Championnat</a></td>
+                <td width="10%"> <a href="AccesFederation?action=CreerClassement">Affecter une equipe a une championnat</a></td>
                 <td width="10%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
             </tr>
         </table>
@@ -52,6 +53,11 @@
             <tr>
                 <td width="50%"> <a href="AccesFederation?action=CreerOutOfGame">Creer Out of game</a></td>
                 <td width="50%"> <a href="AccesFederation?action=afficherOutOfGame">Afficher Out of Game</a></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td width="25%"><a href="/GestionFoot-war/Menu">Retour</a></td>
             </tr>
         </table>
     </body>

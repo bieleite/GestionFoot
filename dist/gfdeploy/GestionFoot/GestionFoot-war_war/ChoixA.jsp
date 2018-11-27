@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu</title>
+        <title>Menu Arbitre</title>
     </head>
     <body>
-        <h1>Menu</h1>
+        <h1>Menu Arbitre</h1>
         <p>
             <% 
                 String attribut = (String) request.getAttribute("message");
@@ -21,14 +21,14 @@
         </p>
         <table>
             <tr>
-                <td width="25%"> <a href="CreerFounisseur.jsp">Creer Fournisseur</a></td>
-                <!--<td width="25%"><a href="CreerA.jsp">Creer Article</a></td>-->
-                <td width="25%"><a href="AccesArticle?action=creerAF">Creer Article</a></td>
-                <td width="25%"><a href="AccesArticle?action=creerAFr">Creer Fraicheur</a></td>
-                <td width="25%"><a href="AccesArticle?action=creerAFv">Creer Vetement</a></td>
-                <td width="25%"><a href="AccesArticle?action=afficheF">Afficher Fournisseur</a></td>
-                <td width="25%"><a href="AccesArticle?action=rechercherAPF">Afficher Article</a></td>
-                <td width="25%"><a href="AccesArticle?action=rechercherAPFP">Afficher Prix Article</a></td>
+                <td width="25%"><a href="AccesArbitre?action=CreerButs">Creer Buts</a></td>
+                <td width="25%"><a href="AccesArbitre?action=CreerFautes">Creer Fautes</a></td>
+                <td width="25%"><a href="AccesArbitre?action=affecterResultat">Saisir Resultat</a></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td width="25%"><a href="/GestionFoot-war/Menu">Retour</a></td>
             </tr>
         </table>
     </body>

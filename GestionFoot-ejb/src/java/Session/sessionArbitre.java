@@ -67,27 +67,20 @@ public class sessionArbitre implements sessionArbitreLocal {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void creerFautes(String log, String mdp, long jouer, Date dt_match, String carton) {
+    public void creerFautes(String log, String mdp, long jouer, Date dt_match, Carton carton) {
         /*
             Method pour creer des fautes d'une jouer
             Si la faute à comme carton: rouge , add le jouer dans la liste OutOfGame
         */
-        Carton cart =null;
         Arbitre a = arbitreFacade.authentification(log, mdp);
         if (a!=null)
         {
-            if (carton.contains("Rouge") || carton.contains("Rouge"))
-               cart = cart.Rouge;
-            else if (carton.contains("Jaune")|| carton.contains("Jaune"))
-                cart = cart.Jaune;
-            else if (carton.contains("Non")|| carton.contains("Non"))
-                cart = cart.Non;
             Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);
             if(match!=null){
                 Jouer jo= jouerFacade.rechercheJouer(jouer);
                 if(jo!=null){
-                       fautesFacade.CreerFautes(cart, match, a, jo);
-                        if(cart==cart.Rouge){
+                       fautesFacade.CreerFautes(carton, match, a, jo);
+                        if(carton==carton.Rouge){
                             Matchs prox_match =matchFacade.rechercheProxMatchParDateEtNum(dt_match, 1);
                             Date dt_fin = prox_match.getDate();
                             outOfGameFacade.CreerOutOfGame(jo, dt_match, dt_fin);
@@ -103,7 +96,7 @@ public class sessionArbitre implements sessionArbitreLocal {
     }
 
     @Override
-    public void creerButs(String log, String mdp, String nom, Date dt_match) {
+    public void creerButs(String log, String mdp, long jouer, Date dt_match) {
         /*
             Method pour creer des buts et au meme moment calculer le resultat du match
             Apres ajouter dans le classement les points
@@ -111,9 +104,9 @@ public class sessionArbitre implements sessionArbitreLocal {
         Arbitre a = arbitreFacade.authentification(log, mdp);
         if (a!=null)
         {
-            Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);
+            Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);//mudar para long e validar a participacao do jogador na partida
             if(match!=null){
-                Jouer jo= jouerFacade.rechercheJouerParNom(nom);
+                Jouer jo= jouerFacade.rechercheJouer(jouer);
                 if(jo!=null){
                     Equipe equipe = equipeFacade.rechercheEquipeParJouer(jo);
                     butsFacade.CreerButs(equipe, jo, match);
@@ -180,5 +173,11 @@ public class sessionArbitre implements sessionArbitreLocal {
             else System.out.println("Pas de match pour la date ");
         }
          else System.out.println("Vous n'avez pas les droits pour créer de buts ! ");
+    }
+    
+    @Override
+    public List<Jouer> afficherJouer() {
+        List<Jouer> liste = jouerFacade.listJouer();
+        return liste;
     }
 }
