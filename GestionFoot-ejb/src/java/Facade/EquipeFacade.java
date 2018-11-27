@@ -101,7 +101,7 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
         @Override
     public  Equipe rechercheEquipeParJouer(Jouer jo) {
         Equipe e = null;        
-        String txt = "SELECT e FROM Equipe AS e WHERE e.Jouer=:jo ";
+        String txt = "SELECT e FROM Equipe e, IN(e.jouers) AS jou WHERE jou.Equipe=:jo ";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("jo", jo);
         List<Equipe> res = req.getResultList();

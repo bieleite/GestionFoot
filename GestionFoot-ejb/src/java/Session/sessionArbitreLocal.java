@@ -23,9 +23,11 @@ public interface sessionArbitreLocal {
 
     void creerFautes(String log, String mdp, long jouer, Date dt_match, Carton carton);
 
-    void creerButs(String log, String mdp, long jouer, Date dt_match);
+    void creerButs(String log, String mdp, long jouer, Long mat);
     
     List<Jouer> afficherJouer();
+    
+    List<Matchs> afficherMatch();
 
     void calculerMatch(String log, String mdp,Matchs match);
 }

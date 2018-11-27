@@ -97,7 +97,7 @@ public class sessionArbitre implements sessionArbitreLocal {
     }
 
     @Override
-    public void creerButs(String log, String mdp, long jouer, Date dt_match) {
+    public void creerButs(String log, String mdp, long jouer, Long mat) {
         /*
             Method pour creer des buts et au meme moment calculer le resultat du match
             Apres ajouter dans le classement les points
@@ -105,13 +105,14 @@ public class sessionArbitre implements sessionArbitreLocal {
         Arbitre a = arbitreFacade.authentification(log, mdp);
         if (a!=null)
         {
-            Matchs match= matchFacade.rechercheMatchParArbitreEtDate(a, dt_match);//mudar para long e validar a participacao do jogador na partida
+            Matchs match= matchFacade.rechercheMatchArbitreEtId(a, mat);//mudar para long e validar a participacao do jogador na partida
             if(match!=null){
                 Jouer jo= jouerFacade.rechercheJouer(jouer);
                 if(jo!=null){
-                    Equipe equipe = equipeFacade.rechercheEquipeParJouer(jo);
+                    Equipe equipe = jo.getEquipe();
                     butsFacade.CreerButs(equipe, jo, match);
-                    int qtbuts= butsFacade.qntButsParEquipeEtMatch(equipe, match);
+                    int qtbuts= 1;
+                    Date dt_match= match.getDate();
                     List<Matchs> equipe_away = matchFacade.rechercheMatchEquipe_Away(equipe, dt_match);
                     if (equipe_away.isEmpty())
                     {
@@ -122,51 +123,51 @@ public class sessionArbitre implements sessionArbitreLocal {
                         }
                         else{
                             matchFacade.setScore_Home(a, dt_match, qtbuts);
-                            if(match.getScore_Home()>match.getScore_Away()){
-                                matchFacade.setResultat_Home(a, dt_match, Resultat.Winner);
-                                Equipe eh = match.getEquipe_Home();
-                                classementFacade.setPointsParEquipeGagnant(eh);
-                                matchFacade.setResultat_Away(a, dt_match, Resultat.Loser);
-                            }
-                            else if(match.getScore_Home()<match.getScore_Away()){
-                                matchFacade.setResultat_Home(a, dt_match, Resultat.Loser);
-                                matchFacade.setResultat_Away(a, dt_match, Resultat.Winner);
-                                Equipe ea =match.getEquipe_Away();
-                                classementFacade.setPointsParEquipeGagnant(ea);
-                            }
-                            else if(match.getScore_Home()==match.getScore_Away()){
-                                matchFacade.setResultat_Home(a, dt_match, Resultat.Nulle);
-                                Equipe eh = match.getEquipe_Home();
-                                classementFacade.setPointsParEquipeNulle(eh);
-                                matchFacade.setResultat_Away(a, dt_match, Resultat.Nulle);
-                                Equipe ea =match.getEquipe_Away();
-                                classementFacade.setPointsParEquipeNulle(ea);
-                            }
+//                            if(match.getScore_Home()>match.getScore_Away()){
+//                                matchFacade.setResultat_Home(a, dt_match, Resultat.Winner);
+//                                Equipe eh = match.getEquipe_Home();
+//                                classementFacade.setPointsParEquipeGagnant(eh);
+//                                matchFacade.setResultat_Away(a, dt_match, Resultat.Loser);
+//                            }
+//                            else if(match.getScore_Home()<match.getScore_Away()){
+//                                matchFacade.setResultat_Home(a, dt_match, Resultat.Loser);
+//                                matchFacade.setResultat_Away(a, dt_match, Resultat.Winner);
+//                                Equipe ea =match.getEquipe_Away();
+//                                classementFacade.setPointsParEquipeGagnant(ea);
+//                            }
+//                            else if(match.getScore_Home()==match.getScore_Away()){
+//                                matchFacade.setResultat_Home(a, dt_match, Resultat.Nulle);
+//                                Equipe eh = match.getEquipe_Home();
+//                                classementFacade.setPointsParEquipeNulle(eh);
+//                                matchFacade.setResultat_Away(a, dt_match, Resultat.Nulle);
+//                                Equipe ea =match.getEquipe_Away();
+//                                classementFacade.setPointsParEquipeNulle(ea);
+//                            }
                         }
                     }
                     else{
                         matchFacade.setScore_Away(a, dt_match, qtbuts);
-                        if(match.getScore_Home()>match.getScore_Away()){
-                            matchFacade.setResultat_Home(a, dt_match, Resultat.Winner);
-                            Equipe eh = match.getEquipe_Home();
-                            classementFacade.setPointsParEquipeGagnant(eh);
-                            matchFacade.setResultat_Away(a, dt_match, Resultat.Loser);
-                        }
-                        else if(match.getScore_Home()<match.getScore_Away()){
-                            matchFacade.setResultat_Home(a, dt_match, Resultat.Loser);
-                            matchFacade.setResultat_Away(a, dt_match, Resultat.Winner);
-                            Equipe ea =match.getEquipe_Away();
-                            classementFacade.setPointsParEquipeGagnant(ea);
-                        }
-                        else if(match.getScore_Home()==match.getScore_Away()){
-                            matchFacade.setResultat_Home(a, dt_match, Resultat.Nulle);
-                            Equipe eh = match.getEquipe_Home();
-                            classementFacade.setPointsParEquipeNulle(eh);
-                            matchFacade.setResultat_Away(a, dt_match, Resultat.Nulle);
-                            Equipe ea =match.getEquipe_Away();
-                            classementFacade.setPointsParEquipeNulle(ea);
+//                        if(match.getScore_Home()>match.getScore_Away()){
+//                            matchFacade.setResultat_Home(a, dt_match, Resultat.Winner);
+//                            Equipe eh = match.getEquipe_Home();
+//                            classementFacade.setPointsParEquipeGagnant(eh);
+//                            matchFacade.setResultat_Away(a, dt_match, Resultat.Loser);
+//                        }
+//                        else if(match.getScore_Home()<match.getScore_Away()){
+//                            matchFacade.setResultat_Home(a, dt_match, Resultat.Loser);
+//                            matchFacade.setResultat_Away(a, dt_match, Resultat.Winner);
+//                            Equipe ea =match.getEquipe_Away();
+//                            classementFacade.setPointsParEquipeGagnant(ea);
+//                        }
+//                        else if(match.getScore_Home()==match.getScore_Away()){
+//                            matchFacade.setResultat_Home(a, dt_match, Resultat.Nulle);
+//                            Equipe eh = match.getEquipe_Home();
+//                            classementFacade.setPointsParEquipeNulle(eh);
+//                            matchFacade.setResultat_Away(a, dt_match, Resultat.Nulle);
+//                            Equipe ea =match.getEquipe_Away();
+//                            classementFacade.setPointsParEquipeNulle(ea);
                             
-                        }
+//                        }
                     }
                 }
                 else System.out.println("Jouer inexistant ");
@@ -182,6 +183,11 @@ public class sessionArbitre implements sessionArbitreLocal {
         return liste;
     }
 
+    @Override
+    public List<Matchs> afficherMatch() {
+        List<Matchs> liste = matchFacade.listMatch();
+        return liste;
+    }
     @Override
     public void calculerMatch(String log, String mdp,Matchs match) {
         Arbitre a = arbitreFacade.authentification(log, mdp);

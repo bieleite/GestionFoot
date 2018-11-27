@@ -98,6 +98,23 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     }
     
     @Override
+    public Matchs rechercheMatchArbitreEtId(Arbitre arb,long id) {
+        Matchs mat = null;
+        String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Arbitre=:arb and mat.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("arb", arb);
+        req = req.setParameter("id", id);
+        List<Matchs> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              mat = (Matchs) res.get(0);
+        }
+        return mat;
+        }
+        
+    
+    
+    @Override
     public void modifCompositionAway(Composition Com, Equipe equi) { 
             Matchs ent = null;
             String txt = "SELECT ent FROM Matchs AS det WHERE ent.Equipe=:nom";
@@ -198,7 +215,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         if (res.size() >= 1)
         {
               m = (Matchs) res.get(0);
-              m.setScore_Away(buts);
+              m.setScore_Away(m.getScore_Away()+1);
               em.merge(m);
         }
     }
@@ -221,7 +238,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
 
     @Override
     public List<Matchs> rechercheMatchEquipe_Away(Equipe eq,Date dt) {
-    String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Equipe=:equi and mat.Dt_Match=:dt";
+    String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Equipe_Away=:equi and mat.Dt_Match=:dt";
     Query req = getEntityManager().createQuery(txt);
     req = req.setParameter("equi", eq);
     req = req.setParameter("dt", dt);
@@ -231,7 +248,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
 
     @Override
     public List<Matchs> rechercheMatchEquipe_Home(Equipe eq,Date dt) {
-    String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Equipe=:equi and mat.Dt_Match=:dt";
+    String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Equipe_Home=:equi and mat.Dt_Match=:dt";
     Query req = getEntityManager().createQuery(txt);
     req = req.setParameter("equi", eq);
     req = req.setParameter("dt", dt);

@@ -7,6 +7,7 @@ package Servlet;
 
 import Entite.Carton;
 import Entite.Jouer;
+import Entite.Matchs;
 import Session.sessionArbitreLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -52,6 +53,8 @@ public class AccesArbitre extends HttpServlet {
             {
                 List<Jouer> list= sessionArbitre.afficherJouer();
                 request.setAttribute("listeJouer",list);
+                List<Matchs> listMatch= sessionArbitre.afficherMatch();
+                request.setAttribute("listeMatch",listMatch);
                 jspClient="/CreerButs.jsp";
             }
             else if(act.equals("insereButs"))
@@ -93,15 +96,15 @@ public class AccesArbitre extends HttpServlet {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
         String jouer = request.getParameter("jouerBut");
-        String dt_match = request.getParameter("dtBut");
+        String match = request.getParameter("matchBut");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||jouer.trim().isEmpty()|| dt_match.trim().isEmpty()){
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||jouer.trim().isEmpty()|| match.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerStade.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un stade.";
         }
         else {
             Long jo = Long.valueOf(jouer);
-            Date d = Date.valueOf(dt_match);
-            sessionArbitre.creerButs(login, pass, jo, d);
+            Long ma = Long.valueOf(match);
+            sessionArbitre.creerButs(login, pass, jo, ma);
             message= "Stade créé avec succès !";
             
         }

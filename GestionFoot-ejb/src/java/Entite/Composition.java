@@ -68,6 +68,27 @@ public class Composition implements Serializable {
         this.Equipe = Equipe;
     }
 
+        private List<Jouer> test;
+
+    /**
+     * Get the value of test
+     *
+     * @return the value of test
+     */
+    public List getTest() {
+        return test;
+    }
+
+    /**
+     * Set the value of test
+     *
+     * @param test new value of test
+     */
+    public void setTest(List test) {
+        this.test = test;
+    }
+
+    
     @ManyToOne
     private Jouer Joeur;
 

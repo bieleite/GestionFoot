@@ -14,11 +14,10 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-11-27T11:07:38")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-11-27T14:15:31")
 @StaticMetamodel(Matchs.class)
 public class Matchs_ { 
 
-    public static volatile SingularAttribute<Matchs, Date> heure;
     public static volatile ListAttribute<Matchs, Fautes> fautess;
     public static volatile SingularAttribute<Matchs, Composition> Composition_Home;
     public static volatile SingularAttribute<Matchs, Resultat> Resultat_away;

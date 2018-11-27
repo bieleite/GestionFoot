@@ -71,4 +71,6 @@ public interface MatchFacadeLocal {
     Matchs rechercheProxMatchParIdEtNum(long id,int num);
     
     Matchs rechercheProxMatchParDateEtNum(Date dt,int num);
+    
+    Matchs rechercheMatchArbitreEtId(Arbitre arb,long id);
 }
