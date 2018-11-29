@@ -13,10 +13,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listefournisseur" scope="request" class="java.util.List"></jsp:useBean>
-        <title>Article</title>
+        <title>Afficher Fautes</title>
     </head>
     <body>
-        <h1>Afficher Article</h1>
+        <h1>Afficher Fautes</h1>
         <p><% 
             String attribut = (String) request.getAttribute("message");
             out.println(attribut);

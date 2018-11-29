@@ -117,7 +117,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public void modifCompositionAway(Composition Com, Equipe equi) { 
             Matchs ent = null;
-            String txt = "SELECT ent FROM Matchs AS det WHERE ent.Equipe=:nom";
+            String txt = "SELECT ent FROM Matchs AS ent WHERE ent.Equipe_Away=:nom";
             Query req = getEntityManager().createQuery(txt);
             req = req.setParameter("nom", equi);
             List<Matchs> res = req.getResultList();
@@ -131,7 +131,7 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     @Override
     public void modifCompositionHome(Composition Com, Equipe equi) { 
         Matchs ent = null;
-        String txt = "SELECT ent FROM Matchs AS det WHERE ent.Equipe=:nom";
+        String txt = "SELECT ent FROM Matchs AS ent WHERE ent.Equipe_Home=:nom";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("nom", equi);
         List<Matchs> res = req.getResultList();

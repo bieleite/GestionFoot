@@ -34,7 +34,7 @@ public interface CompositionFacadeLocal {
 
     int count();
     
-    void CreerComposition(Date dt_comp,Equipe equipe, Jouer jouer);
+    void CreerComposition(Date dt_comp,Equipe equipe, List<Jouer> jouers);
     
     List<Composition> listComposition();
 

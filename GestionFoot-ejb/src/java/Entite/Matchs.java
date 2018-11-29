@@ -6,6 +6,7 @@
 package Entite;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -216,7 +217,8 @@ public class Matchs implements Serializable {
         this.Arbitre = Arbitre;
     }
 public String getInfo() {
-    String a = Dt_Match.toString()+" "+Equipe_Home.getNom_Equipe() +" vs "+ Equipe_Away.getNom_Equipe();
+    DateFormat dfm = DateFormat.getDateInstance(DateFormat.MEDIUM);
+    String a = dfm.format(Dt_Match)+" "+Equipe_Home.getNom_Equipe() +" vs "+ Equipe_Away.getNom_Equipe();
         return a;
     }
     @ManyToOne

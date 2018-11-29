@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -25,6 +26,14 @@ public class Composition implements Serializable {
 
     @OneToMany(mappedBy = "Composition_Away")
     private List<Matchs> matchs;
+
+    public List<Matchs> getMatchs() {
+        return matchs;
+    }
+
+    public void setMatchs(List<Matchs> matchs) {
+        this.matchs = matchs;
+    }
 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date Date_Comp;
@@ -67,48 +76,38 @@ public class Composition implements Serializable {
     public void setEquipe(Equipe Equipe) {
         this.Equipe = Equipe;
     }
-
-        private List<Jouer> test;
-
-    /**
-     * Get the value of test
-     *
-     * @return the value of test
-     */
-    public List getTest() {
-        return test;
-    }
-
-    /**
-     * Set the value of test
-     *
-     * @param test new value of test
-     */
-    public void setTest(List test) {
-        this.test = test;
-    }
-
     
-    @ManyToOne
-    private Jouer Joeur;
+    @ManyToMany
+    private List<Jouer> jouers;
 
-    /**
-     * Get the value of Joeur
-     *
-     * @return the value of Joeur
-     */
-    public Jouer getJoeur() {
-        return Joeur;
+    public List<Jouer> getJouers() {
+        return jouers;
     }
 
-    /**
-     * Set the value of Joeur
-     *
-     * @param Joeur new value of Joeur
-     */
-    public void setJoeur(Jouer Joeur) {
-        this.Joeur = Joeur;
+    public void setJouers(List<Jouer> jouers) {
+        this.jouers = jouers;
     }
+    
+//    @ManyToOne
+//    private Jouer Joeur;
+//
+//    /**
+//     * Get the value of Joeur
+//     *
+//     * @return the value of Joeur
+//     */
+//    public Jouer getJoeur() {
+//        return Joeur;
+//    }
+//
+//    /**
+//     * Set the value of Joeur
+//     *
+//     * @param Joeur new value of Joeur
+//     */
+//    public void setJoeur(Jouer Joeur) {
+//        this.Joeur = Joeur;
+//    }
 
     private static final long serialVersionUID = 1L;
     @Id

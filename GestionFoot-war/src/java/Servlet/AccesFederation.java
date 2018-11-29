@@ -9,6 +9,7 @@ import Entite.Arbitre;
 import Entite.Championnat;
 import Entite.Entraineur;
 import Entite.Equipe;
+import Entite.Fautes;
 import Entite.Jouer;
 import Entite.Stade;
 import Entite.Statut;
@@ -24,6 +25,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -48,9 +50,26 @@ public class AccesFederation extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-String jspClient=null;
-        String act=request.getParameter("action");
+            HttpSession sess= request.getSession(true);
+            String jspClient=null;
+            String act=request.getParameter("action");
             if((act==null)||(act.equals("vide")))
+            {
+                jspClient="/Federation/LoginF.jsp";
+            }
+            else if(act.equals("LoginFederation")){
+                String login = request.getParameter("loginFederation");
+                String pass = request.getParameter("passFederation");
+                if((login.contains("admin"))||(pass.contains("admin"))){
+                request.setAttribute("message","Bienvenue ! ");
+                sess.setAttribute("log", login);
+                sess.setAttribute("pas", pass);
+                jspClient="/ChoixF.jsp";   }
+                else{
+                     jspClient="/LoginF.jsp";
+                }
+            }
+            else if(act.equals("MenuFederation"))
             {
                 jspClient="/ChoixF.jsp";
                 request.setAttribute("message","pas d'information");
@@ -108,6 +127,26 @@ String jspClient=null;
                 jspClient="/ChoixF.jsp";
                 doActionInsererMatch(request,response);
             }
+            else if(act.equals("CreerArbitre"))
+            {
+                jspClient="/Federation/CreerArbitres.jsp";
+            }
+            else if(act.equals("CreerEntraineur"))
+            {
+                jspClient="/Federation/CreerEntraineur.jsp";
+            }
+            else if(act.equals("CreerJouer"))
+            {
+                jspClient="/Federation/CreerJouer.jsp";
+            }
+            else if(act.equals("CreerStade"))
+            {
+                jspClient="/Federation/CreerStade.jsp";
+            }
+            else if(act.equals("CreerChampionnat"))
+            {
+                jspClient="/Federation/CreerChampionnat.jsp";
+            }
             else if(act.equals("CreerContratEntraineur"))
             {
                 List<Entraineur> lists= sessionFederation.afficherEntraineur();
@@ -147,6 +186,18 @@ String jspClient=null;
                 jspClient="/ChoixF.jsp";
                 doActionInsererClassement(request,response);
             }
+            else if(act.equals("CreerOutOfGame"))
+            {
+                List<Fautes> listFautes= sessionFederation.afficherFautes();
+                request.setAttribute("listeFautes",listFautes);
+                jspClient="/Federation/CreerOutOfGame.jsp";
+            }
+            else if(act.equals("insereFautes"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionInsererFautes(request,response);
+            }
+            
 
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -199,7 +250,7 @@ String jspClient=null;
         else {
             Long id = Long.valueOf(stade);
             sessionFederation.CreerEquipe(login, pass, nom, adresse, id);
-            message= "Equipe créé avec succès !";
+            message= "Equipe "+nom+" créé avec succès !";
             
         }
         request.setAttribute("message", message);
@@ -219,7 +270,7 @@ String jspClient=null;
         }
         else {
             sessionFederation.CreerArbitre(login, pass, nom, prenom, loginar, passar);
-            message= "Arbitre créé avec succès !";
+            message= "Arbitre: "+nom+ " créé avec succès !";
 
         }
         request.setAttribute("message", message);
@@ -239,7 +290,7 @@ String jspClient=null;
         }
         else {
             sessionFederation.CreerEntraineur(login, pass, nom, prenom, login, passen);
-            message= "Entraineur créé avec succès !";
+            message= "Entraineur: "+nom+ " créé avec succès !";
 
         }
         request.setAttribute("message", message);
@@ -257,7 +308,7 @@ String jspClient=null;
         }
         else {
             sessionFederation.CreerJouer(login, pass, nom, prenom);
-            message= "Jouer créé avec succès !";
+            message= "Jouer: "+nom+ " créé avec succès !";
         }
         request.setAttribute("message", message);    
     }
@@ -276,7 +327,7 @@ String jspClient=null;
             Date dd = Date.valueOf(date_deb);
             Date df = Date.valueOf(date_fin);
             sessionFederation.CreerChampionnat(login, pass, nom, dd, df);
-            message= "Championnat créé avec succès !";
+            message= "Championnat: "+nom+ " créé avec succès !";
         }
         request.setAttribute("message", message);    
     }
@@ -302,7 +353,7 @@ String jspClient=null;
             Long ar = Long.valueOf(arbitre);
             Long ch = Long.valueOf(championnat);
             sessionFederation.CreerMatch(login, pass, d, st, eH, eA, ar, ch);
-            message= "Match créé avec succès !";
+            message= "Match entre : "+eH+" vs "+eA+ " créé avec succès !";
         }
         request.setAttribute("message", message);    
     }
@@ -375,6 +426,27 @@ String jspClient=null;
             Long ch = Long.valueOf(championnat);
             sessionFederation.CreerClassement(login, pass, ch, eq);
             message= "Classement créé avec succès !";
+        }
+        request.setAttribute("message", message);
+        
+    }
+    protected void doActionInsererFautes(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        String faute = request.getParameter("Faute");
+        String puni = request.getParameter("puni");
+        String message;
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()|| faute.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerFaute.jsp\">Clique ici </a>pour accéder au formulaire de creation d'une Equipe.";
+        }
+        else {
+
+            int pun = Integer.valueOf(puni);
+            Long fa = Long.valueOf(faute);
+            sessionFederation.CreerOutOfGame(login, pass, fa, pun);
+            message= "Faute créé avec succès !";
+            
         }
         request.setAttribute("message", message);
         

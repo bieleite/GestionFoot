@@ -11,6 +11,7 @@ import Entite.Contrat_Jouer;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
+import Entite.Matchs;
 import Entite.OutOfGame;
 import Entite.Statut;
 import Facade.CompositionFacadeLocal;
@@ -59,7 +60,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     private EntraineurFacadeLocal entraineurFacade;
 
     @Override
-    public void CreerComposition_Home(String log, String mdp, String nom,Date dt_comp) {
+    public void CreerComposition_Home(String log, String mdp, long match, List<Jouer> jouer) {
         /*
             Creer composition home, il faut voir si il y a le besoin d'ajouter une class pour la liste de jouer
         */
@@ -68,12 +69,22 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         {
             Contrat_Entraineur cc = contrat_EntraineurFacade.rechercheContrat_EntraineurParEntraineur(c);
             if(cc!=null){
-                Equipe e = equipeFacade.rechercheEquipeParEntraineur(c);
+                Equipe e = c.getEquipe();
                 if(e!=null){
-                    Jouer jouer=jouerFacade.rechercheJouerParNom(nom);
+//                    Jouer jouer=jouerFacade.rechercheJouerParNom(nom);
+                    Matchs mat = matchFacade.rechercheMatch(match);
+                    Equipe eh = mat.getEquipe_Home();
+                    Equipe ea = mat.getEquipe_Away();
+                    Date dt_comp= mat.getDate();
                      compositionFacade.CreerComposition(dt_comp,e, jouer);
                     Composition comp = compositionFacade.rechercheCompositionParEquipeEtDate(e, dt_comp);
-                     matchFacade.modifCompositionHome(comp, e);
+                    if(e==eh) {
+                        matchFacade.modifCompositionHome(comp, e);
+                    }
+                    else if(e==ea){
+                        matchFacade.modifCompositionHome(comp, e);
+                    }
+                    else System.out.println("Equipe non trouvé");
                 }
                
             }
@@ -84,7 +95,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     }
     
     @Override
-    public void CreerComposition_Away(String log, String mdp, String nom,Date dt_comp) {  
+    public void CreerComposition_Away(String log, String mdp, long match, List<Jouer> jouer) {  
         /*
             Creer composition away, il faut voir si il y a le besoin d'ajouter une class pour la liste de jouer
         */
@@ -95,7 +106,9 @@ public class sessionEntraineur implements sessionEntraineurLocal {
             if(cc!=null){
                 Equipe e = equipeFacade.rechercheEquipeParEntraineur(c);
                 if(e!=null){
-                    Jouer jouer=jouerFacade.rechercheJouerParNom(nom);
+//                Jouer jouer=jouerFacade.rechercheJouerParNom(nom);
+                    Matchs mat = matchFacade.rechercheMatch(match);
+                    Date dt_comp= mat.getDate();
                      compositionFacade.CreerComposition(dt_comp,e, jouer);
                      Composition comp = compositionFacade.rechercheCompositionParEquipeEtDate(e, dt_comp);
                      matchFacade.modifCompositionAway(comp, e);
@@ -172,7 +185,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         if (c!=null)
         {
             Jouer jo = jouerFacade.rechercheJouer(jouer);
-            Equipe equi = equipeFacade.rechercheEquipeParEntraineur(c);
+            Equipe equi = c.getEquipe();
             if(jo!=null){
                     contrat_JouerFacade.CreerContrat_Jouer(Statut.Ac, sal, equi, jo, dt_fin, dt_deb);
                     jouerFacade.modifEquipe(jouer, equi);
@@ -194,4 +207,46 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         liste = outOfGameFacade.listOutOfGameParDate(dtD, dtF);
         return liste;  
     }
+    
+//    @Override
+//    public List<Jouer> afficherJouerEquipe(String log, String mdp) {
+//        Entraineur en = entraineurFacade.authentification(log, mdp);
+//        if (en!=null)
+//        {
+//            Equipe e = en.getEquipe();
+//            List<Jouer> liste = jouerFacade.listJouerEquipe(e);
+//            return liste;
+//        }
+//    }
+    
+    @Override
+    public List<Jouer> afficherJouer() {
+        List<Jouer> liste = jouerFacade.listJouer();
+        return liste;
+    }
+    
+    @Override
+    public List<Matchs> afficherMatch() {
+        List<Matchs> liste = matchFacade.listMatch();
+        return liste;
+    }
+    
+    @Override
+    public Jouer rechercheJouer(long id) {
+        Jouer jo = jouerFacade.rechercheJouer(id);
+        return jo;
+    }
+    
+    @Override
+    public Matchs rechercheMatch(long id) {
+        Matchs ma = matchFacade.rechercheMatch(id);
+        return ma;
+    }
+    
+    @Override
+    public Entraineur authentification(String login ,String pass) {
+        Entraineur e = entraineurFacade.authentification(login, pass);
+        return e;
+    }
+    
 }

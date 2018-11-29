@@ -316,12 +316,14 @@ public class sessionFederation implements sessionFederationLocal {
     }
 
     @Override
-    public void CreerOutOfGame(String log, String mdp,long jouer,Date dt_deb,int num) {
+    public void CreerOutOfGame(String log, String mdp,long faute,int num) {
         if ((log.contains("admin")) && (mdp.contains("admin")))
         {
-            Jouer jo= jouerFacade.rechercheJouer(jouer);
+            Fautes f = fautesFacade.find(faute);
+            Jouer jo= f.getJoeur();
             if(jo!=null){
-                Matchs ma = matchFacade.rechercheMatchParDate(dt_deb);
+                Matchs ma = f.getMatch();
+                Date dt_deb= ma.getDate();
                 List<Fautes> liste = fautesFacade.rechercheFautesParJouerEtMatch(jo, ma);
                 if (!liste.isEmpty())
                 {   
@@ -381,6 +383,12 @@ public class sessionFederation implements sessionFederationLocal {
     @Override
     public List<Jouer> afficherJouer() {
         List<Jouer> liste = jouerFacade.listJouer();
+        return liste;
+    }
+    
+    @Override
+    public List<Fautes> afficherFautes() {
+        List<Fautes> liste = fautesFacade.listFautes();
         return liste;
     }
     

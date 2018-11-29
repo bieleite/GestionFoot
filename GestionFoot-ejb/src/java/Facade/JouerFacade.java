@@ -48,7 +48,17 @@ public class JouerFacade extends AbstractFacade<Jouer> implements JouerFacadeLoc
         List<Jouer> result=req.getResultList();
         return result;
     }
-
+    
+    @Override
+    public List<Jouer> listJouerEquipe(Equipe e) {
+        List<Jouer> fo=null;
+        String txt="SELECT fo FROM Jouer AS fo WHERE fo.Equipe=:eq ";
+        Query req=getEntityManager().createQuery(txt);
+        req = req.setParameter("eq", e);
+        List<Jouer> result=req.getResultList();
+        return result;
+    }
+ 
     @Override
     public Jouer rechercheJouer(Long id) {
         Jouer f = null;        

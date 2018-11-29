@@ -49,7 +49,7 @@ public interface sessionFederationLocal {
     
     List<Fautes> AfficherFautesParMatch(Date dt);
 
-    void CreerOutOfGame(String log, String mdp,long jouer,Date dt_deb,int num);
+    void CreerOutOfGame(String log, String mdp,long faute,int num);
     
     List<OutOfGame> AfficherOutOfGameParPeriode(String log, String mdp,Date dtD , Date dtF);
     
@@ -64,6 +64,8 @@ public interface sessionFederationLocal {
     List<Entraineur> afficherEntraineur();
     
     List<Jouer> afficherJouer();
+    
+    List<Fautes> afficherFautes();
 
     void stadeParNum(Long id);
 

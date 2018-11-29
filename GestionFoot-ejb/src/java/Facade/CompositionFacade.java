@@ -36,11 +36,11 @@ public class CompositionFacade extends AbstractFacade<Composition> implements Co
     }
     
         @Override
-    public void CreerComposition(Date dt_comp,Equipe equipe, Jouer jouer) {
+    public void CreerComposition(Date dt_comp,Equipe equipe, List<Jouer> jouers) {
         Composition f = new Composition();
         f.setDate_Comp(dt_comp);
         f.setEquipe(equipe);
-        f.setJoeur(jouer);
+        f.setJouers(jouers);
         em.persist(f);
     }
     

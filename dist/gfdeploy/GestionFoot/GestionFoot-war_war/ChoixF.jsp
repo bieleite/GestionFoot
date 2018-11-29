@@ -23,11 +23,11 @@
         <table>
             <tr>
                 <td width="10%"> <a href="AccesFederation?action=CreerEquipes">Creer Equipes</a></td>
-                <td width="10%"> <a href="/Federation/CreerArbitres.jsp">Creer Arbitres</a></td>
-                <td width="10%"> <a href="/Federation/CreerEntraineur.jsp">Creer Entraineurs</a></td>
-                <td width="10%"> <a href="/Federation/CreerJouer.jsp">Creer Joeurs</a></td>
-                <td width="10%"> <a href="/Federation/CreerStade.jsp">Creer Stade</a></td>
-                <td width="10%"> <a href="/Federation/CreerChampionnat.jsp">Creer Championnat</a></td>
+                <td width="10%"> <a href="AccesFederation?action=CreerArbitre">Creer Arbitres</a></td>
+                <td width="10%"> <a href="AccesFederation?action=CreerEntraineur">Creer Entraineurs</a></td>
+                <td width="10%"> <a href="AccesFederation?action=CreerJouer">Creer Joeurs</a></td>
+                <td width="10%"> <a href="AccesFederation?action=CreerStade">Creer Stade</a></td>
+                <td width="10%"> <a href="AccesFederation?action=CreerChampionnat">Creer Championnat</a></td>
                 <td width="10%"> <a href="AccesFederation?action=CreerClassement">Affecter une equipe a une championnat</a></td>
                 <td width="10%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
             </tr>

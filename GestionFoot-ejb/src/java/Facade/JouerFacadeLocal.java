@@ -34,6 +34,8 @@ public interface JouerFacadeLocal {
     void CreerJouer(String Nom, String Prenom);
     
     List<Jouer> listJouer();
+    
+    List<Jouer> listJouerEquipe(Equipe e);
 
     Jouer rechercheJouer(Long id);
     

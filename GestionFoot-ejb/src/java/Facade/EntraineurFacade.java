@@ -67,7 +67,7 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
        @Override
     public Entraineur authentification(String login, String mdp) {
         Entraineur result=null;
-        String txt="SELECT c FROM Entraineur AS c WHERE c.Login=:login and c.MotDePasse=:mdp";
+        String txt="SELECT c FROM Entraineur AS c WHERE c.Login=:login and c.Pass=:mdp";
         Query req=getEntityManager().createQuery(txt);
         req=req.setParameter("login",login);
         req=req.setParameter("mdp", mdp);
