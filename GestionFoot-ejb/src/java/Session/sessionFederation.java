@@ -303,12 +303,12 @@ public class sessionFederation implements sessionFederationLocal {
     }
     
     @Override
-    public List<Fautes> AfficherFautesParMatch(Date dt) {
+    public List<Fautes> AfficherFautesParMatch(long match) {
         /*
         Afficher les differents fautes commises pour les matches d'une date donnée
         */
         List<Fautes> liste = new ArrayList<Fautes>();
-        Matchs f= matchFacade.rechercheMatchParDate(dt);
+        Matchs f= matchFacade.rechercheMatch(match);
         if(f!=null){
             liste = fautesFacade.rechercheFautesParMatch(f);
         }

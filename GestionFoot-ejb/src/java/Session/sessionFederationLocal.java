@@ -51,7 +51,7 @@ public interface sessionFederationLocal {
     
     List<Fautes> AfficherFautesParArbitre(String nom, String prenom);
     
-    List<Fautes> AfficherFautesParMatch(Date dt);
+    List<Fautes> AfficherFautesParMatch(long match);
 
     void CreerOutOfGame(String log, String mdp,long faute,int num);
     

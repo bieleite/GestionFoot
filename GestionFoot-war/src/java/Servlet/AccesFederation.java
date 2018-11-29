@@ -279,6 +279,24 @@ public class AccesFederation extends HttpServlet {
                 request.setAttribute("listeClassement",list);
                 request.setAttribute("message","Classement existants");
             }
+            else if(act.equals("afficherMatch"))
+            {
+                jspClient="/Federation/Afficher/AfficherListMatch.jsp";
+                List<Matchs> list= sessionFederation.afficherMatch();
+                request.setAttribute("listeMatch",list);
+                request.setAttribute("message","Liste des match existants");
+            }
+            else if(act.equals("afficherFautesParMatch"))
+            {
+                jspClient="/Federation/Afficher/AfficherFautesParMatch.jsp";
+                String ide= request.getParameter("matchFaute");
+                if(!ide.trim().isEmpty()){
+                Long id = Long.valueOf(ide);
+                List<Fautes> list= sessionFederation.AfficherFautesParMatch(id);
+                request.setAttribute("listeFautesParMatch",list);
+                request.setAttribute("message","Liste des fautes par match");
+                }
+            }
 
 
         RequestDispatcher Rd;
@@ -533,45 +551,6 @@ public class AccesFederation extends HttpServlet {
         request.setAttribute("message", message);
         
     }
-//    protected void doActionInsererV(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        String designation = request.getParameter("designationVetement");
-//        String prix = request.getParameter("prixVetement");
-//        String idd = request.getParameter("fournisseurVetement");
-//        String coloris = request.getParameter("colorisVetement");
-//        String message;
-//        if(designation.trim().isEmpty()|| prix.trim().isEmpty()||idd.trim().isEmpty()||coloris.trim().isEmpty()){
-//            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerFounisseur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un fournisseur.";
-//        }
-//        else {
-//            Long id = Long.valueOf(idd);
-//            Double pri = Double.valueOf(prix);
-//            sessionArticle.creerVetement(coloris, designation, pri,  id);
-//            message= "Article créé avec succès !";
-//            
-//        }
-//        request.setAttribute("message", message);
-//    }
-//    protected void doActionInsererFr(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        String designation = request.getParameter("designationFraicheur");
-//        String prix = request.getParameter("prixFraicheur");
-//        String idd = request.getParameter("fournisseurFraicheur");
-//        String date_lim = request.getParameter("dtlimitFraicheur");
-//        String message;
-//        if(designation.trim().isEmpty()|| prix.trim().isEmpty()||idd.trim().isEmpty()||date_lim.trim().isEmpty()){
-//            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerFounisseur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un fournisseur.";
-//        }
-//        else {
-//            Long id = Long.valueOf(idd);
-//            Date d = Date.valueOf(date_lim);
-//            Double pri = Double.valueOf(prix);
-//            sessionArticle.crerrFraicheur(d, designation, pri, id);
-//            message= "Article créé avec succès !";
-//            
-//        }
-//        request.setAttribute("message", message);
-//    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

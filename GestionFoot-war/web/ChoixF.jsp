@@ -67,6 +67,7 @@
             <tr>
                 <td width="50%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
                 <td width="50%"><a href="AccesFederation?action=rechercherMatch">Afficher Match</a></td>
+                <td width="50%"><a href="AccesFederation?action=afficherMatch">Afficher Fautes Par Match</a></td>
             </tr>
         </table>
         <h2>Out of game</h2>
