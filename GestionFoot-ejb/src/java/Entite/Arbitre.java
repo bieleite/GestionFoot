@@ -7,6 +7,7 @@ package Entite;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Arbitre implements Serializable {
 
     @OneToMany(mappedBy = "Arbitre")
     private List<Fautes> fautess;
-
+    @Column(nullable=false)
     private String Pass;
 
     /**
@@ -45,7 +46,7 @@ public class Arbitre implements Serializable {
     public void setPass(String Pass) {
         this.Pass = Pass;
     }
-
+    @Column(nullable=false, unique=true)
     private String Login;
 
     /**
@@ -65,7 +66,7 @@ public class Arbitre implements Serializable {
     public void setLogin(String Login) {
         this.Login = Login;
     }
-
+    @Column(nullable=false)
     private String Prenom;
 
     /**
@@ -85,7 +86,7 @@ public class Arbitre implements Serializable {
     public void setPrenom(String Prenom) {
         this.Prenom = Prenom;
     }
-
+    @Column(nullable=false)
     private String Nom;
 
     /**

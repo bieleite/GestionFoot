@@ -6,6 +6,7 @@
 
 
 
+<%@page import="Entite.Fautes"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,8 +29,8 @@
                 <td>Prix</td>
                 <td>Fournisseur</td>
             </tr>
-            <% List<Article> lesFour=listefournisseur;
-                for(Article cp : lesFour){%>
+            <% List<Fautes> lesFour=listefournisseur;
+                for(Fautes cp : lesFautes){%>
                 <tr>
                     <td width=15%><%=cp.getId()%></td>
                     <td width=15%><%=cp.getDesignation()%></td>

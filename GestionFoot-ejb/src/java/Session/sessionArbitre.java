@@ -236,6 +236,13 @@ public class sessionArbitre implements sessionArbitreLocal {
     }
     
     @Override
+    public List<Matchs> afficherMatchArbitre(long id) {
+        Arbitre arb = arbitreFacade.rechercheArbitre(id);
+        List<Matchs> liste = matchFacade.rechercheMatchArbitre(arb);
+        return liste;
+    }
+    
+    @Override
     public Arbitre authentification(String login ,String pass) {
         Arbitre a = arbitreFacade.authentification(login, pass);
         return a;

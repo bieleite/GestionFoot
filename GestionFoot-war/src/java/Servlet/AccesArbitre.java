@@ -79,7 +79,7 @@ public class AccesArbitre extends HttpServlet {
                 request.setAttribute("message","pas d'information");
             }
             else if(act.equals("CreerButs"))
-            {
+            {   
                 List<Jouer> list= sessionArbitre.afficherJouer();
                 request.setAttribute("listeJouer",list);
                 List<Matchs> listMatch= sessionArbitre.afficherMatch();

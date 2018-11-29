@@ -7,10 +7,15 @@ package Servlet;
 
 import Entite.Arbitre;
 import Entite.Championnat;
+import Entite.Classement;
+import Entite.Contrat_Entraineur;
+import Entite.Contrat_Jouer;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Fautes;
 import Entite.Jouer;
+import Entite.Matchs;
+import Entite.OutOfGame;
 import Entite.Stade;
 import Entite.Statut;
 import Session.sessionFederationLocal;
@@ -83,7 +88,7 @@ public class AccesFederation extends HttpServlet {
             {
                 List<Stade> list= sessionFederation.afficherStade();
                 request.setAttribute("listeStade",list);
-                jspClient="/Federation/CreerEquipes.jsp";
+                jspClient="/Federation/Creer/CreerEquipes.jsp";
             }
             else if(act.equals("insereEquipe"))
             {
@@ -120,7 +125,7 @@ public class AccesFederation extends HttpServlet {
                 request.setAttribute("listeArbitre",lista);
                 List<Championnat> listc= sessionFederation.afficherChampionnat();
                 request.setAttribute("listeChampionnat",listc);
-                jspClient="/Federation/CreerMatch.jsp";
+                jspClient="/Federation/Creer/CreerMatch.jsp";
             }
             else if(act.equals("insereMatch"))
             {
@@ -129,23 +134,23 @@ public class AccesFederation extends HttpServlet {
             }
             else if(act.equals("CreerArbitre"))
             {
-                jspClient="/Federation/CreerArbitres.jsp";
+                jspClient="/Federation/Creer/CreerArbitres.jsp";
             }
             else if(act.equals("CreerEntraineur"))
             {
-                jspClient="/Federation/CreerEntraineur.jsp";
+                jspClient="/Federation/Creer/CreerEntraineur.jsp";
             }
             else if(act.equals("CreerJouer"))
             {
-                jspClient="/Federation/CreerJouer.jsp";
+                jspClient="/Federation/Creer/CreerJouer.jsp";
             }
             else if(act.equals("CreerStade"))
             {
-                jspClient="/Federation/CreerStade.jsp";
+                jspClient="/Federation/Creer/CreerStade.jsp";
             }
             else if(act.equals("CreerChampionnat"))
             {
-                jspClient="/Federation/CreerChampionnat.jsp";
+                jspClient="/Federation/Creer/CreerChampionnat.jsp";
             }
             else if(act.equals("CreerContratEntraineur"))
             {
@@ -153,7 +158,7 @@ public class AccesFederation extends HttpServlet {
                 request.setAttribute("listeEntraineur",lists);
                 List<Equipe> liste= sessionFederation.afficherEquipe();
                 request.setAttribute("listeEquipe",liste);
-                jspClient="/Federation/CreerContratEntraineur.jsp";
+                jspClient="/Federation/Creer/CreerContratEntraineur.jsp";
             }
             else if(act.equals("insereContratEntraineur"))
             {
@@ -166,7 +171,7 @@ public class AccesFederation extends HttpServlet {
                 request.setAttribute("listeJouer",lists);
                 List<Equipe> liste= sessionFederation.afficherEquipe();
                 request.setAttribute("listeEquipe",liste);
-                jspClient="/Federation/CreerContratJouer.jsp";
+                jspClient="/Federation/Creer/CreerContratJouer.jsp";
             }
             else if(act.equals("insereContratJouer"))
             {
@@ -179,7 +184,7 @@ public class AccesFederation extends HttpServlet {
                 request.setAttribute("listeChampionnat",lists);
                 List<Equipe> liste= sessionFederation.afficherEquipe();
                 request.setAttribute("listeEquipe",liste);
-                jspClient="/Federation/CreerClassement.jsp";
+                jspClient="/Federation/Creer/CreerClassement.jsp";
             }
             else if(act.equals("insereClassement"))
             {
@@ -190,14 +195,91 @@ public class AccesFederation extends HttpServlet {
             {
                 List<Fautes> listFautes= sessionFederation.afficherFautes();
                 request.setAttribute("listeFautes",listFautes);
-                jspClient="/Federation/CreerOutOfGame.jsp";
+                jspClient="/Federation/Creer/CreerOutOfGame.jsp";
             }
             else if(act.equals("insereFautes"))
             {
                 jspClient="/ChoixF.jsp";
                 doActionInsererFautes(request,response);
             }
-            
+            else if(act.equals("rechercherArbitre"))
+            {
+                jspClient="/Federation/Afficher/AfficherArbitre.jsp";
+                List<Arbitre> list= sessionFederation.afficherArbitre();
+                request.setAttribute("listeArbitre",list);
+                request.setAttribute("message","Liste des arbitres existants");
+            }
+            else if(act.equals("rechercherJouer"))
+            {
+                jspClient="/Federation/Afficher/AfficherJouer.jsp";
+                List<Jouer> list= sessionFederation.afficherJouer();
+                request.setAttribute("listeJouer",list);
+                request.setAttribute("message","Liste des jouers existants");
+            }
+            else if(act.equals("rechercherEntrainuer"))
+            {
+                jspClient="/Federation/Afficher/AfficherEntraineur.jsp";
+                List<Entraineur> list= sessionFederation.afficherEntraineur();
+                request.setAttribute("listeEntraineur",list);
+                request.setAttribute("message","Liste des entraineur existants");
+            }
+            else if(act.equals("rechercherEquipes"))
+            {
+                jspClient="/Federation/Afficher/AfficherEquipes.jsp";
+                List<Equipe> list= sessionFederation.afficherEquipe();
+                request.setAttribute("listeEquipe",list);
+                request.setAttribute("message","Liste des equipe existants");
+            }
+            else if(act.equals("rechercherChampionnat"))
+            {
+                jspClient="/Federation/Afficher/AfficherChampionnat.jsp";
+                List<Championnat> list= sessionFederation.afficherChampionnat();
+                request.setAttribute("listeChampionnat",list);
+                request.setAttribute("message","Liste des championnats existants");
+            }
+            else if(act.equals("rechercherOutOfGame"))
+            {
+                jspClient="/Federation/Afficher/AfficherOutOfGame.jsp";
+                List<OutOfGame> list= sessionFederation.afficherOutOfGame();
+                request.setAttribute("listeOutOfGame",list);
+                request.setAttribute("message","Liste des punitions existants");
+            }
+            else if(act.equals("rechercherContratEntraineur"))
+            {
+                jspClient="/Federation/Afficher/AfficherContratEntraineur.jsp";
+                List<Contrat_Entraineur> list= sessionFederation.afficherContratEntraineur();
+                request.setAttribute("listeContrat",list);
+                request.setAttribute("message","Liste des contrat entraineur existants");
+            }
+            else if(act.equals("rechercherContratJouer"))
+            {
+                jspClient="/Federation/Afficher/AfficherContratJouer.jsp";
+                List<Contrat_Jouer> list= sessionFederation.afficherContratJouer();
+                request.setAttribute("listeContrat",list);
+                request.setAttribute("message","Liste des contrat jouer existants");
+            }
+            else if(act.equals("rechercherStade"))
+            {
+                jspClient="/Federation/Afficher/AfficherStade.jsp";
+                List<Stade> list= sessionFederation.afficherStade();
+                request.setAttribute("listeStade",list);
+                request.setAttribute("message","Liste des stades existants");
+            }
+            else if(act.equals("rechercherMatch"))
+            {
+                jspClient="/Federation/Afficher/AfficherMatch.jsp";
+                List<Matchs> list= sessionFederation.afficherMatch();
+                request.setAttribute("listeMatch",list);
+                request.setAttribute("message","Liste des match existants");
+            }
+            else if(act.equals("rechercherClassement"))
+            {
+                jspClient="/Federation/Afficher/AfficherClassement.jsp";
+                List<Classement> list= sessionFederation.afficherClassement();
+                request.setAttribute("listeClassement",list);
+                request.setAttribute("message","Classement existants");
+            }
+
 
         RequestDispatcher Rd;
         Rd = getServletContext().getRequestDispatcher(jspClient);
@@ -261,7 +343,7 @@ public class AccesFederation extends HttpServlet {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
         String nom = request.getParameter("nomArbitre");
-        String prenom = request.getParameter("nomArbitre");
+        String prenom = request.getParameter("prenomArbitre");
         String loginar = request.getParameter("loginArbitre");
         String passar = request.getParameter("passArbitre");
         String message;

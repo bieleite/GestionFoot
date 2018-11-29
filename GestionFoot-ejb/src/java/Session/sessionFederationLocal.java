@@ -7,10 +7,14 @@ package Session;
 
 import Entite.Arbitre;
 import Entite.Championnat;
+import Entite.Classement;
+import Entite.Contrat_Entraineur;
+import Entite.Contrat_Jouer;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Fautes;
 import Entite.Jouer;
+import Entite.Matchs;
 import Entite.OutOfGame;
 import Entite.Stade;
 import Entite.Statut;
@@ -66,6 +70,16 @@ public interface sessionFederationLocal {
     List<Jouer> afficherJouer();
     
     List<Fautes> afficherFautes();
+    
+    List<Matchs> afficherMatch();
+    
+    List<Classement> afficherClassement();
+    
+    List<OutOfGame> afficherOutOfGame();
+    
+    List<Contrat_Jouer> afficherContratJouer();
+    
+    List<Contrat_Entraineur> afficherContratEntraineur();
 
     void stadeParNum(Long id);
 

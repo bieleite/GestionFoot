@@ -46,6 +46,8 @@ public interface MatchFacadeLocal {
     
     List<Matchs> rechercheMatchStadeDate(Stade stad,Date dt);
     
+    List<Matchs> rechercheMatchArbitre(Arbitre arb);
+    
     List<Matchs> rechercheMatchArbitreDate(Arbitre arb,Date dt);
     
     void modifCompositionAway(Composition Com, Equipe equi);

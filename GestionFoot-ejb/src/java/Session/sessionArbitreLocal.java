@@ -37,4 +37,6 @@ public interface sessionArbitreLocal {
     List<Matchs> afficherMatchSansAvantAuj();
     
     Arbitre authentification(String login ,String pass);
+    
+    List<Matchs> afficherMatchArbitre(long id);
 }

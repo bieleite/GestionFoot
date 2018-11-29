@@ -7,6 +7,9 @@ package Session;
 
 import Entite.Arbitre;
 import Entite.Championnat;
+import Entite.Classement;
+import Entite.Contrat_Entraineur;
+import Entite.Contrat_Jouer;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Fautes;
@@ -389,6 +392,36 @@ public class sessionFederation implements sessionFederationLocal {
     @Override
     public List<Fautes> afficherFautes() {
         List<Fautes> liste = fautesFacade.listFautes();
+        return liste;
+    }
+    
+    @Override
+    public List<Matchs> afficherMatch() {
+        List<Matchs> liste = matchFacade.listMatch();
+        return liste;
+    }
+    
+    @Override
+    public List<Classement> afficherClassement() {
+        List<Classement> liste = classementFacade.findAll();
+        return liste;
+    }
+    
+    @Override
+    public List<OutOfGame> afficherOutOfGame() {
+        List<OutOfGame> liste = outOfGameFacade.listOutOfGame();
+        return liste;
+    }
+    
+    @Override
+    public List<Contrat_Entraineur> afficherContratEntraineur() {
+        List<Contrat_Entraineur> liste = contrat_EntraineurFacade.listContrat_Entraineur();
+        return liste;
+    }
+    
+    @Override
+    public List<Contrat_Jouer> afficherContratJouer() {
+        List<Contrat_Jouer> liste = contrat_JouerFacade.listContrat_Jouer();
         return liste;
     }
     
