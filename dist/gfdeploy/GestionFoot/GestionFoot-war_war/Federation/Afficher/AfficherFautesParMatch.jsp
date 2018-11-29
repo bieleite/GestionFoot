@@ -27,7 +27,7 @@
                 <td>Numero</td>
                 <td>Match</td>
                 <td>Jouer</td>
-                <td>Carton</td
+                <td>Carton</td>
                 <td>Arbitre</td>
             </tr>
             <% List<Fautes> lesFautes=listeFautesParMatch;
@@ -41,7 +41,7 @@
                 </tr><%}%>     
         </table>
         <hr>
-    <td width=25%><a href="AccesArticle?action=afficherFautesParMatch"> Retour Menu </a></td>
+    <td width=25%><a href="AccesArticle?action=MenuFederation"> Retour Menu </a></td>
     <hr>
 </body>
 </html>
