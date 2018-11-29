@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import Entite.Arbitre;
 import Entite.Carton;
 import Entite.Jouer;
 import Entite.Matchs;
@@ -20,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -42,9 +44,36 @@ public class AccesArbitre extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String jspClient=null;
-        String act=request.getParameter("action");
+            HttpSession sess= request.getSession(true);
+            String jspClient=null;
+            String act=request.getParameter("action");
+            
             if((act==null)||(act.equals("vide")))
+            {   
+                request.setAttribute("message","Svp remplir Login et password");
+                jspClient="/Arbitre/LoginA.jsp";
+            }
+            else if(act.equals("LoginArbitre")){
+                String login = request.getParameter("loginArbitre");
+                String pass = request.getParameter("passArbitre");
+                if(!(login.trim().isEmpty())||!(pass.trim().isEmpty())){
+                Arbitre a = sessionArbitre.authentification(login, pass);
+                    if(a!=null){
+                        request.setAttribute("message","Bienvenue: "+ a.getNom());
+                        sess.setAttribute("arbt", a);
+                        jspClient="/ChoixA.jsp";    
+                                }   
+                    else{
+                        request.setAttribute("message","Entraineur non trouvé");
+                        jspClient="/Arbitre/LoginA.jsp";
+                    }
+                }
+                else{
+                    request.setAttribute("message","Login ou/et password non rempli");
+                    jspClient="/Arbitre/LoginA.jsp";
+                }
+            }
+            else if(act.equals("MenuArbitre"))
             {
                 jspClient="/ChoixA.jsp";
                 request.setAttribute("message","pas d'information");

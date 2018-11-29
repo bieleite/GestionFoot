@@ -234,4 +234,10 @@ public class sessionArbitre implements sessionArbitreLocal {
         List<Matchs> liste = matchFacade.listMatchSansAvantAuj();
         return liste;
     }
+    
+    @Override
+    public Arbitre authentification(String login ,String pass) {
+        Arbitre a = arbitreFacade.authentification(login, pass);
+        return a;
+    }
 }

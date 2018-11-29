@@ -5,6 +5,7 @@
  */
 package Session;
 
+import Entite.Arbitre;
 import Entite.Carton;
 import Entite.Jouer;
 import Entite.Matchs;
@@ -34,4 +35,6 @@ public interface sessionArbitreLocal {
     List<Matchs> afficherMatchSansResultat();
     
     List<Matchs> afficherMatchSansAvantAuj();
+    
+    Arbitre authentification(String login ,String pass);
 }

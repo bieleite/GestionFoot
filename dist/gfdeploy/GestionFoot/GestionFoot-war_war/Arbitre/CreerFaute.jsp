@@ -4,6 +4,7 @@
     Author     : gabrielleite
 --%>
 
+<%@page import="Entite.Arbitre"%>
 <%@page import="Entite.Matchs"%>
 <%@page import="Entite.Jouer"%>
 <%@page import="java.util.List"%>
@@ -15,6 +16,7 @@
         <title>Creer Faute</title>
         <jsp:useBean id="listeJouer" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="listeMatch" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="arbt" scope="session" class="Arbitre"></jsp:useBean>
     </head>
 <body>
         <h1>Creer Faute</h1>
@@ -23,11 +25,11 @@
         <form method="get" action="AccesArbitre">
             <fieldset>
                 <legend>Informations Faute</legend>
-                <label for="login"> Login<span class="requis">*</span></label>
-                <input type="text" name="login" value="" size="20" maxlength="20"/>
+                <label for="login"> Arbitre <span class="requis"><%=arbt.getNom() %></span></label>
+                <input type="hidden" name="login" value="<%=arbt.getLogin() %>" size="20" maxlength="20"/>
                 <br/>
-                <label for="pass"> Pass<span class="requis">*</span></label>
-                <input type="text" name="pass" value="" size="20" maxlength="20"/>
+                <label for="pass"><span class="requis"></span></label>
+                <input type="hidden" name="pass" value="<%=arbt.getPass() %>" size="20" maxlength="20"/>
                 <br/>
                 <label for="matchFaute"> Match <span class="requis">*</span></label>
                 <select name="matchFaute">
@@ -57,6 +59,6 @@
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à zéro"/><br/>
         </form>
-              <td width=25%><a href="AccesArbitre?action=vide"> Retour Menu </a></td>
+              <td width=25%><a href="AccesArbitre?action=MenuArbitre"> Retour Menu </a></td>
     </body>
 </html>
