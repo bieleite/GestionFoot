@@ -270,39 +270,6 @@ public class sessionFederation implements sessionFederationLocal {
     }
     
     @Override
-    public List<Fautes> AfficherFautesParJouer(Long id) {
-        /*
-        Afficher les fautes d'un jouer
-        */
-        List<Fautes> liste = new ArrayList<Fautes>();
-        Jouer f = jouerFacade.rechercheJouer(id);
-        if(f!=null){
-            liste = fautesFacade.rechercheFautesParJouer(f);
-        }
-        else{
-            System.out.println("Jouer non trouvé");
-        }
-        return liste;
-    }
-    
-    @Override
-    public List<Fautes> AfficherFautesParArbitre(String nom, String prenom) {
-        /*
-        Afficher les fautes comises par des jouers lors des matchs arbitrés par un arbitre de nom 
-        et prenom donnés
-        */
-        List<Fautes> liste = new ArrayList<Fautes>();
-        Arbitre f = arbitreFacade.rechercheArbitreParNomEtPrenom(nom, prenom);
-        if(f!=null){
-            liste = fautesFacade.rechercheFautesParArbitre(f);
-        }
-        else{
-            System.out.println("Arbitre non trouve");
-        }
-        return liste;
-    }
-    
-    @Override
     public List<Fautes> AfficherFautesParMatch(long match) {
         /*
         Afficher les differents fautes commises pour les matches d'une date donnée
@@ -317,7 +284,38 @@ public class sessionFederation implements sessionFederationLocal {
         }
         return liste;
     }
-
+    
+    @Override
+    public List<Fautes> AfficherFautesParJouer(long jouer) {
+        /*
+        Afficher les differents fautes commises pour les matches d'une date donnée
+        */
+        List<Fautes> liste = new ArrayList<Fautes>();
+        Jouer f= jouerFacade.rechercheJouer(jouer);
+        if(f!=null){
+            liste = fautesFacade.rechercheFautesParJouer(f);
+        }
+        else{
+            System.out.println("Aucune match dans cette date");
+        }
+        return liste;
+    }
+    
+    @Override
+    public List<Fautes> AfficherFautesParArbitre(long arbitre) {
+        /*
+        Afficher les differents fautes commises pour les matches d'une date donnée
+        */
+        List<Fautes> liste = new ArrayList<Fautes>();
+        Arbitre f= arbitreFacade.rechercheArbitre(arbitre);
+        if(f!=null){
+            liste = fautesFacade.rechercheFautesParArbitre(f);
+        }
+        else{
+            System.out.println("Aucune match dans cette date");
+        }
+        return liste;
+    }
     @Override
     public void CreerOutOfGame(String log, String mdp,long faute,int num) {
         if ((log.contains("admin")) && (mdp.contains("admin")))

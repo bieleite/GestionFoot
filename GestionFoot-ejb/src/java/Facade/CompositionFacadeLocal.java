@@ -9,6 +9,7 @@ import Entite.Composition;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
+import Entite.Matchs;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -37,6 +38,8 @@ public interface CompositionFacadeLocal {
     void CreerComposition(Date dt_comp,Equipe equipe, List<Jouer> jouers);
     
     List<Composition> listComposition();
+    
+    List<Composition> rechercheCompositionMatch(Matchs ma);
 
     Composition rechercheComposition(Long id);
     

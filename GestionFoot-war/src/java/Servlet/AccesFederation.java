@@ -297,6 +297,42 @@ public class AccesFederation extends HttpServlet {
                 request.setAttribute("message","Liste des fautes par match");
                 }
             }
+            else if(act.equals("afficherJouer"))
+            {
+                jspClient="/Federation/Afficher/AfficherListJouer.jsp";
+                List<Jouer> list= sessionFederation.afficherJouer();
+                request.setAttribute("listeJouer",list);
+                request.setAttribute("message","Liste des match existants");
+            }
+            else if(act.equals("afficherFautesParJouer"))
+            {
+                jspClient="/Federation/Afficher/AfficherFautesParJouer.jsp";
+                String ide= request.getParameter("jouerFaute");
+                if(!ide.trim().isEmpty()){
+                Long id = Long.valueOf(ide);
+                List<Fautes> list= sessionFederation.AfficherFautesParJouer(id);
+                request.setAttribute("listeFautesParJouer",list);
+                request.setAttribute("message","Liste des fautes par match");
+                }
+            }
+            else if(act.equals("afficherArbitre"))
+            {
+                jspClient="/Federation/Afficher/AfficherListArbitre.jsp";
+                List<Arbitre> list= sessionFederation.afficherArbitre();
+                request.setAttribute("listeArbitre",list);
+                request.setAttribute("message","Liste des match existants");
+            }
+            else if(act.equals("afficherFautesParArbitre"))
+            {
+                jspClient="/Federation/Afficher/AfficherFautesParArbitre.jsp";
+                String ide= request.getParameter("arbitreFaute");
+                if(!ide.trim().isEmpty()){
+                Long id = Long.valueOf(ide);
+                List<Fautes> list= sessionFederation.AfficherFautesParArbitre(id);
+                request.setAttribute("listeFautesParArbitre",list);
+                request.setAttribute("message","Liste des fautes par match");
+                }
+            }
 
 
         RequestDispatcher Rd;

@@ -55,6 +55,16 @@ public class Contrat_EntraineurFacade extends AbstractFacade<Contrat_Entraineur>
         List<Contrat_Entraineur> result=req.getResultList();
         return result;
     }
+    
+    @Override
+    public List<Contrat_Entraineur> rechercheContratEntraineurEntraineur(Entraineur en) {
+        String txt = "SELECT con FROM Contrat_Entraineur AS con WHERE con.Entraineur=:en ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("en", en);
+        List<Contrat_Entraineur> res = req.getResultList();
+        return res;
+        
+    }
 
     @Override
     public Contrat_Entraineur rechercheContrat_Entraineur(Long id) {

@@ -21,14 +21,12 @@
         </p>
         <table>
             <tr>
-                <td width="25%"> <a href="CreerFounisseur.jsp">Creer Fournisseur</a></td>
-                <!--<td width="25%"><a href="CreerA.jsp">Creer Article</a></td>-->
-                <td width="25%"><a href="AccesArticle?action=creerAF">Creer Article</a></td>
-                <td width="25%"><a href="AccesArticle?action=creerAFr">Creer Fraicheur</a></td>
-                <td width="25%"><a href="AccesArticle?action=creerAFv">Creer Vetement</a></td>
-                <td width="25%"><a href="AccesArticle?action=afficheF">Afficher Fournisseur</a></td>
-                <td width="25%"><a href="AccesArticle?action=rechercherAPF">Afficher Article</a></td>
-                <td width="25%"><a href="AccesArticle?action=rechercherAPFP">Afficher Prix Article</a></td>
+                <td width="10%"><a href="AccesVisiteur?action=afficherEquipe">Afficher Match Par Equipe</a></td>
+                <td width="10%"><a href="AccesVisiteur?action=rechercherClassement">Afficher Classement</a></td>
+                <td width="10%"><a href="AccesVisiteur?action=afficherMatch">Afficher Composition Par Match</a></td>
+                <td width="10%"><a href="AccesVisiteur?action=afficherEquipePourJouer">Afficher Jouer D'un Equipe</a></td>
+                <td width="10%"><a href="AccesVisiteur?action=afficherJouer">Afficher Historique Jouer</a></td>
+                <td width="10%"><a href="AccesVisiteur?action=afficherEntraineur">Afficher Historique Entraineur</a></td>
             </tr>
         </table>
         <table>

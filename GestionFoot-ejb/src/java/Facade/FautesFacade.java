@@ -81,7 +81,7 @@ public class FautesFacade extends AbstractFacade<Fautes> implements FautesFacade
     @Override
     public List<Fautes> rechercheFautesParJouer(Jouer jo) {
         List<Fautes> fo=null;
-        String txt = "SELECT f FROM Fautes AS f WHERE f.Jouer=:jo";
+        String txt = "SELECT f FROM Fautes AS f WHERE f.Joeur=:jo";
         Query req=getEntityManager().createQuery(txt);
         req = req.setParameter("jo", jo); 
         List<Fautes> result=req.getResultList();

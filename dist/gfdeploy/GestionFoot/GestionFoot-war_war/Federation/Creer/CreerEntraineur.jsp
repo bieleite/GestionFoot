@@ -39,6 +39,6 @@
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à zéro"/><br/>
         </form>
-              <td width=25%><a href="AccesFederation?action=vide"> Retour Menu </a></td>
+              <td width=25%><a href="AccesFederation?action=MenuFederation"> Retour Menu </a></td>
     </body>
 </html>

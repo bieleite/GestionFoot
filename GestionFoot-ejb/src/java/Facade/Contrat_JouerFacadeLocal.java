@@ -47,4 +47,6 @@ public interface Contrat_JouerFacadeLocal {
     void modifStatutActif(Jouer jo);
     
     void modifDateFinContrat(Jouer jo, Contrat_Jouer con,Date dt_fin);
+    
+    List<Contrat_Jouer> rechercheContratJouerJouer(Jouer jo);
 }

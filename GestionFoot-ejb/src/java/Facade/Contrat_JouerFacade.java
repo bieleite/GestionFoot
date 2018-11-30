@@ -56,6 +56,16 @@ public class Contrat_JouerFacade extends AbstractFacade<Contrat_Jouer> implement
         List<Contrat_Jouer> result=req.getResultList();
         return result;
     }
+    
+    @Override
+    public List<Contrat_Jouer> rechercheContratJouerJouer(Jouer jo) {
+        String txt = "SELECT con FROM Contrat_Jouer AS con WHERE con.Joeur=:jo ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("jo", jo);
+        List<Contrat_Jouer> res = req.getResultList();
+        return res;
+        
+    }
 
     @Override
     public Contrat_Jouer rechercheContrat_Jouer(Long id) {

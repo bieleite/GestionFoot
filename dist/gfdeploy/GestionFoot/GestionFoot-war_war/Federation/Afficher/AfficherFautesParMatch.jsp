@@ -41,7 +41,7 @@
                 </tr><%}%>     
         </table>
         <hr>
-    <td width=25%><a href="AccesArticle?action=MenuFederation"> Retour Menu </a></td>
+    <td width=25%><a href="AccesFederation?action=MenuFederation"> Retour Menu </a></td>
     <hr>
 </body>
 </html>

@@ -76,6 +76,8 @@ public interface MatchFacadeLocal {
     
     Matchs rechercheMatchArbitreEtId(Arbitre arb,long id);
     
+    List<Matchs> rechercheMatchEquipe(Equipe equ);
+    
     List<Matchs> listMatchSansResultat();
     
     List<Matchs> listMatchSansAvantAuj();

@@ -108,6 +108,16 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     }
     
     @Override
+    public List<Matchs> rechercheMatchEquipe(Equipe equ) {
+        String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Equipe_Home=:equ OR mat.Equipe_Away=:equ ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("equ", equ);
+        List<Matchs> res = req.getResultList();
+        return res;
+        
+    }
+    
+    @Override
     public Matchs rechercheMatchArbitreEtId(Arbitre arb,long id) {
         Matchs mat = null;
         String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Arbitre=:arb and mat.id=:id";

@@ -47,11 +47,12 @@ public interface sessionFederationLocal {
     
     void CreerArbitre(String log, String mdp, String nom, String pren, String log1, String mdp1);
     
-    List<Fautes> AfficherFautesParJouer(Long id);
-    
-    List<Fautes> AfficherFautesParArbitre(String nom, String prenom);
     
     List<Fautes> AfficherFautesParMatch(long match);
+    
+    List<Fautes> AfficherFautesParArbitre(long arbitre);
+    
+    List<Fautes> AfficherFautesParJouer(long jouer);
 
     void CreerOutOfGame(String log, String mdp,long faute,int num);
     

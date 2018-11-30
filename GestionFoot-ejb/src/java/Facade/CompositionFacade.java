@@ -9,6 +9,7 @@ import Entite.Composition;
 import Entite.Entraineur;
 import Entite.Equipe;
 import Entite.Jouer;
+import Entite.Matchs;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -51,6 +52,16 @@ public class CompositionFacade extends AbstractFacade<Composition> implements Co
         Query req=getEntityManager().createQuery(txt);
         List<Composition> result=req.getResultList();
         return result;
+    }
+    
+    @Override
+    public List<Composition> rechercheCompositionMatch(Matchs ma) {
+        String txt = "SELECT com FROM Composition AS com WHERE com.matchs=:ma ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("ma", ma);
+        List<Composition> res = req.getResultList();
+        return res;
+        
     }
 
     @Override

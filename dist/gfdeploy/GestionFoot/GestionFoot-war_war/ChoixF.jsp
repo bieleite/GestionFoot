@@ -51,6 +51,15 @@
             <tr>
                 <td width="50%"> <a href="AccesFederation?action=CreerJouer">Creer Joeurs</a></td>
                 <td width="50%"><a href="AccesFederation?action=rechercherJouer">Afficher Jouer</a></td>
+                <td width="50%"><a href="AccesFederation?action=afficherJouer">Afficher Fautes Par Jouer</a></td>
+            </tr>
+        </table>
+        <h2>Arbitre</h2>
+        <table>
+            <tr>
+                <td width="10%"> <a href="AccesFederation?action=CreerArbitre">Creer Arbitres</a></td>
+                <td width="25%"><a href="AccesFederation?action=rechercherArbitre">Afficher Arbitre</a></td>
+                <td width="50%"><a href="AccesFederation?action=afficherArbitre">Afficher Fautes Par Arbitre</a></td>
             </tr>
         </table>
         <h2>Championnat</h2>
@@ -92,7 +101,7 @@
                 <td width="25%"><a href="AccesFederation?action=afficherFautesMatch">Afficher Fautes par Match</a></td>
                 
                 
-                <td width="25%"><a href="AccesFederation?action=rechercherArbitre">Afficher Arbitre</a></td>
+                
                 <td width="25%"><a href="AccesFederation?action=rechercherChampionnat">Afficher Championnat</a></td>
                 <td width="25%"><a href="AccesFederation?action=rechercherClassement">Afficher Classement</a></td>
                 
