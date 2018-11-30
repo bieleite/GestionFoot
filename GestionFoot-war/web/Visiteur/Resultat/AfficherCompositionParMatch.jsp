@@ -22,20 +22,20 @@
             %></p>
         <table border width=50%>
             <tr> 
-                <td>Numero</td>
-                <td>Match</td>
-                <td>Jouer</td>
-                <td>Carton</td>
-                <td>Arbitre</td>
+<!--                <td>Numero</td>
+                <td>Equipe</td>
+                <td>Date</td>
+                <td>Match</td>-->
+                <td>Jouers</td>
             </tr>
             <% List<Composition> lesComposition=listeCompositionParMatch;
                 for(Composition cp : lesComposition){%>
                 <tr>
-                    <td width=15%><%=cp.getId()%></td>
+<!--                    <td width=15%><%=cp.getId()%></td>
                     <td width=15%><%=cp.getEquipe().getNom_Equipe() %></td>
                     <td width=15%><%=cp.getDate_Comp() %></td>
-                    <td width=15%><%=cp.getMatchs().toString() %></td>
-                    <td width=15%><%=cp.getJouers().toString() %></td>
+                    <td width=15%><%=cp.getMatchs() %></td>-->
+                    <td width=15%><%=cp.getJouers().toArray() %></td>
                 </tr><%}%>     
         </table>
         <hr>
