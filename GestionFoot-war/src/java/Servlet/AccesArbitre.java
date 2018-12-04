@@ -91,10 +91,12 @@ public class AccesArbitre extends HttpServlet {
             else if(act.equals("CreerButs2"))
             {   
                 String ide= request.getParameter("matchComposition");
-                sessma.setAttribute("arbt", a);
+                System.out.println("mc");
                 if(!ide.trim().isEmpty()){
                 Long id = Long.valueOf(ide);
-                
+                Matchs m = sessionArbitre.rechercheMatchParId(id);
+                sessma.setAttribute("mat", m);
+                System.out.println("de");
                 List<Composition> list= sessionArbitre.AfficherCompositionParMatch(id);
                 request.setAttribute("listeCompositionParMatch",list);
                 }

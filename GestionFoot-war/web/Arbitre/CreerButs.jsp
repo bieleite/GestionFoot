@@ -14,11 +14,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Creer Equipes</title>
-        <jsp:useBean id="listeJouer" scope="request" class="java.util.List"></jsp:useBean>
+        <title>Creer Buts</title>
         <jsp:useBean id="listeCompositionParMatch" scope="request" class="java.util.List"></jsp:useBean>
-        <jsp:useBean id="listeMatch" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="arbt" scope="session" class="Arbitre"></jsp:useBean>
+        <jsp:useBean id="mat" scope="session" class="Matchs"></jsp:useBean>
     </head>
 <body>
         <h1>Creer Buts</h1>
@@ -35,29 +34,29 @@
                 <label for="pass"><span class="requis"></span></label>
                 <input type="hidden" name="pass" value="<%=arbt.getPass() %>" size="20" maxlength="20"/>
                 <br/>
-                <% List<Matchs> lesMatch=listeMatch;
-                for (Matchs m:lesMatch){%>
-                <input type="hidden" name="matchBut" value="<%=m.getId() %>" size="20" maxlength="20"/>
-                <%}%> 
+                <label for="matchBut"> Match <span class="requis"><%=mat.getInfo() %></span></label>
+                <input type="hidden" name="matchBut" value="<%=mat.getId() %>" size="20" maxlength="20"/>
+                <br/>
                  <% List<Composition> lesComposition=listeCompositionParMatch;
                 for(Composition cp : lesComposition){%>
                 <% List<Jouer> lesJouers=cp.getJouers();  
                     for (Jouer j : lesJouers){%> 
-                <label for="jouerBut"> Jouer<span class="requis">*</span></label>
+                <label for="jouerBut"> Jouer <span class="requis"></span></label>
                 
                 <table border width=50%>
                         <tr> 
-                            <td>Numero</td>
+                            
+                            <td>Equipe</td>
                             <td>Nom</td>
                             <td>Prenom</td>
-                            <td>Selecionado</td>
+                            <td>Select</td>
                         </tr>
                            
                             <tr>
-                                <td width=15%><%=j.getId()%></td>
+                                <td width=15%><%=cp.getEquipe().getNom_Equipe() %></td>
                                 <td width=15%><%=j.getNom()%></td>
                                 <td width=15%><%=j.getPrenom() %></td>
-                                <td width=15%><input type="checkbox" name="jouerComposition" value="<%=j.getId()%>"></td>
+                                <td width=15%><input type="checkbox" name="jouerBut" value="<%=j.getId()%>"></td>
                                 
                                 
                             </tr><%}}%>     

@@ -144,6 +144,7 @@ public class AccesEntraineur extends HttpServlet {
             Long ma =Long.valueOf(match);
             Jouer jou= sessionEntraineur.rechercheJouer(jo);
             Entraineur e= sessionEntraineur.authentification(login, pass);
+            System.out.println(jo);
             List<Jouer> jojo = new ArrayList<>();
             jojo.add(jou);
             Matchs mat = sessionEntraineur.rechercheMatch(ma);

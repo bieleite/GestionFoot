@@ -44,4 +44,6 @@ public interface sessionArbitreLocal {
     List<Matchs> afficherMatchArbitre(Arbitre arb);
     
     List<Composition> AfficherCompositionParMatch(long match);
+    
+    Matchs rechercheMatchParId(long id);
 }

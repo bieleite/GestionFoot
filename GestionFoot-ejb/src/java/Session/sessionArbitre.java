@@ -273,5 +273,10 @@ public class sessionArbitre implements sessionArbitreLocal {
         return liste;
     }
     
+    @Override
+    public Matchs rechercheMatchParId(long id) {
+        Matchs m = matchFacade.rechercheMatch(id);
+        return m;
+    }
     
 }
