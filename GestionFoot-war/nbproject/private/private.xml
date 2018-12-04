@@ -4,44 +4,61 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherClassement.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerChampionnat.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherEquipes.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/List/AfficherListEquipePourJouer.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherJouer.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherStade.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerContratJouer.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/CreerFaute.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/List/AfficherListMatch.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesVisiteur.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixE.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixV.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/LoginF.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Entraineur/LoginE.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerMatch.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherChampionnat.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherArbitre.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherContratEntraineur.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherEntraineur.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Entraineur/AffecterJouer.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/List/AfficherListEquipe.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerClassement.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherContratJouer.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixA.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesEntraineur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherListMatch.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/AffecterResultat.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherListArbitre.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/Resultat/AfficherHistoriqueEntraineur.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerOutOfGame.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/CreerButs.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesArbitre.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/List/AfficherListEntraineur.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/Resultat/AfficherJouerDunEquipe.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerChampionnat.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherEquipes.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherListJouer.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherFautesParJouer.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherStade.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerContratJouer.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/Resultat/AfficherHistoriqueJouer.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/CreerFaute.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/Resultat/AfficherMatchParEquipe.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Entraineur/LoginE.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerMatch.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherArbitre.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherContratEntraineur.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherFautesParArbitre.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Entraineur/CreerComposition.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerArbitres.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/LoginA.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherOutOfGame.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherFautesParMatch.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerClassement.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherContratJouer.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Afficher/AfficherMatch.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixA.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/List/AfficherListJouer.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerStade.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesEntraineur.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/Menu.java</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/AffecterResultat.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesFederation.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/Resultat/AfficherCompositionParMatch.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixF.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerJouer.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerEntraineur.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerOutOfGame.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/CreerButs.jsp</file>
-            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesArbitre.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerEquipes.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerContratEntraineur.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/AfficherClassement.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -11,11 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>List Match</title>
         <jsp:useBean id="listeMatch" scope="request" class="java.util.List"></jsp:useBean>
     </head>
 <body>
-        <h1>Creer Article</h1>
+        <h1>List Match</h1>
 <% List<Matchs> lesMatchs=listeMatch;%>
 <form method="get" action="AccesVisiteur">
     <fieldset>
