@@ -7,6 +7,7 @@ package Session;
 
 import Entite.Arbitre;
 import Entite.Carton;
+import Entite.Composition;
 import Entite.Jouer;
 import Entite.Matchs;
 import java.util.Date;
@@ -39,4 +40,8 @@ public interface sessionArbitreLocal {
     Arbitre authentification(String login ,String pass);
     
     List<Matchs> afficherMatchArbitre(long id);
+    
+    List<Matchs> afficherMatchArbitre(Arbitre arb);
+    
+    List<Composition> AfficherCompositionParMatch(long match);
 }

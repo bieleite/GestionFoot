@@ -183,7 +183,8 @@ public class sessionVisiteur implements sessionVisiteurLocal {
         List<Composition> liste = new ArrayList<Composition>();
         Matchs m= matchFacade.rechercheMatch(match);
         if(m!=null){
-            liste = compositionFacade.rechercheCompositionMatch(m);
+            liste.add(m.getComposition_Away());
+            liste.add(m.getComposition_Home());
         }
         else{
             System.out.println("Aucune match dans cette date");

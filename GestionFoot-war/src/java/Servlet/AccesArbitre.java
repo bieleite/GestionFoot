@@ -7,6 +7,7 @@ package Servlet;
 
 import Entite.Arbitre;
 import Entite.Carton;
+import Entite.Composition;
 import Entite.Jouer;
 import Entite.Matchs;
 import Session.sessionArbitreLocal;
@@ -45,6 +46,7 @@ public class AccesArbitre extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession sess= request.getSession(true);
+            HttpSession sessma= request.getSession(true);
             String jspClient=null;
             String act=request.getParameter("action");
             
@@ -79,11 +81,23 @@ public class AccesArbitre extends HttpServlet {
                 request.setAttribute("message","pas d'information");
             }
             else if(act.equals("CreerButs"))
+            {
+                jspClient="/Arbitre/AfficherListMatch.jsp";
+                Arbitre a= (Arbitre) sess.getAttribute("arbt");
+                List<Matchs> list= sessionArbitre.afficherMatchArbitre(a);
+                request.setAttribute("listeMatch",list);
+                request.setAttribute("message","Liste des match existants");
+            }
+            else if(act.equals("CreerButs2"))
             {   
-                List<Jouer> list= sessionArbitre.afficherJouer();
-                request.setAttribute("listeJouer",list);
-                List<Matchs> listMatch= sessionArbitre.afficherMatch();
-                request.setAttribute("listeMatch",listMatch);
+                String ide= request.getParameter("matchComposition");
+                sessma.setAttribute("arbt", a);
+                if(!ide.trim().isEmpty()){
+                Long id = Long.valueOf(ide);
+                
+                List<Composition> list= sessionArbitre.AfficherCompositionParMatch(id);
+                request.setAttribute("listeCompositionParMatch",list);
+                }
                 jspClient="/Arbitre/CreerButs.jsp";
             }
             else if(act.equals("insereButs"))

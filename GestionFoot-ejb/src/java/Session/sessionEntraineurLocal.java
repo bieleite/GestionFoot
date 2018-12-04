@@ -37,7 +37,11 @@ public interface sessionEntraineurLocal {
     
     List<Jouer> afficherJouer();
     
+    List<Jouer> afficherJouerParEntraineur(Entraineur ent);
+    
     List<Matchs> afficherMatch();
+    
+    List<Matchs> afficherMatchParEntraineur(Entraineur ent);
     
     Jouer rechercheJouer(long id);
     

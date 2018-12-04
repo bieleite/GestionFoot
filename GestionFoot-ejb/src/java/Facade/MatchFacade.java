@@ -321,4 +321,6 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         List<Matchs> result=req.getResultList();
         return result;
     }
+    
+ 
 }

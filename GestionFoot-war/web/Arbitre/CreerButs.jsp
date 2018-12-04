@@ -4,6 +4,7 @@
     Author     : gabrielleite
 --%>
 
+<%@page import="Entite.Composition"%>
 <%@page import="Entite.Arbitre"%>
 <%@page import="Entite.Matchs"%>
 <%@page import="Entite.Jouer"%>
@@ -15,13 +16,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Creer Equipes</title>
         <jsp:useBean id="listeJouer" scope="request" class="java.util.List"></jsp:useBean>
+        <jsp:useBean id="listeCompositionParMatch" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="listeMatch" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="arbt" scope="session" class="Arbitre"></jsp:useBean>
     </head>
 <body>
         <h1>Creer Buts</h1>
-<% List<Jouer> lesJouer=listeJouer;%>
-<% List<Matchs> lesMatch=listeMatch;%>
+
+
+
+               
         <form method="get" action="AccesArbitre">
             <fieldset>
                 <legend>Informations But</legend>
@@ -31,20 +35,35 @@
                 <label for="pass"><span class="requis"></span></label>
                 <input type="hidden" name="pass" value="<%=arbt.getPass() %>" size="20" maxlength="20"/>
                 <br/>
-                <label for="matchBut"> Match <span class="requis">*</span></label>
-                <select name="matchBut">
-                    <% for (Matchs m:lesMatch){%>
-                    
-                    <option value="<%=m.getId()%>"><%=m.getInfo() %></option>
-                    <%}%>
-                </select>
-                <br/>
+                <% List<Matchs> lesMatch=listeMatch;
+                for (Matchs m:lesMatch){%>
+                <input type="hidden" name="matchBut" value="<%=m.getId() %>" size="20" maxlength="20"/>
+                <%}%> 
+                 <% List<Composition> lesComposition=listeCompositionParMatch;
+                for(Composition cp : lesComposition){%>
+                <% List<Jouer> lesJouers=cp.getJouers();  
+                    for (Jouer j : lesJouers){%> 
                 <label for="jouerBut"> Jouer<span class="requis">*</span></label>
-                <select name="jouerBut">
-                    <% for (Jouer j:lesJouer){%>
-                    <option value="<%=j.getId()%>"><%=j.getNom() %></option>
-                    <%}%>
-                </select>
+                
+                <table border width=50%>
+                        <tr> 
+                            <td>Numero</td>
+                            <td>Nom</td>
+                            <td>Prenom</td>
+                            <td>Selecionado</td>
+                        </tr>
+                           
+                            <tr>
+                                <td width=15%><%=j.getId()%></td>
+                                <td width=15%><%=j.getNom()%></td>
+                                <td width=15%><%=j.getPrenom() %></td>
+                                <td width=15%><input type="checkbox" name="jouerComposition" value="<%=j.getId()%>"></td>
+                                
+                                
+                            </tr><%}}%>     
+                    </table>
+                
+                <br/>
                 <input type="hidden" name="action" value="insereButs">
                     
             </fieldset>

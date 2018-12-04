@@ -425,7 +425,7 @@ public class AccesFederation extends HttpServlet {
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerEntraineur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Entraineur.";
         }
         else {
-            sessionFederation.CreerEntraineur(login, pass, nom, prenom, login, passen);
+            sessionFederation.CreerEntraineur(login, pass, nom, prenom, loginen, passen);
             message= "Entraineur: "+nom+ " créé avec succès !";
 
         }
@@ -489,7 +489,7 @@ public class AccesFederation extends HttpServlet {
             Long ar = Long.valueOf(arbitre);
             Long ch = Long.valueOf(championnat);
             sessionFederation.CreerMatch(login, pass, d, st, eH, eA, ar, ch);
-            message= "Match entre : "+eH+" vs "+eA+ " créé avec succès !";
+            message= "Match entre : "+eH +" vs "+eA+ " créé avec succès !";
         }
         request.setAttribute("message", message);    
     }

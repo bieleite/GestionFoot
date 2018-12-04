@@ -6,6 +6,7 @@
 package Servlet;
 
 import Entite.Entraineur;
+import Entite.Equipe;
 import Entite.Jouer;
 import Entite.Matchs;
 import Session.sessionEntraineurLocal;
@@ -80,12 +81,19 @@ public class AccesEntraineur extends HttpServlet {
             }
             else if(act.equals("CreerComposition"))
             {
-               
-                List<Jouer> list= sessionEntraineur.afficherJouer();
+               Entraineur e= (Entraineur) sess.getAttribute("entr");
+               Equipe eq= e.getEquipe();
+            if(eq!=null){
+                List<Jouer> list= sessionEntraineur.afficherJouerParEntraineur(e);
                 request.setAttribute("listeJouer",list);
-                List<Matchs> listMatch= sessionEntraineur.afficherMatch();
+                List<Matchs> listMatch= sessionEntraineur.afficherMatchParEntraineur(e);
                 request.setAttribute("listeMatch",listMatch);
                 jspClient="/Entraineur/CreerComposition.jsp";
+                }
+            else{
+                jspClient="/ChoixE.jsp";
+                request.setAttribute("message","Entraineur non attribué dans une equipe");
+            }
             }
             else if(act.equals("insereComposition"))
             {
@@ -135,12 +143,14 @@ public class AccesEntraineur extends HttpServlet {
             Long jo = Long.valueOf(jouer);
             Long ma =Long.valueOf(match);
             Jouer jou= sessionEntraineur.rechercheJouer(jo);
+            Entraineur e= sessionEntraineur.authentification(login, pass);
             List<Jouer> jojo = new ArrayList<>();
             jojo.add(jou);
-            sessionEntraineur.CreerComposition_Home(login, pass, ma, jojo);
             Matchs mat = sessionEntraineur.rechercheMatch(ma);
+            sessionEntraineur.CreerComposition_Home(login, pass, ma, jojo);
             String matc = mat.getInfo();
-            message= "Composition pour le match:"+ matc+ " créé avec succès !";
+            String equi = e.getEquipe().getNom_Equipe();
+            message= "Composition pour le match:"+ matc+" pour l'equipe"+ equi +" créé avec succès !";
             
         }
         request.setAttribute("message", message);

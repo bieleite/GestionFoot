@@ -8,6 +8,7 @@ package Session;
 import Entite.Arbitre;
 import Entite.Buts;
 import Entite.Carton;
+import Entite.Composition;
 import Entite.Equipe;
 import Entite.Fautes;
 import static Entite.Fautes_.Match;
@@ -22,6 +23,7 @@ import Facade.FautesFacadeLocal;
 import Facade.JouerFacadeLocal;
 import Facade.MatchFacadeLocal;
 import Facade.OutOfGameFacadeLocal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -247,4 +249,29 @@ public class sessionArbitre implements sessionArbitreLocal {
         Arbitre a = arbitreFacade.authentification(login, pass);
         return a;
     }
+    
+    @Override
+    public List<Matchs> afficherMatchArbitre(Arbitre arb) {
+        List<Matchs> liste = matchFacade.rechercheMatchArbitre(arb);
+        return liste;
+    }
+    
+    @Override
+    public List<Composition> AfficherCompositionParMatch(long match) {
+        /*
+        Afficher les differents fautes commises pour les matches d'une date donnée
+        */
+        List<Composition> liste = new ArrayList<Composition>();
+        Matchs m= matchFacade.rechercheMatch(match);
+        if(m!=null){
+            liste.add(m.getComposition_Away());
+            liste.add(m.getComposition_Home());
+        }
+        else{
+            System.out.println("Aucune match dans cette date");
+        }
+        return liste;
+    }
+    
+    
 }

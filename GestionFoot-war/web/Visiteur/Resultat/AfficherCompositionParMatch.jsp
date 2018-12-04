@@ -4,6 +4,7 @@
     Author     : gabrielleite
 --%>
 
+<%@page import="Entite.Jouer"%>
 <%@page import="Entite.Composition"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,21 +23,19 @@
             %></p>
         <table border width=50%>
             <tr> 
-<!--                <td>Numero</td>
+
                 <td>Equipe</td>
-                <td>Date</td>
-                <td>Match</td>-->
+
                 <td>Jouers</td>
             </tr>
             <% List<Composition> lesComposition=listeCompositionParMatch;
                 for(Composition cp : lesComposition){%>
                 <tr>
-<!--                    <td width=15%><%=cp.getId()%></td>
                     <td width=15%><%=cp.getEquipe().getNom_Equipe() %></td>
-                    <td width=15%><%=cp.getDate_Comp() %></td>
-                    <td width=15%><%=cp.getMatchs() %></td>-->
-                    <td width=15%><%=cp.getJouers().toArray() %></td>
-                </tr><%}%>     
+                    <% List<Jouer> lesJouers=cp.getJouers(); 
+                    for (Jouer j : lesJouers){%>
+                    <td width=15%><%=j.getNom()+"/"+j.getPrenom() %></td>
+                </tr><%}}%>     
         </table>
         <hr>
     <td width=25%><a href="AccesVisiteur?action=vide"> Retour Menu </a></td>

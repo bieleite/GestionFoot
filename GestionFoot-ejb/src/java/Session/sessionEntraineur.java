@@ -82,7 +82,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
                         matchFacade.modifCompositionHome(comp, e);
                     }
                     else if(e==ea){
-                        matchFacade.modifCompositionHome(comp, e);
+                        matchFacade.modifCompositionAway(comp, ea);
                     }
                     else System.out.println("Equipe non trouvé");
                 }
@@ -226,8 +226,22 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     }
     
     @Override
+    public List<Jouer> afficherJouerParEntraineur(Entraineur ent) {
+        Equipe e = ent.getEquipe();
+        List<Jouer> liste = jouerFacade.listJouerEquipe(e);
+        return liste;        
+    }
+    
+    @Override
     public List<Matchs> afficherMatch() {
         List<Matchs> liste = matchFacade.listMatch();
+        return liste;
+    }
+    
+    @Override
+    public List<Matchs> afficherMatchParEntraineur(Entraineur ent) {
+        Equipe e = ent.getEquipe();
+        List<Matchs> liste = matchFacade.rechercheMatchEquipe(e);
         return liste;
     }
     
