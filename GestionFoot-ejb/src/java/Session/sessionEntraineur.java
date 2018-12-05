@@ -60,7 +60,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     private EntraineurFacadeLocal entraineurFacade;
 
     @Override
-    public void CreerComposition_Home(String log, String mdp, long match, List<Jouer> jouer) {
+    public void CreerComposition(String log, String mdp, long match, List<Jouer> jouer) {
         /*
             Creer composition home, il faut voir si il y a le besoin d'ajouter une class pour la liste de jouer
         */
@@ -76,7 +76,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
                     Equipe eh = mat.getEquipe_Home();
                     Equipe ea = mat.getEquipe_Away();
                     Date dt_comp= mat.getDate();
-                     compositionFacade.CreerComposition(dt_comp,e, jouer);
+                    compositionFacade.CreerComposition(dt_comp,e, jouer);
                     Composition comp = compositionFacade.rechercheCompositionParEquipeEtDate(e, dt_comp);
                     if(e==eh) {
                         matchFacade.modifCompositionHome(comp, e);

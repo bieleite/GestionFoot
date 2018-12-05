@@ -21,7 +21,7 @@ import javax.ejb.Local;
 @Local
 public interface sessionEntraineurLocal {
 
-    void CreerComposition_Home(String log, String mdp, long match, List<Jouer> jouer);
+    void CreerComposition(String log, String mdp, long match, List<Jouer> jouer);
     
     void CreerComposition_Away(String log, String mdp, long match, List<Jouer> jouer);
     

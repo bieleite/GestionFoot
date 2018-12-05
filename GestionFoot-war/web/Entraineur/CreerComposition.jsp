@@ -47,13 +47,9 @@
                                 <td width=15%><%=j.getNom()%></td>
                                 <td width=15%><%=j.getPrenom() %></td>
                                 <td width=15%><input type="checkbox" name="jouerComposition" value="<%=j.getId()%>"></td>
-                                
-                                
                             </tr><%}%>     
                     </table>
-                    <% for (Jouer j:lesJouers){%>
-                    <option value="<%=j.getId()%>"><%=j.getNom() %></option>
-                    <%}%>
+
                 
                 <br/>
                 <label for="matchComposition"> Match <span class="requis">*</span></label>

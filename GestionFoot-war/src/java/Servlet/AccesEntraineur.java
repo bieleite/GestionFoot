@@ -83,13 +83,13 @@ public class AccesEntraineur extends HttpServlet {
             {
                Entraineur e= (Entraineur) sess.getAttribute("entr");
                Equipe eq= e.getEquipe();
-            if(eq!=null){
-                List<Jouer> list= sessionEntraineur.afficherJouerParEntraineur(e);
-                request.setAttribute("listeJouer",list);
-                List<Matchs> listMatch= sessionEntraineur.afficherMatchParEntraineur(e);
-                request.setAttribute("listeMatch",listMatch);
-                jspClient="/Entraineur/CreerComposition.jsp";
-                }
+                if(eq!=null){
+                    List<Jouer> list= sessionEntraineur.afficherJouerParEntraineur(e);
+                    request.setAttribute("listeJouer",list);
+                    List<Matchs> listMatch= sessionEntraineur.afficherMatchParEntraineur(e);
+                    request.setAttribute("listeMatch",listMatch);
+                    jspClient="/Entraineur/CreerComposition.jsp";
+                    }
             else{
                 jspClient="/ChoixE.jsp";
                 request.setAttribute("message","Entraineur non attribué dans une equipe");
@@ -133,26 +133,28 @@ public class AccesEntraineur extends HttpServlet {
             throws ServletException, IOException {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
-        String jouer = request.getParameter("jouerComposition");
+        String[] jouer = request.getParameterValues("jouerComposition");
         String match = request.getParameter("matchComposition");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||jouer.trim().isEmpty()|| match.trim().isEmpty()){
-            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerBut.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un stade.";
+        if(login.trim().isEmpty()|| pass.trim().isEmpty()||jouer.length==0 || match.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerBut.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un composition.";
         }
         else {
-            Long jo = Long.valueOf(jouer);
-            Long ma =Long.valueOf(match);
-            Jouer jou= sessionEntraineur.rechercheJouer(jo);
-            Entraineur e= sessionEntraineur.authentification(login, pass);
-            System.out.println(jo);
             List<Jouer> jojo = new ArrayList<>();
-            jojo.add(jou);
+            for (String joe: jouer){
+                System.out.println(joe);
+                Long jo = Long.valueOf(joe);
+                Jouer jou= sessionEntraineur.rechercheJouer(jo);
+                jojo.add(jou);
+                System.out.println(jou);
+            }
+            Long ma =Long.valueOf(match);
+            Entraineur e= sessionEntraineur.authentification(login, pass);
             Matchs mat = sessionEntraineur.rechercheMatch(ma);
-            sessionEntraineur.CreerComposition_Home(login, pass, ma, jojo);
+            sessionEntraineur.CreerComposition(login, pass, ma, jojo);
             String matc = mat.getInfo();
             String equi = e.getEquipe().getNom_Equipe();
-            message= "Composition pour le match:"+ matc+" pour l'equipe"+ equi +" créé avec succès !";
-            
+            message= "Composition pour le match: "+ matc+" pour l'equipe "+ equi +" créé avec succès !";
         }
         request.setAttribute("message", message);
         
