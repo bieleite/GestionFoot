@@ -88,7 +88,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
                 }
                
             }
-            
+            else System.out.println("Contrat non trouvé");
         }
        
         else System.out.println("Entraineur inéxistant");

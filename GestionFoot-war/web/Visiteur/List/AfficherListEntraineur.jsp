@@ -11,11 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Liste entraineur</title>
         <jsp:useBean id="listeEntraineur" scope="request" class="java.util.List"></jsp:useBean>
     </head>
 <body>
-        <h1>Creer Article</h1>
+        <h1>Les entraineurs</h1>
 <% List<Entraineur> lesEntraineur=listeEntraineur;%>
 <form method="get" action="AccesVisiteur">
     <fieldset>

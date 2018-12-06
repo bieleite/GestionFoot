@@ -99,9 +99,26 @@ public class Contrat_EntraineurFacade extends AbstractFacade<Contrat_Entraineur>
     public Contrat_Entraineur rechercheEquipeParContrat_EntraineurParEntraineur(Entraineur ent) {
         Equipe e = null;        
         Contrat_Entraineur f = null;        
-        String txt = "SELECT e FROM Contrat_Entraineur AS e c.Entraineur=:ent";
+        String txt = "SELECT e FROM Contrat_Entraineur AS e WHERE c.Entraineur=:ent";
         Query req = getEntityManager().createQuery(txt);
         req = req.setParameter("ent", ent);  
+        List<Equipe> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              e = (Equipe) res.get(0);
+        }
+       return f;
+    }
+    
+    @Override
+    public Contrat_Entraineur rechercheEquipeParContrat_EntraineurActifParEntraineur(Entraineur ent) {
+        Equipe e = null;
+        Statut s = Statut.In;
+        Contrat_Entraineur f = null;        
+        String txt = "SELECT e FROM Contrat_Entraineur AS e WHERE e.Entraineur=:ent and e.Status=:In ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("ent", ent);
+        req = req.setParameter("In", s);
         List<Equipe> res = req.getResultList();
         if (res.size() >= 1)
         {

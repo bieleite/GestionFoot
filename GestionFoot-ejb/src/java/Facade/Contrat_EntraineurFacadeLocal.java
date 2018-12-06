@@ -46,4 +46,5 @@ public interface Contrat_EntraineurFacadeLocal {
     
     List<Contrat_Entraineur> rechercheContratEntraineurEntraineur(Entraineur en);
     
+    Contrat_Entraineur rechercheEquipeParContrat_EntraineurActifParEntraineur(Entraineur ent);
 }

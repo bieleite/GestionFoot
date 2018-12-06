@@ -23,12 +23,6 @@
         <form method="get" action="AccesFederation">
             <fieldset>
                 <legend>Informations Equipe</legend>
-                <label for="login"> Login<span class="requis">*</span></label>
-                <input type="text" name="login" value="" size="20" maxlength="20"/>
-                <br/>
-                <label for="pass"> Pass<span class="requis">*</span></label>
-                <input type="text" name="pass" value="" size="20" maxlength="20"/>
-                <br/>
                 <label for="equipeClassement"> Equipe<span class="requis">*</span></label>
                 <select name="equipeClassement">
                     <% for (Equipe e:lesEquipe){%>

@@ -23,10 +23,12 @@
         <table border width=50%>
             <tr> 
                 <td>Numero</td>
-                <td>Match</td>
-                <td>Jouer</td>
-                <td>Carton</td>
-                <td>Arbitre</td>
+                <td>Equipe</td>
+                <td>Entraineur</td>
+                <td>Date debut contrat</td>
+                <td>Date fin contrat</td>
+                <td>Salaire</td>
+                <td>Status</td>
             </tr>
             <% List<Contrat_Entraineur> lesContrat=listeHistoriqueEntraineur;
                 for(Contrat_Entraineur cp : lesContrat){%>

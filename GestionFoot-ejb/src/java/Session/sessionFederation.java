@@ -82,17 +82,14 @@ public class sessionFederation implements sessionFederationLocal {
     private EntraineurFacadeLocal entraineurFacade;
 
     @Override
-    public void CreerEntraineur(String log, String mdp, String nom, String pren, String log1, String mdp1) {
+    public void CreerEntraineur( String nom, String pren, String log1, String mdp1) {
         /*
             Creer entraineur !
         */
         
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
             entraineurFacade.CreerEntraineur(nom, pren, log1, mdp1);
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer de Entraineur ! ");
+
         
     }
 
@@ -100,7 +97,7 @@ public class sessionFederation implements sessionFederationLocal {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void CreerContratEntraineur(String log, String mdp,Statut status,double sal, long entr, long nom_equipe, Date dt_deb, Date dt_fin) {
+    public void CreerContratEntraineur(Statut status,double sal, long entr, long nom_equipe, Date dt_deb, Date dt_fin) {
         /*
             Pour l'historique du Entraineur j'ai decidé de créer une classe contrat, comme ça on peut afficher 
             la liste des tout les contrats que l'entraineur participe, pour ça j'ai fait la recherche par nom
@@ -108,57 +105,57 @@ public class sessionFederation implements sessionFederationLocal {
             comme ça on a toujour l'equipe actualisé a chaque nouveux contrat
         */
         Statut u=null;
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+   
             Entraineur ent = entraineurFacade.rechercheEntraineur(entr);
             Equipe equi = equipeFacade.rechercheEquipe(nom_equipe);
             if(ent!=null && equi!=null){
+                Contrat_Entraineur c = contrat_EntraineurFacade.rechercheEquipeParContrat_EntraineurActifParEntraineur(ent);
+                if(c==null){
                 contrat_EntraineurFacade.CreerContrat_Entraineur(status, sal, equi, ent, dt_deb, dt_fin);
                 entraineurFacade.modifEquipe(entr, equi);
+                }
+                else{
+                    c.setStatus(Statut.In);
+                    c.setDate_Fin(dt_deb);
+                    contrat_EntraineurFacade.CreerContrat_Entraineur(status, sal, equi, ent, dt_deb, dt_fin);
+                    entraineurFacade.modifEquipe(entr, equi);
+                    
+                }
             }
             else{
                 System.out.println("Equipe ou entraineur inexistant! ");
             }
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer de Contrat Entraineur ! ");
+ 
     }
 
     @Override
-    public void CreerJouer(String log, String mdp, String nom, String pren) {
+    public void CreerJouer(String nom, String pren) {
         /*
         Creation d'une jouer
         */
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
             jouerFacade.CreerJouer(nom, pren);
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer de Jouer ! ");
+
     }
 
     @Override
-    public void CreerChampionnat(String log, String mdp, String nom, Date date_deb, Date date_fin) {
+    public void CreerChampionnat( String nom, Date date_deb, Date date_fin) {
         /*
         Creation d'une jouer
         */
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
             championnatFacade.CreerChampionnat(nom, date_fin, date_fin);
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer de Jouer ! ");
+
     }
     
     @Override
-    public void CreerContratJouer(String log, String mdp,Statut status,double sal, long jouer, long equipe, Date dt_deb, Date dt_fin) {
+    public void CreerContratJouer(Statut status,double sal, long jouer, long equipe, Date dt_deb, Date dt_fin) {
         /*
             Meme idée du creer contrat entraineur /\
                                                   ||
         */
             Statut u=null;
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
             Jouer jo = jouerFacade.rechercheJouer(jouer);
             Equipe equi = equipeFacade.rechercheEquipe(equipe);
             if(jo!=null && equi!=null){
@@ -168,13 +165,11 @@ public class sessionFederation implements sessionFederationLocal {
             else{
                 System.out.println("Equipe ou jouer inexistant! ");
             }
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer de Contrat Jouer ! ");
+
     }
 
     @Override
-    public void CreerMatch(String log, String mdp,Date date,long stade, long equipea,long equipeb,long arbitre,long cham) {
+    public void CreerMatch(Date date,long stade, long equipea,long equipeb,long arbitre,long cham) {
         /*
             Pour la creation d'une match on a besoin de rechercher une championnat d'ou participe cette match
             Après voir si le stade n'est pas ocuppe, il fait la meme chose pour l'arbitre , si tout est bon le match 
@@ -183,8 +178,7 @@ public class sessionFederation implements sessionFederationLocal {
                     ***IMPORTANT*** faire la verification de l'equipe aussi***
                     ***IMPORTANT*** Ajouter heure pour les matchs***
         */
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
             Championnat champ= championnatFacade.rechercheArbitre(cham);
             if(champ!=null){
             Stade sta =stadeFacade.rechercheStade(stade);
@@ -215,57 +209,46 @@ public class sessionFederation implements sessionFederationLocal {
             else{
                 System.out.println("Stade deja ocuppe!");
             }
-        }
+        
         }
     @Override
-    public void CreerEquipe(String log, String mdp, String Nom, String Adresse, long id ) {
+    public void CreerEquipe(String Nom, String Adresse, long id ) {
         /*
         Creer equipe
         */
         
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
             
             Stade st =stadeFacade.rechercheStade(id);
             if(st!=null){
                 equipeFacade.CreerEquipe(Nom, Adresse, st);
             }
             
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer de Entraineur ! ");
+
         
     }
     
     @Override
-    public void CreerStade(String log, String mdp, String Nom, String Adresse, int capacite) {
+    public void CreerStade(String Nom, String Adresse, int capacite) {
         /*
         Creer equipe
         */
         
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
  
            stadeFacade.CreerStade(Nom, Adresse, capacite);
-            
-            
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer de Entraineur ! ");
+ 
         
     }
     
     @Override
-    public void CreerArbitre(String log, String mdp, String nom, String pren, String log1, String mdp1) {
+    public void CreerArbitre(String nom, String pren, String log1, String mdp1) {
         /*
         Creer Arbitre
         */
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
            arbitreFacade.CreerArbitre(nom, pren, log1, pren);
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer de Entraineur ! ");
+
         
     }
     
@@ -317,9 +300,8 @@ public class sessionFederation implements sessionFederationLocal {
         return liste;
     }
     @Override
-    public void CreerOutOfGame(String log, String mdp,long faute,int num) {
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+    public void CreerOutOfGame(long faute,int num) {
+
             Fautes f = fautesFacade.find(faute);
             Jouer jo= f.getJoeur();
             if(jo!=null){
@@ -337,12 +319,12 @@ public class sessionFederation implements sessionFederationLocal {
                 
                
             }
-        }
+        
         
     }
     
     @Override
-    public List<OutOfGame> AfficherOutOfGameParPeriode(String log, String mdp,Date dtD , Date dtF) {
+    public List<OutOfGame> AfficherOutOfGameParPeriode(Date dtD , Date dtF) {
         /*
         Afficher la liste OutOfGame d'une periode
         */
@@ -429,21 +411,18 @@ public class sessionFederation implements sessionFederationLocal {
     }
 
     @Override
-    public void CreerClassement(String log, String mdp,long championnat, long equipe) {
+    public void CreerClassement(long championnat, long equipe) {
         /*
         Affecter une equipe dans une championnat
         */
-        if ((log.contains("admin")) && (mdp.contains("admin")))
-        {
+
             Equipe equi = equipeFacade.rechercheEquipe(equipe);
             if(equi!=null){
                 Championnat champ=championnatFacade.find(championnat);
                 classementFacade.CreerClassement(champ, equi);
             }
             else System.out.println("Nao func");
-        }
-        
-        else System.out.println("Vous n'avez pas les droits pour créer le classement ! ");
+
     }
     
 }

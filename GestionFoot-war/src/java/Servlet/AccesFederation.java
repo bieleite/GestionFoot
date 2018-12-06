@@ -55,7 +55,6 @@ public class AccesFederation extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            HttpSession sess= request.getSession(true);
             String jspClient=null;
             String act=request.getParameter("action");
             if((act==null)||(act.equals("vide")))
@@ -67,8 +66,6 @@ public class AccesFederation extends HttpServlet {
                 String pass = request.getParameter("passFederation");
                 if((login.contains("admin"))||(pass.contains("admin"))){
                 request.setAttribute("message","Bienvenue ! ");
-                sess.setAttribute("log", login);
-                sess.setAttribute("pas", pass);
                 jspClient="/ChoixF.jsp";   }
                 else{
                      jspClient="/LoginF.jsp";
@@ -354,18 +351,16 @@ public class AccesFederation extends HttpServlet {
     }
     protected void doActionInsererStade(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String nom = request.getParameter("nomStade");
         String adresse = request.getParameter("adresseStade");
         String capacite = request.getParameter("capaciteStade");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()|| adresse.trim().isEmpty()||capacite.trim().isEmpty()){
+        if(nom.trim().isEmpty()|| adresse.trim().isEmpty()||capacite.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerStade.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un stade.";
         }
         else {
             int cap = Integer.valueOf(capacite);
-            sessionFederation.CreerStade(login, pass, nom, adresse, cap);
+            sessionFederation.CreerStade(nom, adresse, cap);
             message= "Stade créé avec succès !";
             
         }
@@ -374,18 +369,16 @@ public class AccesFederation extends HttpServlet {
     }
     protected void doActionInsererEquipe(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String nom = request.getParameter("nomEquipe");
         String adresse = request.getParameter("adresseEquipe");
         String stade = request.getParameter("stadeEquipe");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()|| adresse.trim().isEmpty()||stade.trim().isEmpty()){
+        if(nom.trim().isEmpty()|| adresse.trim().isEmpty()||stade.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerEquipe.jsp\">Clique ici </a>pour accéder au formulaire de creation d'une Equipe.";
         }
         else {
             Long id = Long.valueOf(stade);
-            sessionFederation.CreerEquipe(login, pass, nom, adresse, id);
+            sessionFederation.CreerEquipe(nom, adresse, id);
             message= "Equipe "+nom+" créé avec succès !";
             
         }
@@ -394,18 +387,16 @@ public class AccesFederation extends HttpServlet {
     }
     protected void doActionInsererArbitre(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String nom = request.getParameter("nomArbitre");
         String prenom = request.getParameter("prenomArbitre");
         String loginar = request.getParameter("loginArbitre");
         String passar = request.getParameter("passArbitre");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()||prenom.trim().isEmpty()|| loginar.trim().isEmpty()|| passar.trim().isEmpty()){
+        if(nom.trim().isEmpty()||prenom.trim().isEmpty()|| loginar.trim().isEmpty()|| passar.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerArbitre.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un arbitre.";
         }
         else {
-            sessionFederation.CreerArbitre(login, pass, nom, prenom, loginar, passar);
+            sessionFederation.CreerArbitre(nom, prenom, loginar, passar);
             message= "Arbitre: "+nom+ " créé avec succès !";
 
         }
@@ -414,18 +405,16 @@ public class AccesFederation extends HttpServlet {
     }
     protected void doActionInsererEntraineur(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String nom = request.getParameter("nomEntraineur");
         String prenom = request.getParameter("prenomEntraineur");
         String loginen = request.getParameter("loginEntraineur");
         String passen = request.getParameter("passEntraineur");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()||prenom.trim().isEmpty()|| loginen.trim().isEmpty()|| passen.trim().isEmpty()){
+        if(nom.trim().isEmpty()||prenom.trim().isEmpty()|| loginen.trim().isEmpty()|| passen.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerEntraineur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Entraineur.";
         }
         else {
-            sessionFederation.CreerEntraineur(login, pass, nom, prenom, loginen, passen);
+            sessionFederation.CreerEntraineur(nom, prenom, loginen, passen);
             message= "Entraineur: "+nom+ " créé avec succès !";
 
         }
@@ -434,43 +423,38 @@ public class AccesFederation extends HttpServlet {
     }
     protected void doActionInsererJouer(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String nom = request.getParameter("nomJouer");
         String prenom = request.getParameter("prenomJouer");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()||prenom.trim().isEmpty()){
+        if(nom.trim().isEmpty()||prenom.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerJouer.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Jouer.";
         }
         else {
-            sessionFederation.CreerJouer(login, pass, nom, prenom);
+            sessionFederation.CreerJouer(nom, prenom);
             message= "Jouer: "+nom+ " créé avec succès !";
         }
         request.setAttribute("message", message);    
     }
     protected void doActionInsererChampionnat(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String nom = request.getParameter("nomChampionnat");
         String date_deb = request.getParameter("dtdebChampionnat");
         String date_fin = request.getParameter("dtfinChampionnat");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||nom.trim().isEmpty()||date_deb.trim().isEmpty()||date_fin.trim().isEmpty()){
+        if(nom.trim().isEmpty()||date_deb.trim().isEmpty()||date_fin.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerChampionnat.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Championnat.";
         }
         else {
             Date dd = Date.valueOf(date_deb);
             Date df = Date.valueOf(date_fin);
-            sessionFederation.CreerChampionnat(login, pass, nom, dd, df);
+            sessionFederation.CreerChampionnat(nom, dd, df);
             message= "Championnat: "+nom+ " créé avec succès !";
         }
         request.setAttribute("message", message);    
     }
     protected void doActionInsererMatch(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
+
         String date = request.getParameter("dateMatch");
         String stade = request.getParameter("stadeMatch");
         String equipeH = request.getParameter("equipeHMatch");
@@ -478,7 +462,7 @@ public class AccesFederation extends HttpServlet {
         String arbitre = request.getParameter("arbitreMatch");
         String championnat = request.getParameter("championnatMatch");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||date.trim().isEmpty()||stade.trim().isEmpty()||equipeH.trim().isEmpty()||equipeA.trim().isEmpty()||arbitre.trim().isEmpty()||championnat.trim().isEmpty()){
+        if(date.trim().isEmpty()||stade.trim().isEmpty()||equipeH.trim().isEmpty()||equipeA.trim().isEmpty()||arbitre.trim().isEmpty()||championnat.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerMatch.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Match.";
         }
         else {
@@ -488,15 +472,13 @@ public class AccesFederation extends HttpServlet {
             Long eA = Long.valueOf(equipeA);
             Long ar = Long.valueOf(arbitre);
             Long ch = Long.valueOf(championnat);
-            sessionFederation.CreerMatch(login, pass, d, st, eH, eA, ar, ch);
+            sessionFederation.CreerMatch(d, st, eH, eA, ar, ch);
             message= "Match entre : "+eH +" vs "+eA+ " créé avec succès !";
         }
         request.setAttribute("message", message);    
     }
     protected void doActionInsererContratEntraineur(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String equipe = request.getParameter("equipeContrat");
         String salaire = request.getParameter("salaireContrat");
         String datedeb = request.getParameter("datedebContrat");
@@ -504,7 +486,7 @@ public class AccesFederation extends HttpServlet {
         String entraineur = request.getParameter("entraineurContrat");
         String statut = request.getParameter("statutContrat");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||equipe.trim().isEmpty()||salaire.trim().isEmpty()||datedeb.trim().isEmpty()|| datefin.trim().isEmpty()|| entraineur.trim().isEmpty()|| statut.trim().isEmpty()){
+        if(equipe.trim().isEmpty()||salaire.trim().isEmpty()||datedeb.trim().isEmpty()|| datefin.trim().isEmpty()|| entraineur.trim().isEmpty()|| statut.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerContratEntraineur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Contrat Entraineur.";
         }
         else {
@@ -514,7 +496,7 @@ public class AccesFederation extends HttpServlet {
             Date df = Date.valueOf(datefin);
             Long en = Long.valueOf(entraineur);
             Statut stat = Statut.valueOf(statut);
-            sessionFederation.CreerContratEntraineur(login, pass, stat, sal, en, eq, db, df);
+            sessionFederation.CreerContratEntraineur(stat, sal, en, eq, db, df);
             message= "Contrat entraineur créé avec succès !";
         }
         request.setAttribute("message", message);
@@ -522,8 +504,6 @@ public class AccesFederation extends HttpServlet {
     }
     protected void doActionInsererContratJouer(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String equipe = request.getParameter("equipeContrat");
         String salaire = request.getParameter("salaireContrat");
         String datedeb = request.getParameter("datedebContrat");
@@ -531,7 +511,7 @@ public class AccesFederation extends HttpServlet {
         String jouer = request.getParameter("jouerContrat");
         String statut = request.getParameter("statutContrat");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||equipe.trim().isEmpty()||salaire.trim().isEmpty()||datedeb.trim().isEmpty()|| datefin.trim().isEmpty()|| jouer.trim().isEmpty()|| statut.trim().isEmpty()){
+        if(equipe.trim().isEmpty()||salaire.trim().isEmpty()||datedeb.trim().isEmpty()|| datefin.trim().isEmpty()|| jouer.trim().isEmpty()|| statut.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerContratEntraineur.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Contrat jouer.";
         }
         else {
@@ -541,7 +521,7 @@ public class AccesFederation extends HttpServlet {
             Date df = Date.valueOf(datefin);
             Long jo = Long.valueOf(jouer);
             Statut stat = Statut.valueOf(statut);
-            sessionFederation.CreerContratJouer(login, pass, stat, sal, jo, eq, db, df);
+            sessionFederation.CreerContratJouer(stat, sal, jo, eq, db, df);
             message= "Contrat jouer créé avec succès !";
         }
         request.setAttribute("message", message);
@@ -549,18 +529,16 @@ public class AccesFederation extends HttpServlet {
     }
     protected void doActionInsererClassement(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String equipe = request.getParameter("equipeClassement");
         String championnat = request.getParameter("championnatClassement");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()||equipe.trim().isEmpty()||championnat.trim().isEmpty()){
+        if(equipe.trim().isEmpty()||championnat.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerClassement.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Classement.";
         }
         else {
             Long eq = Long.valueOf(equipe);
             Long ch = Long.valueOf(championnat);
-            sessionFederation.CreerClassement(login, pass, ch, eq);
+            sessionFederation.CreerClassement(ch, eq);
             message= "Classement créé avec succès !";
         }
         request.setAttribute("message", message);
@@ -568,19 +546,17 @@ public class AccesFederation extends HttpServlet {
     }
     protected void doActionInsererFautes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String pass = request.getParameter("pass");
         String faute = request.getParameter("Faute");
         String puni = request.getParameter("puni");
         String message;
-        if(login.trim().isEmpty()|| pass.trim().isEmpty()|| faute.trim().isEmpty()){
+        if( faute.trim().isEmpty()){
             message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerFaute.jsp\">Clique ici </a>pour accéder au formulaire de creation d'une Equipe.";
         }
         else {
 
             int pun = Integer.valueOf(puni);
             Long fa = Long.valueOf(faute);
-            sessionFederation.CreerOutOfGame(login, pass, fa, pun);
+            sessionFederation.CreerOutOfGame(fa, pun);
             message= "Faute créé avec succès !";
             
         }

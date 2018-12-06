@@ -29,23 +29,23 @@ import javax.ejb.Local;
 @Local
 public interface sessionFederationLocal {
 
-    void CreerEntraineur(String log, String mdp, String nom, String pren, String log1, String mdp1);
+    void CreerEntraineur( String nom, String pren, String log1, String mdp1);
 
-    void CreerContratEntraineur(String log, String mdp,Statut status,double sal, long entr, long nom_equipe, Date dt_deb, Date dt_fin);
+    void CreerContratEntraineur(Statut status,double sal, long entr, long nom_equipe, Date dt_deb, Date dt_fin);
 
-    void CreerJouer(String log, String mdp, String nom, String pren);
+    void CreerJouer( String nom, String pren);
     
-    void CreerChampionnat(String log, String mdp, String nom, Date date_deb, Date date_fin);
+    void CreerChampionnat( String nom, Date date_deb, Date date_fin);
 
-    void CreerContratJouer(String log, String mdp,Statut status,double sal, long jouer, long equipe, Date dt_deb, Date dt_fin);
+    void CreerContratJouer(Statut status,double sal, long jouer, long equipe, Date dt_deb, Date dt_fin);
 
-    void CreerMatch(String log, String mdp,Date date,long stade, long equipea,long equipeb,long arbitre,long cham);
+    void CreerMatch(Date date,long stade, long equipea,long equipeb,long arbitre,long cham);
     
-    void CreerEquipe(String log, String mdp, String Nom, String Adresse, long id);
+    void CreerEquipe( String Nom, String Adresse, long id);
     
-    void CreerStade(String log, String mdp, String Nom, String Adresse, int capacite);
+    void CreerStade( String Nom, String Adresse, int capacite);
     
-    void CreerArbitre(String log, String mdp, String nom, String pren, String log1, String mdp1);
+    void CreerArbitre( String nom, String pren, String log1, String mdp1);
     
     
     List<Fautes> AfficherFautesParMatch(long match);
@@ -54,9 +54,9 @@ public interface sessionFederationLocal {
     
     List<Fautes> AfficherFautesParJouer(long jouer);
 
-    void CreerOutOfGame(String log, String mdp,long faute,int num);
+    void CreerOutOfGame(long faute,int num);
     
-    List<OutOfGame> AfficherOutOfGameParPeriode(String log, String mdp,Date dtD , Date dtF);
+    List<OutOfGame> AfficherOutOfGameParPeriode(Date dtD , Date dtF);
     
     List<Stade> afficherStade();
     
@@ -84,6 +84,6 @@ public interface sessionFederationLocal {
 
     void stadeParNum(Long id);
 
-    void CreerClassement(String log, String mdp,long championnat, long equipe);
+    void CreerClassement(long championnat, long equipe);
     
 }

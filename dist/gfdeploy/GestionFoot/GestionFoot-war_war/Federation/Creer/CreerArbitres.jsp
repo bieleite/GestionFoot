@@ -17,12 +17,6 @@
         <form method="get" action="AccesFederation">
             <fieldset>
                 <legend>Informations Arbitre</legend>
-                <label for="login"><span class="requis"></span></label>
-                <input type="hidden" name="login" value="admin " size="20" maxlength="20"/>
-                <br/>
-                <label for="pass"> <span class="requis"></span></label>
-                <input type="hidden" name="pass" value="admin" size="20" maxlength="20"/>
-                <br/>
                 <label for="nomArbitre"> Nom<span class="requis">*</span></label>
                 <input type="text" name="nomArbitre" value="" size="20" maxlength="20"/>
                 <br/>
