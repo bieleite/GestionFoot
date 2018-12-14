@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
         <title>Creer Faute</title>
         <jsp:useBean id="listeJouer" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="listeMatch" scope="request" class="java.util.List"></jsp:useBean>

@@ -15,6 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeMatchParEquipe" scope="request" class="java.util.List"></jsp:useBean>
         <title>Afficher Matchs</title>
+        <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <h1>Afficher Matchs</h1>

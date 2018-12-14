@@ -14,6 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
         <title>Creer Buts</title>
         <jsp:useBean id="listeCompositionParMatch" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="arbt" scope="session" class="Arbitre"></jsp:useBean>

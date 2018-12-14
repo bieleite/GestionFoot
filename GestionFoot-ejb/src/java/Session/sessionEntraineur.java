@@ -161,18 +161,16 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     // "Insert Code > Add Business Method")
 
     @Override
-    public void supprimerJouer(String log, String mdp,String nom) {
+    public void supprimerJouer(long id) {
         /*
             Supprimer le jouer, pas de plus
         */
-        Entraineur c = entraineurFacade.authentification(log, mdp);
-        if (c!=null)
-        {
-            Jouer jo = jouerFacade.rechercheJouerParNom(nom);
+
+            Jouer jo = jouerFacade.rechercheJouer(id);
             if(jo!=null){
                 jouerFacade.supprimerJouer(jo);
             }
-        }
+        
     }
 
     @Override

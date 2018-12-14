@@ -37,6 +37,7 @@ public class Menu extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<LINK href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">");
             out.println("<title>Servlet Menu</title>");            
             out.println("</head>");
             out.println("<body>");

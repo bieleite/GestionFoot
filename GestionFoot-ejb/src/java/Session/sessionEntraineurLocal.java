@@ -27,7 +27,7 @@ public interface sessionEntraineurLocal {
     
     void transfererJouer(String log, String mdp,Statut status,double sal, long jouer, Date dt_deb, Date dt_fin);
 
-    void supprimerJouer(String log, String mdp,String nom);
+    void supprimerJouer(long id);
 
     void affecterJouer(String log, String mdp,long jouer,double sal, Date dt_deb, Date dt_fin);
     

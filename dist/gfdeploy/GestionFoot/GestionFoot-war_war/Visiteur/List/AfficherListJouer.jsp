@@ -13,6 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>List Jouer</title>
         <jsp:useBean id="listeJouer" scope="request" class="java.util.List"></jsp:useBean>
+        <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
     </head>
 <body>
         <h1>List Jouer</h1>

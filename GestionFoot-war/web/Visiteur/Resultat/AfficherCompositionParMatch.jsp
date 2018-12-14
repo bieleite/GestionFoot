@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:useBean id="listeCompositionParMatch" scope="request" class="java.util.List"></jsp:useBean>
         <title>Afficher Composition</title>
+        <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <h1>Afficher Composition</h1>
