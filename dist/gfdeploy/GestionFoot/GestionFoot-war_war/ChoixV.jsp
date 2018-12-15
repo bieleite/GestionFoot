@@ -22,12 +22,12 @@
         </p>
         <table>
             <tr>
-                <td width="10%"><a href="AccesVisiteur?action=afficherEquipe">Afficher Match Par Equipe</a></td>
-                <td width="10%"><a href="AccesVisiteur?action=rechercherClassement">Afficher Classement</a></td>
-                <td width="10%"><a href="AccesVisiteur?action=afficherMatch">Afficher Composition Par Match</a></td>
-                <td width="10%"><a href="AccesVisiteur?action=afficherEquipePourJouer">Afficher Jouer D'un Equipe</a></td>
-                <td width="10%"><a href="AccesVisiteur?action=afficherJouer">Afficher Historique Jouer</a></td>
-                <td width="10%"><a href="AccesVisiteur?action=afficherEntraineur">Afficher Historique Entraineur</a></td>
+                <td width="16%"><a href="AccesVisiteur?action=afficherEquipe">Afficher Match Par Equipe</a></td>
+                <td width="16%"><a href="AccesVisiteur?action=rechercherClassement">Afficher Classement</a></td>
+                <td width="16%"><a href="AccesVisiteur?action=afficherMatch">Afficher Composition Par Match</a></td>
+                <td width="16%"><a href="AccesVisiteur?action=afficherEquipePourJouer">Afficher Jouer D'un Equipe</a></td>
+                <td width="16%"><a href="AccesVisiteur?action=afficherJouer">Afficher Historique Jouer</a></td>
+                <td width="16%"><a href="AccesVisiteur?action=afficherEntraineur">Afficher Historique Entraineur</a></td>
             </tr>
         </table>
         <table>

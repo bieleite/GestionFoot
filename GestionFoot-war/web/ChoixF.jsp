@@ -23,14 +23,14 @@
         <h2>Creer</h2>
         <table>
             <tr>
-                <td width="10%"> <a href="AccesFederation?action=CreerEquipes">Creer Equipes</a></td>
-                <td width="10%"> <a href="AccesFederation?action=CreerArbitre">Creer Arbitres</a></td>
-                <td width="10%"> <a href="AccesFederation?action=CreerEntraineur">Creer Entraineurs</a></td>
-                <td width="10%"> <a href="AccesFederation?action=CreerJouer">Creer Joeurs</a></td>
-                <td width="10%"> <a href="AccesFederation?action=CreerStade">Creer Stade</a></td>
-                <td width="10%"> <a href="AccesFederation?action=CreerChampionnat">Creer Championnat</a></td>
-                <td width="10%"> <a href="AccesFederation?action=CreerClassement">Affecter une equipe a une championnat</a></td>
-                <td width="10%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
+                <td width="12,5%"> <a href="AccesFederation?action=CreerEquipes">Creer Equipes</a></td>
+                <td width="12,5%"> <a href="AccesFederation?action=CreerArbitre">Creer Arbitres</a></td>
+                <td width="12,5%"> <a href="AccesFederation?action=CreerEntraineur">Creer Entraineurs</a></td>
+                <td width="12,5%"> <a href="AccesFederation?action=CreerJouer">Creer Joeurs</a></td>
+                <td width="12,5%"> <a href="AccesFederation?action=CreerStade">Creer Stade</a></td>
+                <td width="12,5%"> <a href="AccesFederation?action=CreerChampionnat">Creer Championnat</a></td>
+                <td width="12,5%"> <a href="AccesFederation?action=CreerClassement">Affecter une equipe a une championnat</a></td>
+                <td width="12,5%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
             </tr>
         </table>
         <h2>Equipe</h2>
@@ -50,17 +50,17 @@
         <h2>Jouer</h2>
         <table>
             <tr>
-                <td width="50%"> <a href="AccesFederation?action=CreerJouer">Creer Joeurs</a></td>
-                <td width="50%"><a href="AccesFederation?action=rechercherJouer">Afficher Jouer</a></td>
-                <td width="50%"><a href="AccesFederation?action=afficherJouer">Afficher Fautes Par Jouer</a></td>
+                <td width="33%"> <a href="AccesFederation?action=CreerJouer">Creer Joeurs</a></td>
+                <td width="33%"><a href="AccesFederation?action=rechercherJouer">Afficher Jouer</a></td>
+                <td width="33%"><a href="AccesFederation?action=afficherJouer">Afficher Fautes Par Jouer</a></td>
             </tr>
         </table>
         <h2>Arbitre</h2>
         <table>
             <tr>
-                <td width="10%"> <a href="AccesFederation?action=CreerArbitre">Creer Arbitres</a></td>
-                <td width="25%"><a href="AccesFederation?action=rechercherArbitre">Afficher Arbitre</a></td>
-                <td width="50%"><a href="AccesFederation?action=afficherArbitre">Afficher Fautes Par Arbitre</a></td>
+                <td width="33%"> <a href="AccesFederation?action=CreerArbitre">Creer Arbitres</a></td>
+                <td width="33%"><a href="AccesFederation?action=rechercherArbitre">Afficher Arbitre</a></td>
+                <td width="33%"><a href="AccesFederation?action=afficherArbitre">Afficher Fautes Par Arbitre</a></td>
             </tr>
         </table>
         <h2>Championnat</h2>
@@ -75,9 +75,9 @@
         <h2>Matchs</h2>
         <table>
             <tr>
-                <td width="50%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
-                <td width="50%"><a href="AccesFederation?action=rechercherMatch">Afficher Match</a></td>
-                <td width="50%"><a href="AccesFederation?action=afficherMatch">Afficher Fautes Par Match</a></td>
+                <td width="33%"> <a href="AccesFederation?action=CreerMatchs">Creer Matchs</a></td>
+                <td width="33%"><a href="AccesFederation?action=rechercherMatch">Afficher Match</a></td>
+                <td width="33%"><a href="AccesFederation?action=afficherMatch">Afficher Fautes Par Match</a></td>
             </tr>
         </table>
         <h2>Out of game</h2>
@@ -99,11 +99,11 @@
         <h2>Afficher</h2>
         <table>
             <tr>
-                <td width="25%"><a href="AccesFederation?action=afficherFautesMatch">Afficher Fautes par Match</a></td>
-                <td width="25%"><a href="AccesFederation?action=rechercherChampionnat">Afficher Championnat</a></td>
-                <td width="25%"><a href="AccesFederation?action=rechercherClassement">Afficher Classement</a></td>
-                <td width="25%"><a href="AccesFederation?action=rechercherMatch">Afficher Match</a></td>
-                <td width="25%"><a href="AccesFederation?action=rechercherStade">Afficher Stade</a></td>
+                <td width="20%"><a href="AccesFederation?action=afficherFautesMatch">Afficher Fautes par Match</a></td>
+                <td width="20%"><a href="AccesFederation?action=rechercherChampionnat">Afficher Championnat</a></td>
+                <td width="20%"><a href="AccesFederation?action=rechercherClassement">Afficher Classement</a></td>
+                <td width="20%"><a href="AccesFederation?action=rechercherMatch">Afficher Match</a></td>
+                <td width="20%"><a href="AccesFederation?action=rechercherStade">Afficher Stade</a></td>
             </tr>
         </table>
         <table>

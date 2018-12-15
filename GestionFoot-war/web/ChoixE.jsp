@@ -22,8 +22,8 @@
         </p>
         <table>
             <tr>
-                <td width="25%"><a href="AccesEntraineur?action=CreerComposition">Creer Composition</a></td>
-                <td width="25%"><a href="AccesEntraineur?action=CreerContratJouer">Creer Contrat Jouer</a></td>
+                <td width="50%"><a href="AccesEntraineur?action=CreerComposition">Creer Composition</a></td>
+                <td width="50%"><a href="AccesEntraineur?action=CreerContratJouer">Creer Contrat Jouer</a></td>
             </tr>
         </table>
         <table>
