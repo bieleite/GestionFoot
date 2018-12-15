@@ -60,6 +60,6 @@
             <input type="submit" value="Valider"/>
             <input type="reset" value="Remettre à zéro"/><br/>
         </form>
-              <td width=25%><a href="AccesAbitre?action=MenuArbitre"> Retour Menu </a></td>
+              <td width=25%><a href="AccesArbitre?action=MenuArbitre"> Retour Menu </a></td>
     </body>
 </html>

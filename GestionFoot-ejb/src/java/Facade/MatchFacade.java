@@ -322,5 +322,17 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         return result;
     }
     
- 
+    @Override
+    public Matchs rechercheMatchAvecComposition(Long id) {
+        Matchs f = null;        
+        String txt = "SELECT f FROM Matchs AS f WHERE f.id=:id and f.Composition_Away IS NOT NULL and f.Composition_Home IS NOT NULL ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("id", id);  
+        List<Matchs> res = req.getResultList();
+        if (res.size() >= 1)
+        {
+              f = (Matchs) res.get(0);
+        }
+        return f;
+    }
 }

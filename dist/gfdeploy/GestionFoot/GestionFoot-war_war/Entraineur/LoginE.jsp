@@ -27,7 +27,7 @@
                 <input type="text" name="loginEntraineur" value="" size="20" maxlength="20"/>
                 <br/>
                 <label for="passEntraineur"> Pass<span class="requis">*</span></label>
-                <input type="text" name="passEntraineur" value="" size="20" maxlength="20"/>
+                <input type="password" name="passEntraineur" value="" size="20" maxlength="20"/>
                 <br/>  
                 <input type="hidden" name="action" value="LoginEntraineur">
             </fieldset>

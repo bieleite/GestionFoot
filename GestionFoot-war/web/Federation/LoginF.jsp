@@ -21,7 +21,7 @@
                 <input type="text" name="loginFederation" value="" size="20" maxlength="20"/>
                 <br/>
                 <label for="passFederation"> Pass<span class="requis">*</span></label>
-                <input type="text" name="passFederation" value="" size="20" maxlength="20"/>
+                <input type="password" name="passFederation" value="" size="20" maxlength="20"/>
                 <br/>  
                 <input type="hidden" name="action" value="LoginFederation">
             </fieldset>

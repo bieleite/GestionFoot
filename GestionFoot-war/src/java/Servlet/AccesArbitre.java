@@ -111,7 +111,8 @@ public class AccesArbitre extends HttpServlet {
             {
                 List<Jouer> list= sessionArbitre.afficherJouer();
                 request.setAttribute("listeJouer",list);
-                List<Matchs> listMatch= sessionArbitre.afficherMatch();
+                Arbitre a= (Arbitre) sess.getAttribute("arbt");
+                List<Matchs> listMatch= sessionArbitre.afficherMatchArbitre(a);
                 request.setAttribute("listeMatch",listMatch);
                 jspClient="/Arbitre/CreerFaute.jsp";
             }

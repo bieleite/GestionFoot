@@ -27,7 +27,7 @@
                 <input type="text" name="loginArbitre" value="" size="20" maxlength="20"/>
                 <br/>
                 <label for="passArbitre"> Pass<span class="requis">*</span></label>
-                <input type="text" name="passArbitre" value="" size="20" maxlength="20"/>
+                <input type="password" name="passArbitre" value="" size="20" maxlength="20"/>
                 <br/>  
                 <input type="hidden" name="action" value="LoginArbitre">
             </fieldset>

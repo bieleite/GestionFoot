@@ -181,7 +181,7 @@ public class sessionVisiteur implements sessionVisiteurLocal {
         Afficher les differents fautes commises pour les matches d'une date donnée
         */
         List<Composition> liste = new ArrayList<Composition>();
-        Matchs m= matchFacade.rechercheMatch(match);
+        Matchs m= matchFacade.rechercheMatchAvecComposition(match);
         if(m!=null){
             liste.add(m.getComposition_Away());
             liste.add(m.getComposition_Home());

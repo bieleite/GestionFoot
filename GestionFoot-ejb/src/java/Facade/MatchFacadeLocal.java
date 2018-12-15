@@ -81,4 +81,6 @@ public interface MatchFacadeLocal {
     List<Matchs> listMatchSansResultat();
     
     List<Matchs> listMatchSansAvantAuj();
+    
+    Matchs rechercheMatchAvecComposition(Long id);
 }

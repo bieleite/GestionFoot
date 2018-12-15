@@ -100,12 +100,8 @@
         <table>
             <tr>
                 <td width="25%"><a href="AccesFederation?action=afficherFautesMatch">Afficher Fautes par Match</a></td>
-                
-                
-                
                 <td width="25%"><a href="AccesFederation?action=rechercherChampionnat">Afficher Championnat</a></td>
                 <td width="25%"><a href="AccesFederation?action=rechercherClassement">Afficher Classement</a></td>
-                
                 <td width="25%"><a href="AccesFederation?action=rechercherMatch">Afficher Match</a></td>
                 <td width="25%"><a href="AccesFederation?action=rechercherStade">Afficher Stade</a></td>
             </tr>

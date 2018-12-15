@@ -24,18 +24,25 @@
             %></p>
         <table border width=50%>
             <tr> 
-
-                <td>Equipe</td>
-
-                <td>Jouers</td>
+                <td>Equipes:</td>
             </tr>
             <% List<Composition> lesComposition=listeCompositionParMatch;
                 for(Composition cp : lesComposition){%>
                 <tr>
-                    <td width=15%><%=cp.getEquipe().getNom_Equipe() %></td>
+                    <td><%=cp.getEquipe().getNom_Equipe() %></td>
+                </tr><%}%>     
+        </table>
+        <table border width=50%>
+            <tr> 
+                <td>Jouers</td>
+            </tr>
+            <% List<Composition> lesCompositions=listeCompositionParMatch;
+                for(Composition cp : lesCompositions){%>
+                <tr>
+                    
                     <% List<Jouer> lesJouers=cp.getJouers(); 
                     for (Jouer j : lesJouers){%>
-                    <td width=15%><%=j.getNom()+"/"+j.getPrenom() %></td>
+                    <td width=15%><%="Equipe: "+j.getEquipe().getNom_Equipe()+"--> "+j.getNom()+"/"+j.getPrenom()%></td>
                 </tr><%}}%>     
         </table>
         <hr>
