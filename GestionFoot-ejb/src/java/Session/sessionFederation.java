@@ -247,7 +247,7 @@ public class sessionFederation implements sessionFederationLocal {
         Creer Arbitre
         */
 
-           arbitreFacade.CreerArbitre(nom, pren, log1, pren);
+           arbitreFacade.CreerArbitre(nom, pren, log1, mdp1);
 
         
     }
