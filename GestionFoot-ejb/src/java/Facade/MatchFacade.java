@@ -41,9 +41,10 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
     }
 
     @Override
-    public void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Championnat champ) {
+    public void CreerMatch(Date date,String Heure,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Championnat champ) {
         Matchs m = new Matchs();
         m.setDate(date);
+        m.setHeure(Heure);
         m.setStade(stade);
         m.setEquipe_Home(equipeb);
         m.setEquipe_Away(equipea);

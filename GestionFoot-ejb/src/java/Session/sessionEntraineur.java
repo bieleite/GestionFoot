@@ -62,7 +62,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
     @Override
     public void CreerComposition(String log, String mdp, long match, List<Jouer> jouer) {
         /*
-            Creer composition home, il faut voir si il y a le besoin d'ajouter une class pour la liste de jouer
+            Creer composition home
         */
         Entraineur c = entraineurFacade.authentification(log, mdp);
         if (c != null)
@@ -71,7 +71,6 @@ public class sessionEntraineur implements sessionEntraineurLocal {
             if(cc!=null){
                 Equipe e = c.getEquipe();
                 if(e!=null){
-//                    Jouer jouer=jouerFacade.rechercheJouerParNom(nom);
                     Matchs mat = matchFacade.rechercheMatch(match);
                     Equipe eh = mat.getEquipe_Home();
                     Equipe ea = mat.getEquipe_Away();
@@ -86,7 +85,7 @@ public class sessionEntraineur implements sessionEntraineurLocal {
                     }
                     else System.out.println("Equipe non trouvé");
                 }
-               
+               else System.out.println("Equipe non trouvé");
             }
             else System.out.println("Contrat non trouvé");
         }

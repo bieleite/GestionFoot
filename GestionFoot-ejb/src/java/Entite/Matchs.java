@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,6 +44,26 @@ public class Matchs implements Serializable {
      */
     public void setLeChampionnat(Championnat leChampionnat) {
         this.leChampionnat = leChampionnat;
+    }
+    @Column(nullable=false)
+    private String Heure;
+
+    /**
+     * Get the value of Heure
+     *
+     * @return the value of Heure
+     */
+    public String getHeure() {
+        return Heure;
+    }
+
+    /**
+     * Set the value of Heure
+     *
+     * @param Heure new value of Heure
+     */
+    public void setHeure(String Heure) {
+        this.Heure = Heure;
     }
 
     private Resultat Resultat_home;
@@ -218,7 +239,7 @@ public class Matchs implements Serializable {
     }
 public String getInfo() {
     DateFormat dfm = DateFormat.getDateInstance(DateFormat.MEDIUM);
-    String a = dfm.format(Dt_Match)+" "+Equipe_Home.getNom_Equipe() +" vs "+ Equipe_Away.getNom_Equipe();
+    String a = dfm.format(Dt_Match)+" "+Heure+" "+Equipe_Home.getNom_Equipe() +" vs "+ Equipe_Away.getNom_Equipe();
         return a;
     }
     @ManyToOne

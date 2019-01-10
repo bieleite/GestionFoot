@@ -6,7 +6,14 @@
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/MatchFacade.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/MatchFacadeLocal.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Matchs.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionFederation.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionArbitre.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionVisiteur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Composition.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Entite/Entraineur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionEntraineur.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Facade/EntraineurFacade.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-ejb/src/java/Session/sessionFederationLocal.java</file>
         </group>
     </open-files>
 </project-private>

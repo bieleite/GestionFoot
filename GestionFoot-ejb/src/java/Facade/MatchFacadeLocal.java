@@ -38,7 +38,7 @@ public interface MatchFacadeLocal {
 
     int count();
 
-    void CreerMatch(Date date,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Championnat champ);
+    void CreerMatch(Date date,String Heure,Stade stade, Equipe equipea,Equipe equipeb,Arbitre arbitre,Championnat champ);
     
     List<Matchs> listMatch();
 

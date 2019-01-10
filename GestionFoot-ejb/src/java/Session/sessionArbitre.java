@@ -11,7 +11,6 @@ import Entite.Carton;
 import Entite.Composition;
 import Entite.Equipe;
 import Entite.Fautes;
-import static Entite.Fautes_.Match;
 import Entite.Jouer;
 import Entite.Matchs;
 import Entite.Resultat;
@@ -129,51 +128,10 @@ public class sessionArbitre implements sessionArbitreLocal {
                         }
                         else{
                             matchFacade.setScore_Home(a, dt_match, qtbuts);
-//                            if(match.getScore_Home()>match.getScore_Away()){
-//                                matchFacade.setResultat_Home(a, dt_match, Resultat.Winner);
-//                                Equipe eh = match.getEquipe_Home();
-//                                classementFacade.setPointsParEquipeGagnant(eh);
-//                                matchFacade.setResultat_Away(a, dt_match, Resultat.Loser);
-//                            }
-//                            else if(match.getScore_Home()<match.getScore_Away()){
-//                                matchFacade.setResultat_Home(a, dt_match, Resultat.Loser);
-//                                matchFacade.setResultat_Away(a, dt_match, Resultat.Winner);
-//                                Equipe ea =match.getEquipe_Away();
-//                                classementFacade.setPointsParEquipeGagnant(ea);
-//                            }
-//                            else if(match.getScore_Home()==match.getScore_Away()){
-//                                matchFacade.setResultat_Home(a, dt_match, Resultat.Nulle);
-//                                Equipe eh = match.getEquipe_Home();
-//                                classementFacade.setPointsParEquipeNulle(eh);
-//                                matchFacade.setResultat_Away(a, dt_match, Resultat.Nulle);
-//                                Equipe ea =match.getEquipe_Away();
-//                                classementFacade.setPointsParEquipeNulle(ea);
-//                            }
                         }
                     }
                     else{
                         matchFacade.setScore_Away(a, dt_match, qtbuts);
-//                        if(match.getScore_Home()>match.getScore_Away()){
-//                            matchFacade.setResultat_Home(a, dt_match, Resultat.Winner);
-//                            Equipe eh = match.getEquipe_Home();
-//                            classementFacade.setPointsParEquipeGagnant(eh);
-//                            matchFacade.setResultat_Away(a, dt_match, Resultat.Loser);
-//                        }
-//                        else if(match.getScore_Home()<match.getScore_Away()){
-//                            matchFacade.setResultat_Home(a, dt_match, Resultat.Loser);
-//                            matchFacade.setResultat_Away(a, dt_match, Resultat.Winner);
-//                            Equipe ea =match.getEquipe_Away();
-//                            classementFacade.setPointsParEquipeGagnant(ea);
-//                        }
-//                        else if(match.getScore_Home()==match.getScore_Away()){
-//                            matchFacade.setResultat_Home(a, dt_match, Resultat.Nulle);
-//                            Equipe eh = match.getEquipe_Home();
-//                            classementFacade.setPointsParEquipeNulle(eh);
-//                            matchFacade.setResultat_Away(a, dt_match, Resultat.Nulle);
-//                            Equipe ea =match.getEquipe_Away();
-//                            classementFacade.setPointsParEquipeNulle(ea);
-                            
-//                        }
                     }
                 }
                 else System.out.println("Jouer inexistant ");

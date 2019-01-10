@@ -5,18 +5,24 @@
         <group>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixA.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/Menu.java</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesEntraineur.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesVisiteur.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/AffecterResultat.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Visiteur/Resultat/AfficherCompositionParMatch.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesFederation.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixF.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/CreerFaute.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixV.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/LoginF.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/ChoixE.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Entraineur/LoginE.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerMatch.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerEntraineur.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/CreerButs.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/src/java/Servlet/AccesArbitre.java</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/AfficherListMatch.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Federation/Creer/CreerContratEntraineur.jsp</file>
+            <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Entraineur/CreerComposition.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/Arbitre/LoginA.jsp</file>
             <file>file:/Users/gabrielleite/NetBeansProjects/GestionFoot/GestionFoot-war/web/style.css</file>
         </group>

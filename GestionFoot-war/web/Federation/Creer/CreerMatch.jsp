@@ -32,6 +32,23 @@
                 <label for="dateMatch"> Date<span class="requis">*</span></label>
                 <input type="date" name="dateMatch" value="" size="20" maxlength="20"/>
                 <br/>
+                <tr><td> Heure Match</td><td>
+                    <select size="1" name="heureMatch">
+                       <option value="1">01:00</option>
+                       <option value="2">02:00 </option>
+                       <option value="3">03:00 </option>
+                       <option value="4">04:00 </option>
+                       <option value="5">05:00 </option>
+                       <option value="6">06:00 </option>
+                       <option value="7">07:00 </option>
+                       <option value="8">08:00 </option>
+                       <option value="9">09:00 </option>
+                       <option value="10">10:00 </option>
+                       <option value="11">11:00 </option>
+                       <option value="12">12:00 </option>
+                   </select>
+                </td></tr>
+                <br/>
                 <label for="stadeMatch"> Stade<span class="requis">*</span></label>
                 <select name="stadeMatch">
                     <% for (Stade s:lesStades){%>

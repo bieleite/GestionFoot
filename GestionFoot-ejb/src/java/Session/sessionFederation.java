@@ -58,7 +58,6 @@ public class sessionFederation implements sessionFederationLocal {
     @EJB
     private ArbitreFacadeLocal arbitreFacade;
 
-
     @EJB
     private MatchFacadeLocal matchFacade;
 
@@ -70,7 +69,6 @@ public class sessionFederation implements sessionFederationLocal {
 
     @EJB
     private Contrat_JouerFacadeLocal contrat_JouerFacade;
-
 
     @EJB
     private EquipeFacadeLocal equipeFacade;
@@ -104,22 +102,19 @@ public class sessionFederation implements sessionFederationLocal {
             apres une recherche de l'equipe par nom, au fin le contrat est crée et l'equipe du entraineur modifié
             comme ça on a toujour l'equipe actualisé a chaque nouveux contrat
         */
-        Statut u=null;
-   
             Entraineur ent = entraineurFacade.rechercheEntraineur(entr);
             Equipe equi = equipeFacade.rechercheEquipe(nom_equipe);
             if(ent!=null && equi!=null){
                 Contrat_Entraineur c = contrat_EntraineurFacade.rechercheEquipeParContrat_EntraineurActifParEntraineur(ent);
-                if(c==null){
-                contrat_EntraineurFacade.CreerContrat_Entraineur(status, sal, equi, ent, dt_deb, dt_fin);
-                entraineurFacade.modifEquipe(entr, equi);
-                }
-                else{
+                if(c!=null){
                     c.setStatus(Statut.In);
                     c.setDate_Fin(dt_deb);
                     contrat_EntraineurFacade.CreerContrat_Entraineur(status, sal, equi, ent, dt_deb, dt_fin);
                     entraineurFacade.modifEquipe(entr, equi);
-                    
+                }
+                else{
+                    contrat_EntraineurFacade.CreerContrat_Entraineur(status, sal, equi, ent, dt_deb, dt_fin);
+                    entraineurFacade.modifEquipe(entr, equi);
                 }
             }
             else{
@@ -169,7 +164,7 @@ public class sessionFederation implements sessionFederationLocal {
     }
 
     @Override
-    public void CreerMatch(Date date,long stade, long equipea,long equipeb,long arbitre,long cham) {
+    public void CreerMatch(Date date,String heur,long stade, long equipea,long equipeb,long arbitre,long cham) {
         /*
             Pour la creation d'une match on a besoin de rechercher une championnat d'ou participe cette match
             Après voir si le stade n'est pas ocuppe, il fait la meme chose pour l'arbitre , si tout est bon le match 
@@ -194,7 +189,7 @@ public class sessionFederation implements sessionFederationLocal {
                         List<Matchs> listeMatchA = matchFacade.rechercheMatchArbitreDate(arb, date);
                             if (listeMatchA.isEmpty())
                             {
-                                matchFacade.CreerMatch(date, sta, eqpa, eqpb, arb,champ);
+                                matchFacade.CreerMatch(date,heur, sta, eqpa, eqpb, arb,champ);
                             }
                             else{
                                 System.out.println("Arbitre ocuupé! ");
@@ -425,4 +420,9 @@ public class sessionFederation implements sessionFederationLocal {
 
     }
     
+    @Override
+    public Equipe rechercheEquipe(long id) {
+        Equipe eq = equipeFacade.rechercheEquipe(id);
+        return eq;
+    }
 }

@@ -39,7 +39,7 @@ public interface sessionFederationLocal {
 
     void CreerContratJouer(Statut status,double sal, long jouer, long equipe, Date dt_deb, Date dt_fin);
 
-    void CreerMatch(Date date,long stade, long equipea,long equipeb,long arbitre,long cham);
+    void CreerMatch(Date date,String heur,long stade, long equipea,long equipeb,long arbitre,long cham);
     
     void CreerEquipe( String Nom, String Adresse, long id);
     
@@ -85,5 +85,7 @@ public interface sessionFederationLocal {
     void stadeParNum(Long id);
 
     void CreerClassement(long championnat, long equipe);
+    
+    Equipe rechercheEquipe(long id);
     
 }

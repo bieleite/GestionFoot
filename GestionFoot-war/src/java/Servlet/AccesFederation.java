@@ -456,6 +456,7 @@ public class AccesFederation extends HttpServlet {
         throws ServletException, IOException {
 
         String date = request.getParameter("dateMatch");
+        String heure = request.getParameter("heureMatch");
         String stade = request.getParameter("stadeMatch");
         String equipeH = request.getParameter("equipeHMatch");
         String equipeA = request.getParameter("equipeAMatch");
@@ -472,8 +473,10 @@ public class AccesFederation extends HttpServlet {
             Long eA = Long.valueOf(equipeA);
             Long ar = Long.valueOf(arbitre);
             Long ch = Long.valueOf(championnat);
-            sessionFederation.CreerMatch(d, st, eH, eA, ar, ch);
-            message= "Match entre : "+eH +" vs "+eA+ " créé avec succès !";
+            sessionFederation.CreerMatch(d,heure, st, eH, eA, ar, ch);
+            Equipe eqph = sessionFederation.rechercheEquipe(eH);
+            Equipe eqpA = sessionFederation.rechercheEquipe(eA);
+            message= "Match entre : "+eqph.getNom_Equipe() +" vs "+eqpA.getNom_Equipe()+ " créé avec succès !";
         }
         request.setAttribute("message", message);    
     }

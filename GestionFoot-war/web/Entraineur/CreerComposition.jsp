@@ -40,7 +40,7 @@
                             <td>Numero</td>
                             <td>Nom</td>
                             <td>Prenom</td>
-                            <td>Selecionado</td>
+                            <td>Selecionné</td>
                         </tr>
                             <% for (Jouer j:lesJouers){%>
                             <tr>
