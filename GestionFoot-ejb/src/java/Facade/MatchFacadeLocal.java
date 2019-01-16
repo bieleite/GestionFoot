@@ -83,4 +83,6 @@ public interface MatchFacadeLocal {
     List<Matchs> listMatchSansAvantAuj();
     
     Matchs rechercheMatchAvecComposition(Long id);
+    
+    List<Matchs> rechercheMatchEquipeEtDate(Equipe equ, Date dat);
 }

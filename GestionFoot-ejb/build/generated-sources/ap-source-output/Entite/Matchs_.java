@@ -14,7 +14,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-12-17T14:05:39")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-01-16T13:42:09")
 @StaticMetamodel(Matchs.class)
 public class Matchs_ { 
 
@@ -26,6 +26,7 @@ public class Matchs_ {
     public static volatile SingularAttribute<Matchs, Equipe> Equipe_Home;
     public static volatile SingularAttribute<Matchs, Integer> Score_Home;
     public static volatile SingularAttribute<Matchs, Championnat> leChampionnat;
+    public static volatile SingularAttribute<Matchs, String> Heure;
     public static volatile SingularAttribute<Matchs, Resultat> Resultat_home;
     public static volatile SingularAttribute<Matchs, Composition> Composition_Away;
     public static volatile SingularAttribute<Matchs, Integer> Score_Away;

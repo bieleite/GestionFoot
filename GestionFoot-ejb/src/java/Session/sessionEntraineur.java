@@ -242,6 +242,14 @@ public class sessionEntraineur implements sessionEntraineurLocal {
         return liste;
     }
     
+    
+    @Override
+    public List<Matchs> afficherMatchParEntraineurComposition(Entraineur ent, Date dt) {
+        Equipe e = ent.getEquipe();
+        List<Matchs> liste = matchFacade.rechercheMatchEquipeEtDate(e, dt);
+        return liste;
+    }
+    
     @Override
     public Jouer rechercheJouer(long id) {
         Jouer jo = jouerFacade.rechercheJouer(id);

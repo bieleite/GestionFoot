@@ -206,7 +206,6 @@ public class AccesArbitre extends HttpServlet {
             Long mat = Long.valueOf(match);
             sessionArbitre.calculerMatch(login, pass,mat);
             message= "Resultat calculé !";
-            
         }
         request.setAttribute("message", message);
         

@@ -82,11 +82,17 @@ public class AccesEntraineur extends HttpServlet {
             else if(act.equals("CreerComposition"))
             {
                Entraineur e= (Entraineur) sess.getAttribute("entr");
+               Long dte = System.currentTimeMillis() ;
+               System.out.println ("Long"+dte);
+               String dat = String.valueOf(dte);
+               System.out.println ("String"+dat);
+               Date dt = Date.valueOf(dat);
+               System.out.println ("Date"+dt);
                Equipe eq= e.getEquipe();
                 if(eq!=null){
                     List<Jouer> list= sessionEntraineur.afficherJouerParEntraineur(e);
                     request.setAttribute("listeJouer",list);
-                    List<Matchs> listMatch= sessionEntraineur.afficherMatchParEntraineur(e);
+                    List<Matchs> listMatch= sessionEntraineur.afficherMatchParEntraineurComposition(e,dt);
                     request.setAttribute("listeMatch",listMatch);
                     jspClient="/Entraineur/CreerComposition.jsp";
                     }

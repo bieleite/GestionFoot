@@ -336,4 +336,15 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         }
         return f;
     }
+    
+    @Override
+    public List<Matchs> rechercheMatchEquipeEtDate(Equipe equ, Date dat) {
+        String txt = "SELECT mat FROM Matchs AS mat WHERE mat.Equipe_Home=:equ OR mat.Equipe_Away=:equ AND mat.Dt_Match<=:dat ";
+        Query req = getEntityManager().createQuery(txt);
+        req = req.setParameter("equ", equ);
+        req = req.setParameter("dt", dat);
+        List<Matchs> res = req.getResultList();
+        return res;
+        
+    }
 }
