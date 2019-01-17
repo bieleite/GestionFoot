@@ -27,6 +27,7 @@
             <tr> 
                 <td>Numero</td>
                 <td>Date</td>
+                <td>Heure</td>
                 <td>Stade</td>
                 <td>Equipe Home</td>
                 <td>Equipe Away</td>
@@ -36,6 +37,7 @@
                 <tr>
                     <td width=15%><%=m.getId()%></td>
                     <td width=15%><%=m.getDate().toString() %></td>
+                    <td width=15%><%=m.getHeure() %></td>
                     <td width=15%><%=m.getStade().getNom_Stade() %></td>
                     <td width=15%><%=m.getEquipe_Home().getNom_Equipe() %></td>
                     <td width=15%><%=m.getEquipe_Away().getNom_Equipe() %></td>

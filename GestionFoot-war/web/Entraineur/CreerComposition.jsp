@@ -15,13 +15,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="${pageContext.request.contextPath}/style.css" rel="stylesheet" type="text/css">
-        <title>Creer Classement</title>
+        <title>Creer Composition</title>
         <jsp:useBean id="listeJouer" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="listeMatch" scope="request" class="java.util.List"></jsp:useBean>
         <jsp:useBean id="entr" scope="session" class="Entraineur"></jsp:useBean>
     </head>
 <body>
-        <h1>Creer Classement</h1>
+        <h1>Creer Composition</h1>
 <% List<Jouer> lesJouers=listeJouer;%>
 <% List<Matchs> lesMatch=listeMatch;%>
         <form method="get" action="AccesEntraineur">

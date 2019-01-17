@@ -66,7 +66,7 @@ public class AccesArbitre extends HttpServlet {
                         jspClient="/ChoixA.jsp";    
                                 }   
                     else{
-                        request.setAttribute("message","Entraineur non trouvé");
+                        request.setAttribute("message","Arbitre non trouvé");
                         jspClient="/Arbitre/LoginA.jsp";
                     }
                 }
@@ -88,7 +88,7 @@ public class AccesArbitre extends HttpServlet {
                 request.setAttribute("listeMatch",list);
                 request.setAttribute("message","Liste des match existants");
             }
-            else if(act.equals("CreerButs2"))
+            else if(act.equals("CreerButs2")) // ver pq ele nao funciona as vezes 
             {   
                 String ide= request.getParameter("matchComposition");
                 System.out.println("mc");

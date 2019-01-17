@@ -26,6 +26,7 @@
                 <td>Numero</td>
                 <td>Championnat</td>
                 <td>Date</td>
+                <td>Heure</td>
                 <td>Stade</td>
                 <td>Equipe Home</td>
                 <td>Score</td>
@@ -39,6 +40,7 @@
                     <td width=15%><%=ar.getId()%></td>
                     <td width=15%><%=ar.getLeChampionnat().getNom_Championnat() %></td> 
                     <td width=15%><%=ar.getDate() %></td>
+                    <td width=15%><%=ar.getHeure() %></td>
                     <td width=15%><%=ar.getStade().getNom_Stade() %></td>
                     <td width=15%><%=ar.getEquipe_Home().getNom_Equipe() %></td>
                     <td width=15%><%=ar.getScore_Home() %></td>
