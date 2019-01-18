@@ -88,4 +88,8 @@ public interface sessionFederationLocal {
     
     Equipe rechercheEquipe(long id);
     
+    void ModifMatch(Date dt, String Heure, long id );
+    
+    Matchs rechercheMatchs(long id);
+    
 }

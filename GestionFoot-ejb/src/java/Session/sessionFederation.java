@@ -206,6 +206,28 @@ public class sessionFederation implements sessionFederationLocal {
             }
         
         }
+    
+    @Override
+    public void ModifMatch(Date dt, String Heure, long id ) {
+        /*
+        Creer equipe
+        */
+        
+
+            
+            Matchs ma = matchFacade.rechercheMatch(id);
+            if(ma!=null){
+                Arbitre arb = ma.getArbitre();
+                List<Matchs> mar = matchFacade.rechercheMatchArbitreDate(arb, dt);
+                if(mar.isEmpty()){
+                    matchFacade.modifDtMatch(dt, Heure, ma);
+                }
+            }
+            
+
+        
+    }
+    
     @Override
     public void CreerEquipe(String Nom, String Adresse, long id ) {
         /*
@@ -424,5 +446,11 @@ public class sessionFederation implements sessionFederationLocal {
     public Equipe rechercheEquipe(long id) {
         Equipe eq = equipeFacade.rechercheEquipe(id);
         return eq;
+    }
+    
+    @Override
+    public Matchs rechercheMatchs(long id) {
+        Matchs ma = matchFacade.rechercheMatch(id);
+        return ma;
     }
 }

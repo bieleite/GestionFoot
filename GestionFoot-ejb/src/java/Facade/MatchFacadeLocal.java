@@ -85,4 +85,6 @@ public interface MatchFacadeLocal {
     Matchs rechercheMatchAvecComposition(Long id);
     
     List<Matchs> rechercheMatchEquipeEtDate(Equipe equ, Date dat);
+    
+    void modifDtMatch(Date date,String Heure,Matchs ma);
 }

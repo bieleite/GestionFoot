@@ -28,7 +28,7 @@
 <% List<Championnat> lesChampionnat=listeChampionnat;%>
         <form method="get" action="AccesFederation">
             <fieldset>
-                <legend>Informations Equipe</legend>
+                <legend>Informations Match</legend>
                 <label for="dateMatch"> Date<span class="requis">*</span></label>
                 <input type="date" name="dateMatch" value="" size="20" maxlength="20"/>
                 <br/>

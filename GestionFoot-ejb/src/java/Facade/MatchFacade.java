@@ -347,4 +347,11 @@ public class MatchFacade extends AbstractFacade<Matchs> implements MatchFacadeLo
         return res;
         
     }
+    
+    @Override
+    public void modifDtMatch(Date date,String Heure,Matchs ma) {
+        ma.setDate(date);
+        ma.setHeure(Heure);
+        em.merge(ma);
+    }
 }

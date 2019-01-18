@@ -55,6 +55,7 @@ public class AccesFederation extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            HttpSession sessma= request.getSession(true);
             String jspClient=null;
             String act=request.getParameter("action");
             if((act==null)||(act.equals("vide")))
@@ -330,6 +331,26 @@ public class AccesFederation extends HttpServlet {
                 request.setAttribute("message","Liste des fautes par match");
                 }
             }
+            else if(act.equals("ListeMatch"))
+            {
+                jspClient="/Federation/Arbitre/AfficherMatchs.jsp";
+                List<Matchs> list= sessionFederation.afficherMatch();
+                request.setAttribute("listeMatch",list);
+                request.setAttribute("message","Liste des match existants");
+            }
+            else if(act.equals("ModifierMatchs"))
+            {
+                String ide= request.getParameter("matchC");
+                Long id = Long.valueOf(ide);
+                Matchs m = sessionFederation.rechercheMatchs(id);
+                sessma.setAttribute("mat", m);
+                jspClient="/Federation/Creer/ModifierMatch.jsp";
+            }
+            else if(act.equals("modMatchs"))
+            {
+                jspClient="/ChoixF.jsp";
+                doActionModifierMatch(request,response);
+            }
 
 
         RequestDispatcher Rd;
@@ -477,6 +498,27 @@ public class AccesFederation extends HttpServlet {
             Equipe eqph = sessionFederation.rechercheEquipe(eH);
             Equipe eqpA = sessionFederation.rechercheEquipe(eA);
             message= "Match entre : "+eqph.getNom_Equipe() +" vs "+eqpA.getNom_Equipe()+ " créé avec succès !";
+        }
+        request.setAttribute("message", message);    
+    }
+     protected void doActionModifierMatch(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+        String date = request.getParameter("dateMatch");
+        String heure = request.getParameter("heureMatch");
+        String matchs = request.getParameter("Matchs");
+        String message;
+        if(date.trim().isEmpty()||heure.trim().isEmpty()||matchs.trim().isEmpty()){
+            message = "Erreur - Vous n'avez pas rempli tous les champs obligatoires." + "<br/><a href=\"CreerMatch.jsp\">Clique ici </a>pour accéder au formulaire de creation d'un Match.";
+        }
+        else {
+            Date d = Date.valueOf(date);
+            Long ma = Long.valueOf(matchs);
+            sessionFederation.ModifMatch(d, heure, ma);
+            Matchs mat = sessionFederation.rechercheMatchs(ma);
+            Equipe eqph = mat.getEquipe_Home();
+            Equipe eqpA = mat.getEquipe_Away();
+            message= "Match entre : "+eqph.getNom_Equipe() +" vs "+eqpA.getNom_Equipe()+ " modifié avec succès !";
         }
         request.setAttribute("message", message);    
     }
